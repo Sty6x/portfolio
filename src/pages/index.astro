@@ -11,7 +11,7 @@ import Layout from '../layouts/Layout.astro';
 	<div id="hero">
 		<span id="hero-text-container">
 			<p id="profession" class="hero-text">Software Developer</p>
-			<h1 id="greet" class="hero-text">Hello I’m Franz Diaz</h1>
+			<h1 id="greet" class="hero-text">Hello I’m <span>Franz Diaz</span></h1>
 			<p id="introduction" class="hero-text">
 				I create UI for custom websites that specifies business needs, and also will code for food.
 			</p>
@@ -29,6 +29,8 @@ import Layout from '../layouts/Layout.astro';
 		flex:1;
 		color: white;
 		margin: 6em 8em 6em 8em;
+		display: flex;
+		flex-direction: column;
 	}
 	nav{
 		text-align: bottom;
@@ -44,11 +46,41 @@ import Layout from '../layouts/Layout.astro';
 		}
 	}
 	#hero{
+		/* @media screen(width) {
+			
+		} */
 		display: flex;
 		align-items: center;
-
+		justify-content: center;
+		flex: 1;
 		:not(:first-child){
 			margin-left: auto;
+		}
+		:first-child{
+			width: 100%;
+		}
+	}
+
+	#hero-text-container{
+		max-width: 35%;
+		min-width: 500px;
+		margin-right: 5em;
+		#profession{
+			font-size: 1.2rem;
+			letter-spacing: .6em;
+			font-weight: 400;
+		}
+		#greet{
+			font-size: clamp(2.5rem, 4vw,3rem);
+			font-weight: 800;
+			/* line-height: 90%; */
+			&> span{
+				color: antiquewhite;
+			}
+		}
+		#introduction{
+			font-size: clamp(1.5rem, 2vw,1.8rem);
+			font-weight: 600;
 		}
 	}
 </style>
