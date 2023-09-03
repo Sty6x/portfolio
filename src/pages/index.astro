@@ -6,7 +6,9 @@ import Layout from '../layouts/Layout.astro';
 	<main>
 	<nav>
 		<span id="logo">FDiaz</span>
-		<button>btn</button>
+		<button>
+			<span></span>
+		</button>
 	</nav>
 	<div id="hero">
 		<span id="hero-text-container">
@@ -18,7 +20,7 @@ import Layout from '../layouts/Layout.astro';
 		</span>
 
 		<span id="to-project">
-			<a href="/project">link to project</a>
+			<a href="/project"></a>
 		</span>
 	</div>
 	</main>
@@ -38,17 +40,21 @@ import Layout from '../layouts/Layout.astro';
 		display: flex;
 		:not(:first-child){
 			margin-left: auto;
+			width: 50px;
+			height: auto;
+			background-image: url("../assets/icons/menu.svg");
+			background-repeat: no-repeat;
+			background-position: center;
 		}
+
 		:first-child{
 			text-transform: uppercase;
-			font-weight: bolder;
+			font-weight: 600;
 			font-size: 1.6rem;
 		}
+
 	}
 	#hero{
-		/* @media screen(width) {
-			
-		} */
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -80,6 +86,19 @@ import Layout from '../layouts/Layout.astro';
 		#introduction{
 			font-size: clamp(1.5rem, 2vw,1.8rem);
 			font-weight: 500;
+		}
+	}
+	#to-project{
+		width:5em;
+		height: 5em;
+		& > a{
+			display: inline-block;
+			width: inherit;
+			height: inherit;
+			background-image: url("../assets/icons/btn.svg");
+			background-size: contain;
+			background-position: center;
+			background-repeat: no-repeat;
 		}
 	}
 </style>
