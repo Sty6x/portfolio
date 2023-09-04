@@ -29,8 +29,8 @@ import Layout from '../layouts/Layout.astro';
 <style>
 	main{
 		flex:1;
-		color: white;
-		margin: 6em 8em 6em 8em;
+		color: var(--text);
+		margin: 6em 10em 6em 10em;
 		display: flex;
 		flex-direction: column;
 	}
@@ -80,7 +80,7 @@ import Layout from '../layouts/Layout.astro';
 			font-size: clamp(2.5rem, 4vw,3rem);
 			font-weight: 600;
 			&> span{
-				color: antiquewhite;
+				color: var(--accent1);
 			}
 		}
 		#introduction{
@@ -89,8 +89,8 @@ import Layout from '../layouts/Layout.astro';
 		}
 	}
 	#to-project{
-		width:5em;
-		height: 5em;
+		width: 6em;
+		height: 6em;
 		& > a{
 			display: inline-block;
 			width: inherit;
