@@ -1,14 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import ToBtn from '../components/ToBtn.astro'
+import MenuBtn from '../components/MenuBtn.astro'
 ---
 
 <Layout title="FDiaz">
 	<main>
 	<nav>
 		<span id="logo">FDiaz</span>
-		<button>
-			<span></span>
-		</button>
+		<MenuBtn/>
 	</nav>
 	<div id="hero">
 		<span id="hero-text-container">
@@ -18,10 +18,7 @@ import Layout from '../layouts/Layout.astro';
 				I create UI for custom websites that specifies business needs, and also will code for food.
 			</p>
 		</span>
-
-		<span id="to-project">
-			<a href="/project"></a>
-		</span>
+		<ToBtn/>
 	</div>
 	</main>
 </Layout>
@@ -66,7 +63,6 @@ import Layout from '../layouts/Layout.astro';
 			width: 100%;
 		}
 	}
-
 	#hero-text-container{
 		max-width: 35%;
 		min-width: 500px;
@@ -86,19 +82,6 @@ import Layout from '../layouts/Layout.astro';
 		#introduction{
 			font-size: clamp(1.5rem, 2vw,1.8rem);
 			font-weight: 500;
-		}
-	}
-	#to-project{
-		width: 6em;
-		height: 6em;
-		& > a{
-			display: inline-block;
-			width: inherit;
-			height: inherit;
-			background-image: url("../assets/icons/btn.svg");
-			background-size: contain;
-			background-position: center;
-			background-repeat: no-repeat;
 		}
 	}
 </style>
