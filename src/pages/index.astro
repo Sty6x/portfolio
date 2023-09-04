@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import ToBtn from '../components/ToBtn.astro'
 import MenuBtn from '../components/MenuBtn.astro'
+
 ---
 
 <Layout title="FDiaz">
@@ -23,7 +24,53 @@ import MenuBtn from '../components/MenuBtn.astro'
 	</main>
 </Layout>
 
+<script>
+	import SplitType from 'split-type';
+	import  gsap from "gsap";
+	const logo = SplitType.create("#logo");
+	const greetText = SplitType.create("#greet");
+	const profession = SplitType.create("#profession");
+
+	// gsap.from(".char",{
+	// 	y:50,
+	// })
+	// gsap.to(".char",{
+	// 	y:0	,
+	// 	stagger:0.7,
+	// 	delay:.2,
+	// 	duration:.6,
+	// })
+	gsap.from(".char",{
+		y:50,
+	})
+	gsap.to(".char",{
+		y:0	,
+		stagger:0.7,
+		delay:.2,
+		duration:.6,
+	})
+
+</script>
+
 <style>
+	#logo::before{
+		content: " ";
+		z-index: 9;
+		display: inline-block;
+		position: absolute;
+		/* outline: red solid 1px; */
+		background-color: var(--bg);
+		top:100%;
+		width: 100%;
+		height: 100%;
+
+	}
+	#logo{
+		position: relative;
+	}
+	.char{
+		transition: transform .5s;
+	}
 	main{
 		flex:1;
 		color: var(--text);
@@ -38,20 +85,15 @@ import MenuBtn from '../components/MenuBtn.astro'
 		text-align: bottom;
 		color: white;
 		display: flex;
-		:not(:first-child){
-			margin-left: auto;
-			width: 50px;
-			height: auto;
-		}
-
 		:first-child{
 			text-transform: uppercase;
 			font-weight: 600;
 			font-size: 1.6rem;
 		}
-
 	}
+	
 	#hero{
+		position: relative;
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -59,11 +101,9 @@ import MenuBtn from '../components/MenuBtn.astro'
 		:not(:first-child){
 			margin-left: auto;
 		}
-		:first-child{
-			width: 100%;
-		}
 	}
 	#hero-text-container{
+		z-index: 1;
 		max-width: 35%;
 		min-width: 500px;
 		margin-right: 5em;
@@ -73,14 +113,14 @@ import MenuBtn from '../components/MenuBtn.astro'
 			font-weight: 400;
 		}
 		#greet{
-			font-size: clamp(2.5rem, 4vw,3rem);
+			font-size: clamp(2.5rem, 4vw,3.2rem);
 			font-weight: 600;
 			&> span{
 				color: var(--accent1);
 			}
 		}
 		#introduction{
-			font-size: clamp(1.5rem, 2vw,1.8rem);
+			font-size: clamp(1.5rem, 2vw, 2rem);
 			font-weight: 500;
 		}
 	}
