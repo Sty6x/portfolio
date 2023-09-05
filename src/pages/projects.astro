@@ -65,7 +65,9 @@ const featuredProjects = [
 	projectList.forEach((project) => {
 		// first project event listener is not applying gsap stagger animation
 		project.addEventListener("mouseenter", () => {
-			const ch = Array.from(project.children).filter((c) => c.classList.contains("inactive"));
+			const ch = Array.from(project.children).filter((c) =>
+				c.classList.contains("inactive"),
+			);
 			console.log(ch);
 			gsap.from(ch, {
 				y: 100,
@@ -82,27 +84,29 @@ const featuredProjects = [
 			});
 
 			const chm = Array.from(project.children).map((c) => {
-			if (c.classList.contains("inactive")) {
-				c.classList.replace("inactive", "active");
+				if (c.classList.contains("inactive")) {
+					c.classList.replace("inactive", "active");
+					return c;
+				}
 				return c;
-			}
-			return c;
 			});
 		});
 		project.addEventListener("mouseleave", () => {
-			const ch = Array.from(project.children).filter((c) => c.classList.contains("active"));
-			console.log(ch)
-				gsap.to(ch, {
-					y: 50,
-					opacity: 0,
-					duration:.1
-				});
+			const ch = Array.from(project.children).filter((c) =>
+				c.classList.contains("active"),
+			);
+			console.log(ch);
+			gsap.to(ch, {
+				y: 50,
+				opacity: 0,
+				duration: 0.1,
+			});
 
 			const chm = Array.from(project.children).map((c) => {
 				if (c.classList.contains("active")) {
 					c.classList.replace("active", "inactive");
-						return c;
-					}
+					return c;
+				}
 				return c;
 			});
 		});
@@ -135,6 +139,7 @@ const featuredProjects = [
 			& > h1 {
 				font-size: 2rem;
 				font-weight: 600;
+				transition: font-size 150ms ease-in;
 			}
 			& > .title-underline {
 				display: inline-block;
@@ -165,7 +170,13 @@ const featuredProjects = [
 		transition: background-color 150ms ease-in-out;
 		& > :not(:first-child) > span.title-underline {
 			width: 100%;
-			transition: width 200ms ease-in-out;
+			transition: width 500ms ease-in-out;
+		}
+
+		& > :not(:first-child) > h1 {
+			font-weight: 700;
+			font-size: 2.2rem;
+			transition: font-size 80ms ease-in-out;
 		}
 		background-image: var(--gradient-iso);
 		cursor: pointer;
