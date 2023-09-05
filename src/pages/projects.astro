@@ -17,7 +17,7 @@ const featuredProjects = [
 		{
 			featuredProjects.map((project) => {
 				return (
-					<div class="projects inactive" id={project.title}>
+					<div class="projects" id={project.title}>
 						<div class={`${project.title}-info project-logo inactive `}>
 							Logo
 						</div>
@@ -63,47 +63,49 @@ const featuredProjects = [
 	});
 
 	projectList.forEach((project) => {
+		// first project event listener is not applying gsap stagger animation
 		project.addEventListener("mouseenter", () => {
-			const children = Array.from(project.children).map((child) => {
-				if (!child.classList.contains("inactive")) return;
-					child.classList.replace("inactive", "active");
-					gsap.from(`.${child.classList[0]}`, {
-						y: 100,
-						opacity: 0,
-						stagger: 0.5,
-						duration: 0.3,
-					});
-
-					gsap.to(`.${child.classList[0]}`, {
-						y: 0,
-						opacity: 1,
-						stagger: 0.5,
-						duration: 0.3,
-					});
+					const chm = Array.from(project.children).map((c) => {
+				if (c.classList.contains("inactive")) {
+					c.classList.replace("inactive", "active");
+					return c;
+				}
+				return c;
 			});
-			console.log("entered");
+			const ch = chm.filter((c) => !c.classList.contains("inactive"));
+			console.log(ch);
+			gsap.from(ch, {
+				y: 100,
+				opacity: 0,
+				stagger: 0.1,
+				duration: 0.2,
+			});
+
+			gsap.to(ch, {
+				y: 0,
+				opacity: 1,
+				stagger: 0.1,
+				duration: 0.2,
+			});
 		});
 		project.addEventListener("mouseleave", () => {
-			const children = Array.from(project.children).map((child) => {
-				if (!child.classList.contains("active")) return;
-					child.classList.replace("active", "inactive");
+		
 
-					gsap.from(`.${child.classList[0]}`, {
-						y: 0,
-						opacity: 1,
-						stagger: 0.5,
-						duration: 0.3,
-					});
-
-					gsap.to(`.${child.classList[0]}`, {
-						y: 100,
+			const ch = Array.from(project.children).filter((c) => c.classList.contains("active"));
+			console.log(ch)
+				gsap.to(ch, {
+						y: 50,
 						opacity: 0,
-						stagger: 0.5,
-						duration: 0.3,
+						duration:.1
 					});
-					return;
+
+			const chm = Array.from(project.children).map((c) => {
+				if (c.classList.contains("active")) {
+					c.classList.replace("active", "inactive");
+						return c;
+					}
+						return c;
 			});
-			console.log("entered");
 		});
 	});
 </script>
@@ -168,18 +170,8 @@ const featuredProjects = [
 		}
 		background-image: var(--gradient-iso);
 		cursor: pointer;
-		& > * {
-			/* display: inline-block !important; */
-		}
 	}
-	/* .projects.inactive > :not(div:nth-child(3n-1)) {
-		opacity: 0;
-		transform: translateY(100px);
-	} */
 	.inactive {
 		opacity: 0;
-	}
-	.active {
-		opacity: 1;
 	}
 </style>
