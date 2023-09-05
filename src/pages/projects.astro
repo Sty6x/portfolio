@@ -65,14 +65,7 @@ const featuredProjects = [
 	projectList.forEach((project) => {
 		// first project event listener is not applying gsap stagger animation
 		project.addEventListener("mouseenter", () => {
-					const chm = Array.from(project.children).map((c) => {
-				if (c.classList.contains("inactive")) {
-					c.classList.replace("inactive", "active");
-					return c;
-				}
-				return c;
-			});
-			const ch = chm.filter((c) => !c.classList.contains("inactive"));
+			const ch = Array.from(project.children).filter((c) => c.classList.contains("inactive"));
 			console.log(ch);
 			gsap.from(ch, {
 				y: 100,
@@ -87,24 +80,30 @@ const featuredProjects = [
 				stagger: 0.1,
 				duration: 0.2,
 			});
+
+			const chm = Array.from(project.children).map((c) => {
+			if (c.classList.contains("inactive")) {
+				c.classList.replace("inactive", "active");
+				return c;
+			}
+			return c;
+			});
 		});
 		project.addEventListener("mouseleave", () => {
-		
-
 			const ch = Array.from(project.children).filter((c) => c.classList.contains("active"));
 			console.log(ch)
 				gsap.to(ch, {
-						y: 50,
-						opacity: 0,
-						duration:.1
-					});
+					y: 50,
+					opacity: 0,
+					duration:.1
+				});
 
 			const chm = Array.from(project.children).map((c) => {
 				if (c.classList.contains("active")) {
 					c.classList.replace("active", "inactive");
 						return c;
 					}
-						return c;
+				return c;
 			});
 		});
 	});
