@@ -58,6 +58,8 @@ const featuredProjects = [
 
 <style>
 	#projects-container {
+
+		transition: background-color 150ms ease-in-out;
 		overflow: hidden;
 		display: flex;
 		flex: 1;
@@ -71,6 +73,7 @@ const featuredProjects = [
 		}
 	}
 	.projects {
+		transition: background-color 150ms ease-in-out;
 		color: var(--text);
 		padding: 0 3em;
 		& > div {
@@ -96,16 +99,18 @@ const featuredProjects = [
 			margin-top: .8em;
 		}
 	}
-
 	#navigate-back-container {
 		transform: rotate(180deg);
 	}
-
-	body:has(.projects):hover {
-		background-image: none;
+	body:has(.projects:hover) {
+		& > main{
+			transition: background-color 150ms ease-in-out;
+			background-color: var(--bg);
+		}
 	}
 
 	.projects:hover {
+		transition: background-color 150ms ease-in-out;
 		& > :not(:first-child) >span.title-underline  {
 			width: 100%;
 			transition: width 200ms ease-in-out;
@@ -117,7 +122,6 @@ const featuredProjects = [
 		}
 	}
  	 .inactive > :not(div:nth-child(3n-1)) {
-		/* appearance: none; */
 		display: none;
 	}
 
