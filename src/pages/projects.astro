@@ -11,38 +11,54 @@ const featuredProjects = [
 
 <Layout title="project">
 	<main id="projects-container">
-		<div id="navigate-back-container">
-			<ToBtn link="/" />
-		</div>
-		{
-			featuredProjects.map((project) => {
-				return (
-					<div class="projects inactive" id={project.title}>
-						<div>Logo</div>
-						<div class="project-title">
-							<h1>{project.title}</h1>
-							<span
-								style={{backgroundColor: project.color}}
-								class="title-underline"
-							/>
-						</div>
-							<p>
-								A Keyboard oriented markdown note taking app using vim key bindings.
-							</p>
-							<div id={`link-to-${project.title}`} class="link-to-proj">
-								<a>
-								Visit {project.title}
-								</a>
-							</div>
-					</div>
-				);
-			})
-		}
+	<div id="navigate-back-container">
+		<ToBtn link="/" />
+	</div>  
+	{featuredProjects.map((project) => {
+		return (
+			<div class="projects inactive" id={project.title}>
+				<div>Logo</div>
+				<div class="project-title">
+					<h1>{project.title}</h1>
+					<span
+						style={{backgroundColor: project.color}}
+						class="title-underline"
+                        />
+				</div>
+				<p>A Keyboard oriented markdown note taking app using vim key bindings.</p>
+				<div id={`link-to-${project.title}`} class="link-to-proj">
+					<a>Visit {project.title}</a>
+				</div>
+			</div>
+		);
+	})}
 	</main>
 </Layout>
 
+
+<script>
+	import gsap from "gsap"
+	const projectList = document.querySelectorAll(".projects");
+
+	gsap.from(".projects",{
+		y:100,
+		opacity:0,
+		stagger:0.5,
+		duration:.6
+	})
+
+	gsap.to(".projects",{
+		y:0,
+		opacity:1,
+		stagger:0.5,
+		duration:.6
+	})
+
+</script>
+
 <style>
 	#projects-container {
+		overflow: hidden;
 		display: flex;
 		flex: 1;
 		& > div {
@@ -94,13 +110,14 @@ const featuredProjects = [
 			width: 100%;
 			transition: width 200ms ease-in-out;
 		}
-		/* background-image: var(--gradient-iso); */
+		background-image: var(--gradient-iso);
 		cursor: pointer;
- 		/* div.projects:not(div:nth-child(2)) {
-			display: block;
-	} */
+ 	 	& > * {
+			display: inline-block !important;
 		}
- 	div.projects > div:nth-child(2) {
+	}
+ 	 .inactive > :not(div:nth-child(3n-1)) {
+		/* appearance: none; */
 		display: none;
 	}
 
