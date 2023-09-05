@@ -17,14 +17,23 @@ const featuredProjects = [
 		{
 			featuredProjects.map((project) => {
 				return (
-					<div class="projects" id={project.title}>
-						<span>
+					<div class="projects inactive" id={project.title}>
+						<div>Logo</div>
+						<div class="project-title">
 							<h1>{project.title}</h1>
 							<span
 								style={{backgroundColor: project.color}}
 								class="title-underline"
 							/>
-						</span>
+						</div>
+							<p>
+								A Keyboard oriented markdown note taking app using vim key bindings.
+							</p>
+							<div id={`link-to-${project.title}`} class="link-to-proj">
+								<a>
+								Visit {project.title}
+								</a>
+							</div>
 					</div>
 				);
 			})
@@ -38,24 +47,24 @@ const featuredProjects = [
 		flex: 1;
 		& > div {
 			display: flex;
+			flex-direction: column;
 			justify-content: center;
 			align-items: center;
-			flex: 1;
+			width: 100%;
 			outline: var(--medium-shade) 1px solid;
 		}
 	}
 	.projects {
 		color: var(--text);
-		& > span {
+		padding: 0 3em;
+		& > div {
 			display: flex;
 			flex-direction: column;
 			box-sizing: content-box;
-			max-width: 380px;
 			& > h1 {
 				font-size: 2rem;
 				font-weight: 600;
 			}
-
 			& > .title-underline {
 				display: inline-block;
 				width: 50px;
@@ -63,6 +72,12 @@ const featuredProjects = [
 				align-self: start;
 				transition: width 150ms ease-in-out;
 			}
+		}
+		& > p {
+			text-align: center;
+			font-weight: 500;
+			font-size: 1.3rem;
+			margin-top: .8em;
 		}
 	}
 
@@ -75,11 +90,18 @@ const featuredProjects = [
 	}
 
 	.projects:hover {
-		& > span span.title-underline {
+		& > :not(:first-child) >span.title-underline  {
 			width: 100%;
 			transition: width 200ms ease-in-out;
 		}
-		background-image: var(--gradient-iso);
+		/* background-image: var(--gradient-iso); */
 		cursor: pointer;
+ 		/* div.projects:not(div:nth-child(2)) {
+			display: block;
+	} */
+		}
+ 	div.projects > div:nth-child(2) {
+		display: none;
 	}
+
 </style>
