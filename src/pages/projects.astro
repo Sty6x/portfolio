@@ -1,0 +1,71 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ToBtn from "../components/ToBtn.astro";
+
+const featuredProjects = [
+	{title: "Vimnotes", color: "#5C64BD"},
+	{title: "Warframe Cli Tool", color: "#BD706F"},
+	{title: "Website Time Tracker", color: "#5394BD"},
+];
+---
+
+<Layout title="project">
+	<main id="projects-container">
+		<div id="navigate-back-container">
+			<ToBtn link="/" />
+		</div>
+		{
+			featuredProjects.map((project) => {
+				return (
+					<div class="projects" id={project.title}>
+						<span>
+							<h1>{project.title}</h1>
+							<span
+								style={{backgroundColor: project.color}}
+								class="title-underline"
+							/>
+						</span>
+					</div>
+				);
+			})
+		}
+	</main>
+</Layout>
+
+<style>
+	#projects-container {
+		display: flex;
+		flex: 1;
+		& > div {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex: 1;
+			outline: var(--medium-shade) 1px solid;
+		}
+	}
+	.projects {
+		color: var(--text);
+		& > span {
+			display: flex;
+			flex-direction: column;
+			box-sizing: content-box;
+			max-width: 380px;
+			& > h1 {
+				font-size: 2rem;
+				font-weight: 600;
+			}
+
+			& > .title-underline {
+				display: inline-block;
+				width: 50px;
+				height: 5px;
+				align-self: start;
+			}
+		}
+	}
+
+	#navigate-back-container {
+		transform: rotate(180deg);
+	}
+</style>

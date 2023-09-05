@@ -1,76 +1,69 @@
 ---
-
+const { link } = Astro.props;
 ---
+
 <span id="to-project" class="to-btn-container">
-      <a href="/project" class="to-btn">
-        <svg
-          width="155"
-          height="155"
-          viewBox="0 0 155 155"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M67 64H75.4706L89 77.5L75.4706 91H67L80.5882 77.5L67 64Z"
-            fill="white"
-          />
-          <rect
-            x="3.5"
-            y="3.5"
-            width="148"
-            height="148"
-            rx="74"
-          />
-        </svg>
-      </a>
+	<a href={link} class="to-btn">
+		<svg
+			width="155"
+			height="155"
+			viewBox="0 0 155 155"
+			fill="none"
+			xmlns="http://www.w3.org/2000/svg"
+		>
+			<path
+				d="M67 64H75.4706L89 77.5L75.4706 91H67L80.5882 77.5L67 64Z"
+				fill="white"></path>
+			<rect x="3.5" y="3.5" width="148" height="148" rx="74"></rect>
+		</svg>
+	</a>
 </span>
 
 <style>
+	@keyframes animate-btn {
+		from {
+			stroke-dashoffset: 456;
+			stroke-dasharray: 465;
+		}
+		to {
+			stroke-dashoffset: 0;
+			stroke-dasharray: 465;
+		}
+	}
 
-@keyframes animate-btn {
-    from{
-        stroke-dashoffset:456 ;
-        stroke-dasharray:465; 
-    }
-    to{
-        stroke-dashoffset:0 ;
-        stroke-dasharray:465; 
-    }
-}
+	@keyframes animate-arrow {
+		0% {
+			transform: scale(0);
+			opacity: 0;
+		}
+		50% {
+			transform: scale(0.5);
+			opacity: 0.5;
+		}
+		60% {
+			transform: scale(0.8);
+			opacity: 1;
+		}
 
-@keyframes animate-arrow{
-    0%{
-        transform: scale(0);
-        opacity: 0;
-    }
-    50%{
+		80% {
+			transform: scale(1);
+			opacity: 1;
+		}
 
-        transform: scale(.5);
-        opacity:.5;
-    }
-    60%{
-        transform: scale(.8);
-        opacity: 1;
-    }
-
-    80%{
-        transform: scale(1);
-        opacity: 1;
-    }
-
-    100%{
-        transform: scale(.8);
-        opacity: 1;
-    }
-}
-    .to-btn rect{
-        stroke-width: 5px;
-        stroke:var(--accent1);
-        animation: animate-btn ease-in-out var(--anim-duration) forwards ;
-    }
-    .to-btn path{
-        transform-origin: 50%;
-        opacity: 0;
-        animation: animate-arrow ease-in var(--anim-arrow-duration) var(--anim-arrow-delay) forwards ;
-    }
+		100% {
+			transform: scale(0.8);
+			opacity: 1;
+		}
+	}
+	.to-btn rect {
+		stroke-width: 5px;
+		stroke: var(--accent1);
+		animation: animate-btn ease-in-out var(--anim-duration) forwards;
+	}
+	.to-btn path {
+		transform-origin: 50%;
+		opacity: 0;
+		animation: animate-arrow ease-in var(--anim-arrow-duration)
+			var(--anim-arrow-delay) forwards;
+	}
 </style>
