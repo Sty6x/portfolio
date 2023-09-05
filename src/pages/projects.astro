@@ -3,9 +3,9 @@ import Layout from "../layouts/Layout.astro";
 import ToBtn from "../components/ToBtn.astro";
 
 const featuredProjects = [
-	{title: "Vimnotes", color: "#5C64BD"},
-	{title: "Warframe Cli Tool", color: "#BD706F"},
-	{title: "Website Time Tracker", color: "#5394BD"},
+	{title: "Vimnotes", color: "#5C64BD", desc:"A Keyboard oriented markdown note taking app using vim key bindings."},
+	{title: "Warframe Cli Tool", color: "#BD706F", desc:"A CLI Tool to fetch and display current warframe events in the comfort of your own terminal."},
+	{title: "Website Time Tracker", color: "#5394BD",desc:"An extension that enables users to toggle and track the time they spent on a website."},
 ];
 ---
 
@@ -29,8 +29,7 @@ const featuredProjects = [
 							/>
 						</div>
 						<p class={`${project.title}-desc project-desc inactive `}>
-							A Keyboard oriented markdown note taking app using vim key
-							bindings.
+							{project.desc}
 						</p>
 						<div
 							id={`link-to-${project.title}`}
@@ -137,7 +136,7 @@ const featuredProjects = [
 			flex-direction: column;
 			box-sizing: content-box;
 			& > h1 {
-				font-size: 2rem;
+				font-size: 2.2rem;
 				font-weight: 600;
 				transition: font-size 150ms ease-in;
 			}
@@ -162,7 +161,7 @@ const featuredProjects = [
 	body:has(.projects:hover) {
 		& > main {
 			transition: background-color 150ms ease-in-out;
-			background-color: var(--bg);
+			background-color: var(--bg-dark);
 		}
 	}
 
@@ -171,12 +170,6 @@ const featuredProjects = [
 		& > :not(:first-child) > span.title-underline {
 			width: 100%;
 			transition: width 500ms ease-in-out;
-		}
-
-		& > :not(:first-child) > h1 {
-			font-weight: 700;
-			font-size: 2.2rem;
-			transition: font-size 80ms ease-in-out;
 		}
 		background-image: var(--gradient-iso);
 		cursor: pointer;
