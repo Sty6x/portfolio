@@ -1,5 +1,5 @@
---- 
-import	'../cssReset.css' 
+---
+import "../cssReset.css";
 interface Props {
 	title: string;
 }
@@ -7,83 +7,98 @@ interface Props {
 const { title } = Astro.props;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="FDiaz portfolio">
+		<meta name="description" content="FDiaz portfolio" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
 	<body>
-	
 		<slot />
 	</body>
 </html>
 <style is:global>
-
-	:root{
-		--bg: #1B1D1E;
+	:root {
+		--bg: #1b1d1e;
 		--text: #ffffff;
-		--accent1: #DEA657;
-		--accent2: #5C64BD;
-		--accent3:#BD706F;
-		--accent4: #5394BD;
-		--medium-shade: #2E3133;
-		--light-shade: #9AA5AB;
+		--accent1: #dea657;
+		--accent2: #5c64bd;
+		--accent3: #bd706f;
+		--accent4: #5394bd;
+		--medium-shade: #2e3133;
+		--light-shade: #9aa5ab;
 		/* animation */
-    	--anim-duration:1200ms;
-    	--anim-arrow-delay:1200ms;
-    	--anim-arrow-duration:200ms;
+		--anim-duration: 1200ms;
+		--anim-arrow-delay: 1200ms;
+		--anim-arrow-duration: 200ms;
 	}
 	@font-face {
 		font-family: "poppins";
 		font-weight: 300;
-		src: url("/fonts/poppins-light-webfont.woff2") format("woff2"),
+		src:
+			url("/fonts/poppins-light-webfont.woff2") format("woff2"),
 			url("/fonts/poppins-light-webfont.woff") format("woff");
-	}	
+	}
 	@font-face {
 		font-family: "poppins";
 		font-weight: 400;
-		src: url("/fonts/poppins-regular-webfont.woff2") format("woff2"),
+		src:
+			url("/fonts/poppins-regular-webfont.woff2") format("woff2"),
 			url("/fonts/poppins-regular-webfont.woff") format("woff");
-	}	
+	}
 
 	@font-face {
 		font-family: "poppins";
 		font-weight: 500;
-		src: url("/fonts/poppins-medium-webfont.woff2") format("woff2"),
+		src:
+			url("/fonts/poppins-medium-webfont.woff2") format("woff2"),
 			url("/fonts/poppins-medium-webfont.woff") format("woff");
-	}	
+	}
 
 	@font-face {
 		font-family: "poppins";
 		font-weight: 600;
-		src: url("/fonts/poppins-semibold-webfont.woff2") format("woff2"),
+		src:
+			url("/fonts/poppins-semibold-webfont.woff2") format("woff2"),
 			url("/fonts/poppins-semibold-webfont.woff") format("woff");
-	}	
+	}
 
 	@font-face {
 		font-family: "poppins";
 		font-weight: 700;
-		src: url("/fonts/poppins-bold-webfont.woff2") format("woff2"),
+		src:
+			url("/fonts/poppins-bold-webfont.woff2") format("woff2"),
 			url("/fonts/poppins-bold-webfont.woff") format("woff");
-	}	
+	}
 
 	html {
 	}
-	body{
+	body {
 		--grad-width: 2px;
-		font-family: 'poppins',system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen,  Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+		font-family:
+			"poppins",
+			system-ui,
+			-apple-system,
+			BlinkMacSystemFont,
+			"Segoe UI",
+			Oxygen,
+			Cantarell,
+			"Open Sans",
+			"Helvetica Neue",
+			sans-serif;
 		min-height: 100vh;
 		min-width: 100vw;
 		display: flex;
 		background-color: var(--bg);
-		background-image: radial-gradient(circle at 50% -50%, var(--light-shade) 1% , 2%,var(--bg) 62%);
-		/* background-image: url("../assets/images/Hero.png"); */
+		background-image: radial-gradient(
+			circle at 50% -50%,
+			var(--light-shade) 1%,
+			2%,
+			var(--bg) 62%
+		);
 	}
-
-
 </style>

@@ -1,62 +1,60 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import ToBtn from '../components/ToBtn.astro'
-import MenuBtn from '../components/MenuBtn.astro'
-
+import Layout from "../layouts/Layout.astro";
+import ToBtn from "../components/ToBtn.astro";
+import MenuBtn from "../components/MenuBtn.astro";
 ---
 
 <Layout title="FDiaz">
 	<main>
-	<nav>
-		<span id="logo">FDiaz</span>
-		<MenuBtn/>
-	</nav>
-	<div id="hero">
-		<span id="hero-text-container">
-			<p id="profession" class="hero-text">Software Developer</p>
-			<h1 id="greet" class="hero-text">Hello I’m <span>Franz Diaz</span></h1>
-			<p id="introduction" class="hero-text">
-				I create UI for custom websites that specifies business needs, and also will code for food.
-			</p>
-		</span>
-		<ToBtn/>
-	</div>
+		<nav>
+			<span id="logo">FDiaz</span>
+			<MenuBtn />
+		</nav>
+		<div id="hero">
+			<span id="hero-text-container">
+				<p id="profession" class="hero-text">Software Developer</p>
+				<h1 id="greet" class="hero-text">Hello I’m <span>Franz Diaz</span></h1>
+				<p id="introduction" class="hero-text">
+					I create UI for custom websites that specifies business needs, and
+					also will code for food.
+				</p>
+			</span>
+			<ToBtn link="/projects" />
+		</div>
 	</main>
 </Layout>
 
 <script>
-	import SplitType from 'split-type';
-	import  gsap from "gsap";
+	import SplitType from "split-type";
+	import gsap from "gsap";
 	SplitType.create("#logo");
 
+	gsap.from("#hero-text-container", {
+		y: 100,
+		opacity: 0,
+	});
+	gsap.to("#hero-text-container", {
+		y: 0,
+		opacity: 1,
+		duration: 0.7,
+	});
 
-	gsap.from("#hero-text-container",{
-		y:100,
-		opacity:0
-	})
-	gsap.to("#hero-text-container",{
-		y:0	,
-		opacity:1,
-		duration:.7,
-	})
-
-	gsap.from(".char",{
-		y:20,
-		opacity:0,
-		stagger:0.04,
-	})
-	gsap.to(".char",{
-		opacity:1,
-		y:0	,
-		stagger:0.04,
-		delay:.5,
-		duration:.2,
-	})
-
+	gsap.from(".char", {
+		y: 20,
+		opacity: 0,
+		stagger: 0.04,
+	});
+	gsap.to(".char", {
+		opacity: 1,
+		y: 0,
+		stagger: 0.04,
+		delay: 0.5,
+		duration: 0.2,
+	});
 </script>
 
 <style>
-	#logo::before{
+	#logo::before {
 		content: " ";
 		z-index: 9;
 		display: inline-block;
@@ -64,65 +62,63 @@ import MenuBtn from '../components/MenuBtn.astro'
 		/* outline: red solid 1px; */
 		/* background-color: var(--bg); */
 		/* background-color: transparent; */
-		top:70%;
+		top: 70%;
 		width: 100%;
 		height: 120%;
-
 	}
-	#logo{
+	#logo {
 		position: relative;
 	}
-	main{
-		flex:1;
+	main {
+		flex: 1;
 		color: var(--text);
 		margin: 6em 10em 6em 10em;
 		display: flex;
 		flex-direction: column;
 	}
 
-
-	nav{
+	nav {
 		text-align: bottom;
 		color: white;
 		display: flex;
-		:first-child{
+		:first-child {
 			text-transform: uppercase;
 			font-weight: 600;
 			font-size: 1.6rem;
 		}
 	}
-	
-	#hero{
+
+	#hero {
 		position: relative;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		flex: 1;
-		:not(:first-child){
+		:not(:first-child) {
 			margin-left: auto;
 		}
 	}
-	#hero-text-container{
-		& > :not(:first-child){
-			margin-top: .3em;
+	#hero-text-container {
+		& > :not(:first-child) {
+			margin-top: 0.3em;
 		}
 		z-index: 1;
 		max-width: 35%;
 		min-width: 500px;
 		margin-right: 5em;
-		#profession{
+		#profession {
 			font-size: 1.2rem;
-			letter-spacing: .6em;
+			letter-spacing: 0.6em;
 			font-weight: 400;
 		}
-		#greet{
-			font-size: clamp(2.5rem, 4vw,3.2rem);
+		#greet {
+			font-size: clamp(2.5rem, 4vw, 3.2rem);
 			font-weight: 600;
-			& > span{
+			& > span {
 				color: var(--accent1);
 			}
 		}
-		#introduction{
+		#introduction {
 			z-index: 9;
 			font-size: clamp(1.5rem, 2vw, 2rem);
 			font-weight: 500;
