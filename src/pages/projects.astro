@@ -8,22 +8,22 @@ const featuredProjects = [
 		title: "Vimnotes",
 		color: "#5C64BD",
 		desc: "A Keyboard oriented markdown note taking app using vim key bindings.",
-		link:"https://vimnotes.vercel.app/",
+		link: "https://vimnotes.vercel.app/",
 		source: "https://github.com/Sty6x/markdown-app",
 	},
 	{
 		title: "Warframe ClI ",
 		color: "#BD706F",
 		desc: "A CLI Tool to fetch and display current warframe events in the terminal.",
-		link:"https://www.npmjs.com/package/warframe-event-status-cli",
-		source:"https://github.com/Sty6x/warframe-event-status-cli"
+		link: "https://www.npmjs.com/package/warframe-event-status-cli",
+		source: "https://github.com/Sty6x/warframe-event-status-cli",
 	},
 	{
 		title: "Time Tracker",
 		color: "#5394BD",
 		desc: "A Chrome extension that enables users to track the time they spent on a website.",
-		link:"https://chrome.google.com/webstore/detail/website-tracker/khdpmjbnljkpleaeigoneokglkkgmamf",
-		source:"https://github.com/Sty6x/website-time-tracker"
+		link: "https://chrome.google.com/webstore/detail/website-tracker/khdpmjbnljkpleaeigoneokglkkgmamf",
+		source: "https://github.com/Sty6x/website-time-tracker",
 	},
 ];
 ---
@@ -54,7 +54,11 @@ const featuredProjects = [
 							<div
 								id={`link-to-${project.title}`}
 								class={`${project.title}-link project-link inactive`}>
-								<LinkBtn link={project.link} title={project.title} color={project.color} />
+								<LinkBtn
+									link={project.link}
+									title={project.title}
+									color={project.color}
+								/>
 							</div>
 							<a href={project.source} id="source" class="link-source inactive">
 								Source Code
@@ -102,55 +106,52 @@ const featuredProjects = [
 		duration: 0.5,
 	});
 
-	projectList.forEach((project) => {
-		// first project event listener is not applying gsap stagger animation
-		project.addEventListener("mouseenter", () => {
-			const ch = Array.from(project.children).filter((c) =>
-				c.classList.contains("inactive"),
-			);
-			console.log(ch);
-			gsap.from(ch, {
-				y: 100,
-				opacity: 0,
-				stagger: 0.1,
-				duration: 0.2,
-			});
-
-			gsap.to(ch, {
-				y: 0,
-				opacity: 1,
-				stagger: 0.1,
-				duration: 0.2,
-			});
-
-			const chm = Array.from(project.children).map((c) => {
-				if (c.classList.contains("inactive")) {
-					c.classList.replace("inactive", "active");
+	setTimeout(() => {
+		console.log("hover active");
+		projectList.forEach((project) => {
+			project.addEventListener("mouseenter", () => {
+				const ch = Array.from(project.children).filter((c) =>
+					c.classList.contains("inactive"),
+				);
+				gsap.from(ch, {
+					y: 100,
+					opacity: 0,
+					stagger: 0.1,
+					duration: 0.2,
+				});
+				gsap.to(ch, {
+					y: 0,
+					opacity: 1,
+					stagger: 0.1,
+					duration: 0.2,
+				});
+				const chm = Array.from(project.children).map((c) => {
+					if (c.classList.contains("inactive")) {
+						c.classList.replace("inactive", "active");
+						return c;
+					}
 					return c;
-				}
-				return c;
+				});
+			});
+			project.addEventListener("mouseleave", () => {
+				const ch = Array.from(project.children).filter((c) =>
+					c.classList.contains("active"),
+				);
+				gsap.to(ch, {
+					y: 50,
+					opacity: 0,
+					duration: 0.1,
+				});
+				const chm = Array.from(project.children).map((c) => {
+					if (c.classList.contains("active")) {
+						c.classList.replace("active", "inactive");
+						return c;
+					}
+					return c;
+				});
 			});
 		});
-		project.addEventListener("mouseleave", () => {
-			const ch = Array.from(project.children).filter((c) =>
-				c.classList.contains("active"),
-			);
-			console.log(ch);
-			gsap.to(ch, {
-				y: 50,
-				opacity: 0,
-				duration: 0.1,
-			});
-
-			const chm = Array.from(project.children).map((c) => {
-				if (c.classList.contains("active")) {
-					c.classList.replace("active", "inactive");
-					return c;
-				}
-				return c;
-			});
-		});
-	});
+	}, 1200);
 </script>
 
 <style>
