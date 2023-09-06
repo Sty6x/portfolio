@@ -48,17 +48,30 @@ const featuredProjects = [
 	const projectList = document.querySelectorAll(".projects");
 
 	gsap.from(".projects", {
-		y: 100,
-		opacity: 0,
-		stagger: 0.5,
+		y: 1000,
+		stagger: 0.3,
 		duration: 0.6,
 	});
 
 	gsap.to(".projects", {
 		y: 0,
-		opacity: 1,
-		stagger: 0.5,
+		stagger: 0.3,
 		duration: 0.6,
+	});
+	gsap.from(".project-title", {
+		y: 100,
+		delay:.8,
+		opacity: 0,
+		stagger: 0.3,
+		duration: 0.5,
+	});
+
+	gsap.to(".project-title", {
+		y: 0,
+		delay:.8,
+		opacity: 1,
+		stagger: 0.3,
+		duration: 0.5,
 	});
 
 	projectList.forEach((project) => {
@@ -124,7 +137,8 @@ const featuredProjects = [
 			justify-content: center;
 			align-items: center;
 			width: 100%;
-			outline: var(--medium-shade) 1px solid;
+			border: var(--medium-shade) 1px solid;
+			border-top: 0;
 		}
 	}
 	.projects {
