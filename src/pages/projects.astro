@@ -4,8 +4,8 @@ import ToBtn from "../components/ToBtn.astro";
 
 const featuredProjects = [
 	{title: "Vimnotes", color: "#5C64BD", desc:"A Keyboard oriented markdown note taking app using vim key bindings."},
-	{title: "Warframe Cli Tool", color: "#BD706F", desc:"A CLI Tool to fetch and display current warframe events in the comfort of your own terminal."},
-	{title: "Website Time Tracker", color: "#5394BD",desc:"An extension that enables users to toggle and track the time they spent on a website."},
+	{title: "Warframe ClI ", color: "#BD706F", desc:"A CLI Tool to fetch and display current warframe events in the terminal."},
+	{title: "Time Tracker", color: "#5394BD",desc:"A Chrome extension that enables users to track the time they spent on a website."},
 ];
 ---
 
@@ -48,7 +48,7 @@ const featuredProjects = [
 	const projectList = document.querySelectorAll(".projects");
 
 	gsap.from(".projects", {
-		y: 1000,
+		y: -1000,
 		stagger: 0.3,
 		duration: 0.6,
 	});
@@ -139,6 +139,7 @@ const featuredProjects = [
 			width: 100%;
 			border: var(--medium-shade) 1px solid;
 			border-top: 0;
+			border-bottom: 0;
 		}
 	}
 	.projects {
