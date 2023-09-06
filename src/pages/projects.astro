@@ -110,9 +110,7 @@ const featuredProjects = [
 		console.log("hover active");
 		projectList.forEach((project) => {
 			project.addEventListener("mouseenter", () => {
-				const ch = Array.from(project.children).filter((c) =>
-					c.classList.contains("inactive"),
-				);
+				const ch = Array.from(project.children).filter((c, i) => i > 1);
 				gsap.from(ch, {
 					y: 100,
 					opacity: 0,
@@ -125,6 +123,7 @@ const featuredProjects = [
 					stagger: 0.1,
 					duration: 0.2,
 				});
+				gsap.fromTo(".project-logo",{duration:1, y:100},{duration:1, y:0})
 				const chm = Array.from(project.children).map((c) => {
 					if (c.classList.contains("inactive")) {
 						c.classList.replace("inactive", "active");
@@ -134,9 +133,7 @@ const featuredProjects = [
 				});
 			});
 			project.addEventListener("mouseleave", () => {
-				const ch = Array.from(project.children).filter((c) =>
-					c.classList.contains("active"),
-				);
+				const ch = Array.from(project.children).filter((c, i) => i > 1);
 				gsap.to(ch, {
 					y: 50,
 					opacity: 0,
