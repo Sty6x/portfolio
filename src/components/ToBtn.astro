@@ -5,8 +5,6 @@ const { link } = Astro.props;
 <span id="to-project" class="to-btn-container">
 	<a href={link} class="to-btn">
 		<svg
-			width="155"
-			height="155"
 			viewBox="0 0 155 155"
 			fill="none"
 			xmlns="http://www.w3.org/2000/svg"
@@ -54,6 +52,11 @@ const { link } = Astro.props;
 			transform: scale(0.8);
 			opacity: 1;
 		}
+	}
+	.to-btn svg{
+		width: 10em;
+		/* width: clamp(8em, 1vw - 2em, 10em); */
+		height:auto;
 	}
 	.to-btn rect {
 		stroke-width: 5px;
