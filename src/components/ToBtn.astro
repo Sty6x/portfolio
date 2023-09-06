@@ -1,14 +1,10 @@
 ---
-const { link } = Astro.props;
+const {link} = Astro.props;
 ---
 
 <span id="to-project" class="to-btn-container">
 	<a href={link} class="to-btn">
-		<svg
-			viewBox="0 0 155 155"
-			fill="none"
-			xmlns="http://www.w3.org/2000/svg"
-		>
+		<svg viewBox="0 0 155 155" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<path
 				d="M67 64H75.4706L89 77.5L75.4706 91H67L80.5882 77.5L67 64Z"
 				fill="white"></path>
@@ -53,10 +49,18 @@ const { link } = Astro.props;
 			opacity: 1;
 		}
 	}
-	.to-btn svg{
+
+	@keyframes spin {
+		from {
+			stroke-dashoffset: 200;
+		}
+		to {
+			stroke-dashoffset: 100;
+		}
+	}
+	.to-btn svg {
 		width: 10em;
-		/* width: clamp(8em, 1vw - 2em, 10em); */
-		height:auto;
+		height: auto;
 	}
 	.to-btn rect {
 		stroke-width: 5px;
