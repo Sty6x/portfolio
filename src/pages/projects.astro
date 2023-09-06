@@ -8,47 +8,22 @@ const featuredProjects = [
 		title: "Vimnotes",
 		color: "#5C64BD",
 		desc: "A Keyboard oriented markdown note taking app using vim key bindings.",
+		link:"https://vimnotes.vercel.app/",
+		source: "https://github.com/Sty6x/markdown-app",
 	},
 	{
 		title: "Warframe ClI ",
 		color: "#BD706F",
 		desc: "A CLI Tool to fetch and display current warframe events in the terminal.",
+		link:"https://www.npmjs.com/package/warframe-event-status-cli",
+		source:"https://github.com/Sty6x/warframe-event-status-cli"
 	},
 	{
 		title: "Time Tracker",
 		color: "#5394BD",
 		desc: "A Chrome extension that enables users to track the time they spent on a website.",
-	},
-
-	{
-		title: "Vimnotes",
-		color: "#5C64BD",
-		desc: "A Keyboard oriented markdown note taking app using vim key bindings.",
-	},
-	{
-		title: "Warframe ClI ",
-		color: "#BD706F",
-		desc: "A CLI Tool to fetch and display current warframe events in the terminal.",
-	},
-	{
-		title: "Time Tracker",
-		color: "#5394BD",
-		desc: "A Chrome extension that enables users to track the time they spent on a website.",
-	},
-	{
-		title: "Vimnotes",
-		color: "#5C64BD",
-		desc: "A Keyboard oriented markdown note taking app using vim key bindings.",
-	},
-	{
-		title: "Warframe ClI ",
-		color: "#BD706F",
-		desc: "A CLI Tool to fetch and display current warframe events in the terminal.",
-	},
-	{
-		title: "Time Tracker",
-		color: "#5394BD",
-		desc: "A Chrome extension that enables users to track the time they spent on a website.",
+		link:"https://chrome.google.com/webstore/detail/website-tracker/khdpmjbnljkpleaeigoneokglkkgmamf",
+		source:"https://github.com/Sty6x/website-time-tracker"
 	},
 ];
 ---
@@ -79,8 +54,15 @@ const featuredProjects = [
 							<div
 								id={`link-to-${project.title}`}
 								class={`${project.title}-link project-link inactive`}>
-								<LinkBtn title={project.title} color={project.color}/>
+								<LinkBtn link={project.link} title={project.title} color={project.color} />
 							</div>
+							<a href={project.source} id="source" class="link-source inactive">
+								Source Code
+								<span
+									style={{backgroundColor: project.color}}
+									class="source-underline"
+								/>
+							</a>
 						</div>
 					);
 				})
@@ -181,15 +163,17 @@ const featuredProjects = [
 	#projects-inner-container {
 		display: flex;
 		max-width: 100vw;
-		overflow: auto;
+		overflow-x: auto;
+		overflow-y: hidden;
 	}
 	.projects {
+		position: relative;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
 		min-width: 30em;
-		flex: 1 ;
+		flex: 1;
 		border: var(--medium-shade) 1px solid;
 		border-top: 0;
 		border-bottom: 0;
@@ -219,6 +203,9 @@ const featuredProjects = [
 			margin-top: 0.8em;
 		}
 	}
+	.projects > :nth-child(2n) {
+		margin-top: 2.5em;
+	}
 	#navigate-back-container {
 		border: var(--medium-shade) 1px solid;
 		border-top: 0;
@@ -246,5 +233,24 @@ const featuredProjects = [
 	}
 	.inactive {
 		opacity: 0;
+	}
+	.link-source {
+		position: absolute;
+		bottom: 5%;
+		display: flex;
+		flex-direction: column;
+	}
+	.link-source:hover {
+		& > span.source-underline {
+			width: 100%;
+			transition: width 150ms ease-in-out;
+		}
+	}
+	.source-underline {
+		display: inline-block;
+		width: 20px;
+		height: 5px;
+		align-self: start;
+		transition: width 150ms ease-in-out;
 	}
 </style>
