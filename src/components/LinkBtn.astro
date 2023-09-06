@@ -1,8 +1,9 @@
 ---
-const {title, color} = Astro.props;
+const {link, title, color} = Astro.props;
 ---
 
-<a 
+<a href={link}
+class="links"
 	>Visit {title}
 	<svg
 		width="45"
@@ -58,12 +59,14 @@ const {title, color} = Astro.props;
 
 
 <style>
-a{
-    display: flex;
-    align-items: center;
-}
-a > svg{
-    display: block;
-    margin: auto;
-}
+	a {
+		font-weight: 500;
+		font-size: 1.2rem;
+		display: flex;
+		align-items: center;
+	}
+	a > svg {
+		display: block;
+		margin: auto;
+	}
 </style>
