@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import ToBtn from "../components/ToBtn.astro";
+import LinkBtn from "../components/LinkBtn.astro";
 
 const featuredProjects = [
 	{
@@ -78,7 +79,7 @@ const featuredProjects = [
 							<div
 								id={`link-to-${project.title}`}
 								class={`${project.title}-link project-link inactive`}>
-								<a>Visit {project.title}</a>
+								<LinkBtn title={project.title} color={project.color}/>
 							</div>
 						</div>
 					);
@@ -200,7 +201,7 @@ const featuredProjects = [
 			flex-direction: column;
 			box-sizing: content-box;
 			& > h1 {
-				font-size: clamp(1.5rem, 2vw, 2.2rem);
+				font-size: 2.2rem;
 				font-weight: 600;
 			}
 			& > .title-underline {
