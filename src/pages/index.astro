@@ -117,7 +117,31 @@ import MenuBtn from "../components/MenuBtn.astro";
 		}
 	}
 
-	@media (width <= 1024px) {
+	@media (max-width: 1180px) {
+
+		main {
+			margin: 6em 4em 6em 4em;
+		}
+		#profession {
+			font-size: 1rem;
+			letter-spacing: 0.6em;
+			font-weight: 400;
+		}
+		#greet {
+			font-size: clamp(2rem, 2vw, 3.2rem);
+			font-weight: 600;
+			& > span {
+				color: var(--accent1);
+			}
+		}
+		#introduction {
+			z-index: 9;
+			font-size: clamp(1.5rem, 2vw, 2rem);
+			font-weight: 500;
+		}
+	}
+
+	@media (width < 750px) {
 		#hero {
 			flex-direction: column;
 			justify-content: center;
@@ -127,15 +151,35 @@ import MenuBtn from "../components/MenuBtn.astro";
 			}
 		}
 		main {
-			margin: 6em 4em 6em 4em;
+			margin: 4em 2em 4em 2em;
+		}
+		nav {
+			:first-child {
+				font-size: 1.2rem;
+			}
+			:last-child > svg {
+				scale: 0.8;
+			}
+		}
+
+		#profession {
+			font-size: clamp(0.6rem, 1vw + 0.3rem, 1rem) !important;
+		}
+		#greet {
+			font-size: clamp(1.2rem, 1vw + 1.4rem, 2rem) !important;
+		}
+		#introduction {
+			font-size: 1rem !important;
+			font-size: clamp(0.8rem, 1vw + 0.6rem, 1.2rem) !important;
 		}
 	}
-	@media (max-width: 650px) {
-	#hero-text-container {
-			min-width: 300px;
+	/* @media  */
+	@media (max-width: 600px) {
+		#hero-text-container {
+			min-width: 90%;
 		}
 		main {
-			margin: 2em 1em 2em 1em;
+			margin: 4em 2em 4em 2em;
 		}
 		#hero {
 			:last-child > a svg {
@@ -144,20 +188,11 @@ import MenuBtn from "../components/MenuBtn.astro";
 		}
 		nav {
 			:first-child {
-				font-size: 1.2rem;
+				font-size: 1rem;
 			}
 			:last-child > svg {
-				scale: 0.6;
+				scale: 0.5;
 			}
-		}
-		#profession {
-			font-size: clamp(0.6rem, 1vw + 0.4rem, 0.8rem) !important;
-		}
-		#greet {
-			font-size: clamp(0.8rem, 1vw + 1.5rem, 2rem) !important;
-		}
-		#introduction {
-			font-size: 1rem !important;
 		}
 	}
 </style>
