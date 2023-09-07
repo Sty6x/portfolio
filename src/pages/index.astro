@@ -117,26 +117,47 @@ import MenuBtn from "../components/MenuBtn.astro";
 		}
 	}
 
-@media (width <= 1024px){
-	#hero{
-		flex-direction: column;
-		justify-content: center;
-		text-align: center;
-		:last-child > a svg{
-			scale: .6;
+	@media (width <= 1024px) {
+		#hero {
+			flex-direction: column;
+			justify-content: center;
+			text-align: center;
+			:last-child > a svg {
+				scale: 0.6;
+			}
+		}
+		main {
+			margin: 6em 4em 6em 4em;
 		}
 	}
-	main{
-		margin: 6em 4em 6em 4em;
+	@media (max-width: 650px) {
+	#hero-text-container {
+			min-width: 300px;
+		}
+		main {
+			margin: 2em 1em 2em 1em;
+		}
+		#hero {
+			:last-child > a svg {
+				scale: 0.4;
+			}
+		}
+		nav {
+			:first-child {
+				font-size: 1.2rem;
+			}
+			:last-child > svg {
+				scale: 0.6;
+			}
+		}
+		#profession {
+			font-size: clamp(0.6rem, 1vw + 0.4rem, 0.8rem) !important;
+		}
+		#greet {
+			font-size: clamp(0.8rem, 1vw + 1.5rem, 2rem) !important;
+		}
+		#introduction {
+			font-size: 1rem !important;
+		}
 	}
-}
-
-@media (width <= 650px ){
-
-	#hero-text-container{
-		min-width: 300px;
-	}
-}
-
-
 </style>
