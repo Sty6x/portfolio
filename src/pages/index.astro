@@ -59,9 +59,6 @@ import MenuBtn from "../components/MenuBtn.astro";
 		z-index: 9;
 		display: inline-block;
 		position: absolute;
-		/* outline: red solid 1px; */
-		/* background-color: var(--bg); */
-		/* background-color: transparent; */
 		top: 70%;
 		width: 100%;
 		height: 120%;
@@ -76,7 +73,6 @@ import MenuBtn from "../components/MenuBtn.astro";
 		display: flex;
 		flex-direction: column;
 	}
-
 	nav {
 		text-align: bottom;
 		color: white;
@@ -92,11 +88,8 @@ import MenuBtn from "../components/MenuBtn.astro";
 		position: relative;
 		display: flex;
 		align-items: center;
-		justify-content: center;
+		justify-content: space-between;
 		flex: 1;
-		:not(:first-child) {
-			margin-left: auto;
-		}
 	}
 	#hero-text-container {
 		& > :not(:first-child) {
@@ -105,7 +98,6 @@ import MenuBtn from "../components/MenuBtn.astro";
 		z-index: 1;
 		max-width: 35%;
 		min-width: 500px;
-		margin-right: 5em;
 		#profession {
 			font-size: 1.2rem;
 			letter-spacing: 0.6em;
@@ -122,6 +114,86 @@ import MenuBtn from "../components/MenuBtn.astro";
 			z-index: 9;
 			font-size: clamp(1.5rem, 2vw, 2rem);
 			font-weight: 500;
+		}
+	}
+
+	@media (max-width: 1180px) {
+		main {
+			margin: 6em 4em 6em 4em;
+		}
+		#profession {
+			font-size: 1rem;
+			letter-spacing: 0.6em;
+			font-weight: 400;
+		}
+		#greet {
+			font-size: clamp(1.8rem, 1.8vw + 1rem, 2rem);
+		}
+		#hero {
+			:last-child > a svg {
+				scale: 0.8;
+			}
+		}
+		#introduction {
+			z-index: 9;
+			font-size: clamp(1.5rem, 2vw, 2rem);
+			font-weight: 500;
+		}
+		#introduction {
+			z-index: 9;
+			font-size: clamp(1.5rem, 2vw, 2rem);
+			font-weight: 500;
+		}
+	}
+
+	@media (width < 750px) {
+		#hero {
+			flex-direction: column;
+			justify-content: center;
+			text-align: center;
+			:last-child > a svg {
+				scale: 0.6;
+			}
+		}
+		main {
+			margin: 4em 2em 4em 2em;
+		}
+		nav {
+			:first-child {
+				font-size: 1.2rem;
+			}
+			:last-child > svg {
+				scale: 0.8;
+			}
+		}
+
+		#hero-text-container {
+			min-width: 60%;
+		}
+
+		#profession {
+			font-size: clamp(0.6rem, 1vw + 0.3rem, 1rem) !important;
+		}
+		#greet {
+			font-size: clamp(1.2rem, 1vw + 1.4rem, 2rem) !important;
+		}
+		#introduction {
+			font-size: 1rem !important;
+			font-size: clamp(0.8rem, 1vw + 0.6rem, 1.2rem) !important;
+		}
+	}
+	/* @media  */
+	@media (max-width: 600px) {
+		#hero-text-container {
+			min-width: 90%;
+		}
+		nav {
+			:first-child {
+				font-size: 1rem;
+			}
+			:last-child > svg {
+				scale: 0.5;
+			}
 		}
 	}
 </style>
