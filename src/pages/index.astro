@@ -62,6 +62,7 @@ const graphs = [
 				</p>
 			</div>
 			<div id="graphs-container">
+				<h1>Enjoyment Chart</h1>
 				<div id="graphs">
 					{
 						graphs.map((graph) => {
@@ -165,7 +166,6 @@ const graphs = [
 		#profession {
 			font-size: clamp(2.5rem, 4vw, 3.2rem);
 			& > span {
-				/* animate this */
 				color: var(--accent3);
 			}
 		}
@@ -179,15 +179,18 @@ const graphs = [
 	}
 	#graphs-container {
 		display: flex;
+		flex-direction: column;
 		justify-content: end;
 		align-items: center;
-		flex: 1;
+		/* flex: 1; */
 		height: 80%;
-		width: 100%;
+		width: 50%;
+		margin-left: auto;
 	}
 	#graphs{
-		max-width: 80%;
-		padding: 0 2em 1em 2em;
+		/* max-width: 800px; */
+		width: 100%;
+		padding: 0 2em 0 2em;
 		border: 2px solid var(--medium-shade);
 		border-top: none;
 		height: inherit;
@@ -204,8 +207,6 @@ const graphs = [
 		}
 		#profession {
 			font-size: 1rem;
-			letter-spacing: 0.6em;
-			font-weight: 400;
 		}
 		#greet {
 			font-size: clamp(1.8rem, 1.8vw + 1rem, 2rem);
@@ -257,7 +258,6 @@ const graphs = [
 			font-size: clamp(1.2rem, 1vw + 1.4rem, 2rem) !important;
 		}
 		#introduction {
-			font-size: 1rem !important;
 			font-size: clamp(0.8rem, 1vw + 0.6rem, 1.2rem) !important;
 		}
 	}
