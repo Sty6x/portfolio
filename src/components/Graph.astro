@@ -3,7 +3,7 @@ const {color, title, percentage} = Astro.props;
 ---
 
 <div class="graph-stat">
-	<div style={{backgroundColor: color}} class="stat-percent"></div>
+	<div style={{border: `2px solid ${color}`}} class="stat-percent"></div>
 	<p class="stat-title">{title}</p>
 </div>
 
@@ -16,6 +16,7 @@ const {color, title, percentage} = Astro.props;
 		align-items: center;
 		justify-content: end;
         position: relative;
+        filter: blur(4px);
 	}
     .stat-title{
         position: absolute;
