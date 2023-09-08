@@ -1,13 +1,12 @@
 ---
 import BarChart from "../components/BarChart.astro";
 import Layout from "../layouts/Layout.astro";
-
 ---
 
 <Layout title="FDiaz">
 	<main>
 		<nav>
-			<span id="logo">FDiaz</span>
+			<a id="logo" href="/">FDiaz</a>
 			<div id="nav-actions">
 				<a>Resume</a>
 				<a href="/projects">Works</a>
@@ -29,9 +28,11 @@ import Layout from "../layouts/Layout.astro";
 				</p>
 			</div>
 			<!-- <BarChart/> -->
-			
 		</div>
-		<footer></footer>
+		<!-- <footer>
+			<a>Github</a>
+			<a>Hire me</a>
+		</footer> -->
 	</main>
 </Layout>
 
@@ -95,9 +96,41 @@ import Layout from "../layouts/Layout.astro";
 		}
 		:not(:first-child) {
 			margin-left: auto;
+			display: flex;
+			align-items: center;
+
 			& > a:not(:last-child) {
-				margin-right: 2em;
+				margin-right: 1em;
 			}
+
+			& > a {
+				box-sizing: border-box;
+				cursor: pointer;
+				position: relative;
+			}
+
+			& > a::after {
+				position: absolute;
+				display: block;
+				content: "";
+				width: 0;
+				height: 2px;
+				background-color: var(--accent1);
+				top: 100%;
+				transition: width 100ms ease-in;
+			}
+
+			& > a:hover::after {
+				width: 100%;
+				transition: width 100ms ease-in;
+			}
+
+		}
+	}
+	footer {
+		display: flex;
+		& > :last-child {
+			margin-left: auto;
 		}
 	}
 
@@ -135,9 +168,6 @@ import Layout from "../layouts/Layout.astro";
 		}
 	}
 	@media (max-width: 1180px) {
-		main {
-			margin: 6em 4em 6em 4em;
-		}
 		#profession {
 			font-size: 1rem;
 		}
@@ -169,14 +199,11 @@ import Layout from "../layouts/Layout.astro";
 			}
 		}
 		main {
-			margin: 4em 2em 4em 2em;
+			/* margin: 4em 2em 4em 2em; */
 		}
 		nav {
 			:first-child {
-				font-size: 1.2rem;
-			}
-			:last-child > svg {
-				scale: 0.8;
+				font-size: 1rem;
 			}
 		}
 
