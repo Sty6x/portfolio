@@ -8,18 +8,23 @@ import MenuBtn from "../components/MenuBtn.astro";
 	<main>
 		<nav>
 			<span id="logo">FDiaz</span>
-			<MenuBtn />
+			<div id="nav-actions">
+				<a>Resume</a>
+				<a>Works</a>
+				<a>Contact</a>
+			</div>
+			<!-- <MenuBtn /> -->
 		</nav>
 		<div id="hero">
 			<span id="hero-text-container">
-				<p id="profession" class="hero-text">Software Developer</p>
-				<h1 id="greet" class="hero-text">Hello I’m <span>Franz Diaz</span></h1>
+				<h1 id="greet" class="hero-text">Hello my name is <div>Franz Diaz</div></h1>
+				<p id="profession" class="hero-text">I am a Software Developer</p>
 				<p id="introduction" class="hero-text">
 					I create UI for custom websites that specifies business needs, and
 					also will code for food.
 				</p>
 			</span>
-			<ToBtn link="/projects" />
+			<!-- <ToBtn link="/projects" /> -->
 		</div>
 	</main>
 </Layout>
@@ -69,7 +74,7 @@ import MenuBtn from "../components/MenuBtn.astro";
 	main {
 		flex: 1;
 		color: var(--text);
-		margin: 6em 10em 6em 10em;
+		margin: 4em 6em 4em 6em;
 		display: flex;
 		flex-direction: column;
 	}
@@ -77,10 +82,16 @@ import MenuBtn from "../components/MenuBtn.astro";
 		text-align: bottom;
 		color: white;
 		display: flex;
-		:first-child {
+		#logo {
 			text-transform: uppercase;
 			font-weight: 600;
 			font-size: 1.6rem;
+		}
+		:not(:first-child){
+			margin-left: auto;
+			& > a:not(:last-child){
+				margin-right: 2em;
+			}
 		}
 	}
 
@@ -88,7 +99,7 @@ import MenuBtn from "../components/MenuBtn.astro";
 		position: relative;
 		display: flex;
 		align-items: center;
-		justify-content: space-between;
+		justify-content: center;
 		flex: 1;
 	}
 	#hero-text-container {
@@ -106,14 +117,15 @@ import MenuBtn from "../components/MenuBtn.astro";
 		#greet {
 			font-size: clamp(2.5rem, 4vw, 3.2rem);
 			font-weight: 600;
-			& > span {
+			& > div {
 				color: var(--accent1);
 			}
 		}
 		#introduction {
 			z-index: 9;
-			font-size: clamp(1.5rem, 2vw, 2rem);
-			font-weight: 500;
+			font-size: clamp(.8rem, 1vw , 1.2rem);
+			font-weight: 400;
+			color: var(--light-shade);
 		}
 	}
 
