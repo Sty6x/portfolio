@@ -9,15 +9,20 @@ const {color, title, percentage} = Astro.props;
 
 <style define:vars={{height: percentage}}>
 	.graph-stat {
-		width: 100px;
+		width: 100%;
 		text-align: end;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		justify-content: end;
+        position: relative;
 	}
+    .stat-title{
+        position: absolute;
+        bottom: -10%;
+    }
 	.stat-percent {
-		width: 40%;
+		width: 100%;
 		max-height: fit-content;
 		height: calc(100% * var(--height));
 	}
