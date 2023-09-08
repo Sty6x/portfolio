@@ -8,15 +8,18 @@ const graphs = [
 	{
 		title: "Eat",
 		percentage: 0.4,
+		color:"#5c64bd"
 	},
 
 	{
 		title: "Sleep",
 		percentage: 0.6,
+		color:"#bd706f"
 	},
 	{
 		title: "Code",
 		percentage: 0.9,
+		color:"#5394bd",
 	},
 ];
 ---
@@ -45,14 +48,16 @@ const graphs = [
 					will code for food.
 				</p>
 			</div>
-			<div id="graphs">
-				{
-					graphs.map((graph) => {
-						return (
-							<Graph title={graph.title} percentage={graph.percentage}/>
-						);
-					})
-				}
+			<div id="graphs-container">
+				<div id="graphs">
+					{
+						graphs.map((graph) => {
+							return (
+								<Graph color={graph.color} title={graph.title} percentage={graph.percentage} />
+							);
+						})
+					}
+				</div>
 			</div>
 		</div>
 		<footer></footer>
@@ -158,6 +163,20 @@ const graphs = [
 			color: var(--light-shade);
 			max-width: 40em;
 		}
+	}
+	#graphs-container {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex: 1;
+		height: 100%;
+		widows: 50%;
+	}
+	#graphs{
+		height: inherit;
+		display: flex;
+		align-self: flex-end;
+		gap: 2em;
 	}
 
 	@media (max-width: 1180px) {
