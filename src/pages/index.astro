@@ -2,6 +2,23 @@
 import Layout from "../layouts/Layout.astro";
 import ToBtn from "../components/ToBtn.astro";
 import MenuBtn from "../components/MenuBtn.astro";
+import Graph from "../components/Graph.astro";
+
+const graphs = [
+	{
+		title: "Eat",
+		percentage: 0.4,
+	},
+
+	{
+		title: "Sleep",
+		percentage: 0.6,
+	},
+	{
+		title: "Code",
+		percentage: 0.9,
+	},
+];
 ---
 
 <Layout title="FDiaz">
@@ -10,22 +27,35 @@ import MenuBtn from "../components/MenuBtn.astro";
 			<span id="logo">FDiaz</span>
 			<div id="nav-actions">
 				<a>Resume</a>
-				<a>Works</a>
+				<a href="/projects">Works</a>
 				<a>Contact</a>
 			</div>
 			<!-- <MenuBtn /> -->
 		</nav>
 		<div id="hero">
-			<span id="hero-text-container">
-				<h1 id="greet" class="hero-text">Hello my name is <div>Franz Diaz</div></h1>
-				<p id="profession" class="hero-text">I am a Software Developer</p>
-				<p id="introduction" class="hero-text">
-					I create UI for custom websites that specifies business needs, and
-					also will code for food.
+			<div id="hero-text-container">
+				<h1 id="greet" class="hero-text">
+					Oh Hello! <div>my name is <span>Franz Diaz</span></div>
+				</h1>
+				<p id="profession" class="hero-text">
+					I'm a <span>{"<"}Software Developer{"/>"}</span>
 				</p>
-			</span>
-			<!-- <ToBtn link="/projects" /> -->
+				<p id="introduction" class="hero-text">
+					I create UI for custom websites that specifies business needs and also
+					will code for food.
+				</p>
+			</div>
+			<div id="graphs">
+				{
+					graphs.map((graph) => {
+						return (
+							<Graph title={graph.title} percentage={graph.percentage}/>
+						);
+					})
+				}
+			</div>
 		</div>
+		<footer></footer>
 	</main>
 </Layout>
 
@@ -87,9 +117,9 @@ import MenuBtn from "../components/MenuBtn.astro";
 			font-weight: 600;
 			font-size: 1.6rem;
 		}
-		:not(:first-child){
+		:not(:first-child) {
 			margin-left: auto;
-			& > a:not(:last-child){
+			& > a:not(:last-child) {
 				margin-right: 2em;
 			}
 		}
@@ -103,29 +133,30 @@ import MenuBtn from "../components/MenuBtn.astro";
 		flex: 1;
 	}
 	#hero-text-container {
-		& > :not(:first-child) {
+		font-weight: 500;
+		& > :last-child {
 			margin-top: 0.3em;
 		}
 		z-index: 1;
-		max-width: 35%;
-		min-width: 500px;
-		#profession {
-			font-size: 1.2rem;
-			letter-spacing: 0.6em;
-			font-weight: 400;
-		}
 		#greet {
 			font-size: clamp(2.5rem, 4vw, 3.2rem);
-			font-weight: 600;
-			& > div {
+			& > div span {
 				color: var(--accent1);
+			}
+		}
+		#profession {
+			font-size: clamp(2.5rem, 4vw, 3.2rem);
+			& > span {
+				/* animate this */
+				color: var(--accent3);
 			}
 		}
 		#introduction {
 			z-index: 9;
-			font-size: clamp(.8rem, 1vw , 1.2rem);
+			font-size: clamp(0.8rem, 1vw, 1.2rem);
 			font-weight: 400;
 			color: var(--light-shade);
+			max-width: 40em;
 		}
 	}
 
@@ -149,12 +180,10 @@ import MenuBtn from "../components/MenuBtn.astro";
 		#introduction {
 			z-index: 9;
 			font-size: clamp(1.5rem, 2vw, 2rem);
-			font-weight: 500;
 		}
 		#introduction {
 			z-index: 9;
 			font-size: clamp(1.5rem, 2vw, 2rem);
-			font-weight: 500;
 		}
 	}
 
