@@ -14,7 +14,7 @@ import Layout from "../layouts/Layout.astro";
 			</div>
 			<!-- <MenuBtn /> -->
 		</nav>
-		<div id="hero">
+		<section id="hero">
 			<div id="hero-text-container">
 				<h1 id="greet" class="hero-text">
 					Oh Hello! <div>my name is <span>Franz Diaz</span></div>
@@ -22,21 +22,29 @@ import Layout from "../layouts/Layout.astro";
 				<p id="profession" class="hero-text">
 					I'm a <span>{"<"}Software Developer{"/>"}</span>
 				</p>
-				<p id="introduction" class="hero-text">
-					I create UI for custom websites that specifies business needs and also
-					will code for food.
-				</p>
 			</div>
 			<!-- <BarChart/> -->
-		</div>
+		</section>
+		<section id="about-section">
+			<div id="about-container">
+				<div id="about-content">
+					<p>What I Do:</p>
+					<p id="introduction" class="hero-text">
+						I create UI for custom websites that specifies business needs and
+						also will code for food.
+					</p>
+				</div>
+			</div>
+			<!-- <BarChart/> -->
+		</section>
 	</main>
 </Layout>
 
 <script>
 	import SplitType from "split-type";
 	import gsap from "gsap";
-	const navLinks = document.getElementById("nav-actions")
-	console.log(navLinks)
+	const navLinks = document.getElementById("nav-actions");
+	console.log(navLinks);
 	SplitType.create("#logo");
 
 	gsap.from("#hero-text-container", {
@@ -89,13 +97,15 @@ import Layout from "../layouts/Layout.astro";
 		position: relative;
 	}
 	main {
+		margin: 0em 6em 0em 6em;
 		flex: 1;
 		color: var(--text);
-		margin: 4em 6em 4em 6em;
 		display: flex;
 		flex-direction: column;
 	}
 	nav {
+		position: relative;
+		top: 2%;
 		text-align: bottom;
 		color: white;
 		display: flex;
@@ -134,7 +144,6 @@ import Layout from "../layouts/Layout.astro";
 				width: 100%;
 				transition: width 100ms ease-in;
 			}
-
 		}
 	}
 	footer {
@@ -144,12 +153,15 @@ import Layout from "../layouts/Layout.astro";
 		}
 	}
 
+	section {
+		min-height: 100vh;
+	}
 	#hero {
-		position: relative;
+		ition: relative;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		flex: 1;
+		flex-direction: column;
 	}
 	#hero-text-container {
 		font-weight: 500;
@@ -177,72 +189,42 @@ import Layout from "../layouts/Layout.astro";
 			max-width: 40em;
 		}
 	}
-	@media (max-width: 1180px) {
-		#profession {
-			font-size: 1rem;
+
+	#about-section {
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+	}
+	#about-container {
+		/* border: 2px solid var(--medium-shade); */
+		color: var(--bg-dark);
+		background-color: var(--accent1);
+		border-radius: 20px;
+		width: 100%;
+		height: 80%;
+	}
+
+	#about-content {
+		width: 60%;
+		& > :first-child {
+			align-self: flex-start;
+			font-weight: 600;
+			font-size: 1.4rem;
 		}
-		#greet {
-			font-size: clamp(1.8rem, 1.8vw + 1rem, 2rem);
-		}
-		#hero {
-			:last-child > a svg {
-				scale: 0.8;
-			}
-		}
-		#introduction {
-			z-index: 9;
-			font-size: clamp(1.5rem, 2vw, 2rem);
-		}
-		#introduction {
-			z-index: 9;
-			font-size: clamp(1.5rem, 2vw, 2rem);
+		& > :last-child {
+			font-size: 4rem;
+			font-weight: 700;
+			text-transform: uppercase;
 		}
 	}
 
-	@media (width < 750px) {
-		#hero {
-			flex-direction: column;
-			justify-content: center;
-			text-align: center;
-			:last-child > a svg {
-				scale: 0.6;
-			}
-		}
-		main {
-			/* margin: 4em 2em 4em 2em; */
-		}
-		nav {
-			:first-child {
-				font-size: 1rem;
-			}
-		}
-
-		#hero-text-container {
-			min-width: 60%;
-		}
-
-		#profession {
-			font-size: clamp(0.6rem, 1vw + 0.3rem, 1rem) !important;
-		}
-		#greet {
-			font-size: clamp(1.2rem, 1vw + 1.4rem, 2rem) !important;
-		}
-		#introduction {
-			font-size: clamp(0.8rem, 1vw + 0.6rem, 1.2rem) !important;
-		}
-	}
-	/* @media  */
-	@media (max-width: 600px) {
-		#hero-text-container {
-			min-width: 90%;
-		}
-		nav {
-			:first-child {
-				font-size: 1rem;
-			}
-			:last-child > svg {
-				scale: 0.5;
-			}
-		}
+	#about-content,
+	#about-container {
+		flex-direction: column;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 	}
 </style>
