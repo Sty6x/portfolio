@@ -8,8 +8,8 @@ import Layout from "../layouts/Layout.astro";
 		<nav>
 			<a id="logo" href="/">FDiaz</a>
 			<div id="nav-actions">
-				<a>Resume</a>
 				<a href="/projects">Works</a>
+				<a>Resume</a>
 				<a>Contact</a>
 			</div>
 			<!-- <MenuBtn /> -->
@@ -29,16 +29,14 @@ import Layout from "../layouts/Layout.astro";
 			</div>
 			<!-- <BarChart/> -->
 		</div>
-		<!-- <footer>
-			<a>Github</a>
-			<a>Hire me</a>
-		</footer> -->
 	</main>
 </Layout>
 
 <script>
 	import SplitType from "split-type";
 	import gsap from "gsap";
+	const navLinks = document.getElementById("nav-actions")
+	console.log(navLinks)
 	SplitType.create("#logo");
 
 	gsap.from("#hero-text-container", {
@@ -62,6 +60,18 @@ import Layout from "../layouts/Layout.astro";
 		stagger: 0.04,
 		delay: 0.5,
 		duration: 0.2,
+	});
+
+	gsap.from(navLinks.children, {
+		y: 20,
+		opacity: 0,
+		stagger: 0.2,
+	});
+	gsap.to(navLinks.children, {
+		y: 0,
+		stagger: 0.2,
+		delay: 0.7,
+		duration: 0.8,
 	});
 </script>
 
