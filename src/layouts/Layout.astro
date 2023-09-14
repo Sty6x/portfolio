@@ -18,7 +18,7 @@ const {title} = Astro.props;
 		<title>{title}</title>
 	</head>
 	<body>
-		<slot />
+		<main><slot/></main>
 	</body>
 </html>
 <style is:global>
@@ -89,10 +89,7 @@ const {title} = Astro.props;
 			url("/fonts/poppins-bold-webfont.woff") format("woff");
 	}
 
-	html {
-	}
 	body {
-		/* overflow: hidden; */
 		--grad-width: 2px;
 		font-family:
 			"poppins",
@@ -105,10 +102,16 @@ const {title} = Astro.props;
 			"Open Sans",
 			"Helvetica Neue",
 			sans-serif;
-		/* min-height: 100vh; */
-		/* min-width: 100vw; */
 		display: flex;
+		height: 100vh;
 		background-color: var(--bg);
-		background-image: var(--gradient);
 	}
+
+	main{
+		flex: 1;
+		color: white;
+		margin: 4em 3em;	
+		outline: red 1px solid;
+	}
+
 </style>
