@@ -16,26 +16,18 @@ import Layout from "../layouts/Layout.astro";
 		</nav>
 		<section id="hero">
 			<div id="hero-text-container">
+				<div id="hero-content">
 				<h1 id="greet" class="hero-text">
 					Oh Hello! <div>my name is <span>Franz Diaz</span></div>
 				</h1>
 				<p id="profession" class="hero-text">
-					I'm a <span>{"<"}Software Developer{"/>"}</span>
+					I'm a Fullstack <span>{"<"}Software Developer{"/>"}</span>
 				</p>
-			</div>
-			<!-- <BarChart/> -->
-		</section>
-		<section id="about-section">
-			<div id="about-container">
-				<div id="about-content">
-					<p>What I Do:</p>
-					<p id="introduction" class="hero-text">
-						I create UI for custom websites that specifies business needs and
-						also will code for food.
-					</p>
 				</div>
 			</div>
-			<!-- <BarChart/> -->
+		</section>
+		<section id="about-section">
+			<BarChart/>
 		</section>
 	</main>
 </Layout>
@@ -156,48 +148,34 @@ import Layout from "../layouts/Layout.astro";
 	section {
 		min-height: 100vh;
 	}
-	#hero {
-		ition: relative;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		flex-direction: column;
+	#greet {
+		font-size: clamp(2.5rem, 4vw, 3.2rem);
+		& > div span {
+			color: var(--accent1);
+		}
 	}
-	#hero-text-container {
-		font-weight: 500;
-		& > :last-child {
-			margin-top: 0.3em;
+	#profession {
+		font-size: clamp(2.5rem, 4vw, 3.2rem);
+		& > span {
+			color: var(--accent2);
 		}
-		z-index: 1;
-		#greet {
-			font-size: clamp(2.5rem, 4vw, 3.2rem);
-			& > div span {
-				color: var(--accent1);
-			}
-		}
-		#profession {
-			font-size: clamp(2.5rem, 4vw, 3.2rem);
-			& > span {
-				color: var(--accent3);
-			}
-		}
-		#introduction {
-			z-index: 9;
-			font-size: clamp(0.8rem, 1vw, 1.2rem);
-			font-weight: 400;
-			color: var(--light-shade);
-			max-width: 40em;
-		}
+	}
+	#introduction {
+		z-index: 9;
+		font-size: clamp(0.8rem, 1vw, 1.2rem);
+		font-weight: 400;
+		color: var(--light-shade);
+		max-width: 40em;
 	}
 
-	#about-section {
+	#hero {
 		position: relative;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		flex-direction: column;
 	}
-	#about-container {
+	#hero-text-container {
 		/* border: 2px solid var(--medium-shade); */
 		color: var(--bg-dark);
 		background-color: var(--accent1);
@@ -206,22 +184,12 @@ import Layout from "../layouts/Layout.astro";
 		height: 80%;
 	}
 
-	#about-content {
+	#hero-content {
 		width: 60%;
-		& > :first-child {
-			align-self: flex-start;
-			font-weight: 600;
-			font-size: 1.4rem;
-		}
-		& > :last-child {
-			font-size: 4rem;
-			font-weight: 700;
-			text-transform: uppercase;
-		}
 	}
 
-	#about-content,
-	#about-container {
+	#hero,
+	#hero-text-container {
 		flex-direction: column;
 		display: flex;
 		justify-content: center;
