@@ -11,7 +11,7 @@ import ToBtn from "../components/ToBtn.astro";
 			<p>Oh Hello!</p>
 			<p>I'm Franz Diaz</p>
 		</span>
-		<div id="about-panel">
+		<div id="about-panel"  class="inactive">
 			<div id="about-contents">
 				<p>
 				I create UI for custom websites that specifies business needs.
@@ -24,20 +24,32 @@ import ToBtn from "../components/ToBtn.astro";
 					Currently I am a Frontend Developer, studying to become a Backend
 					developer I prefer building APIs, handling database queries, requests
 					and response cycles, authentication, validating user requests and all
-					that jazz.</
-				>
+					that jazz.
+				</p>
 				<p>
 				 *and will also code for food. *
 				</p>
 			</p>
 		</div>
 	</section>
-		<div id="btn-container">
+		<div id="btn-container" >
 			<ToBtn link="/projects"/>
 		</div>
 </Layout>
 
-<script></script>
+<script is:inline>
+	const aboutPanel = document.getElementById("about-panel");
+	console.log(aboutPanel);
+	aboutPanel.addEventListener("click",(e)=>{
+		const target = e.currentTarget;
+		if(!target.classList.contains("active")){
+			target.classList.replace("inactive","active")
+			return
+		}
+			target.classList.replace("active","inactive")
+	},false)
+
+</script>
 
 <style>
 	#btn-container{
@@ -60,24 +72,29 @@ import ToBtn from "../components/ToBtn.astro";
 	}
 
 	div#about-panel {
+		position: absolute;
+		cursor: pointer;
 		background-color: var(--accent1);
 		color: var(--bg);
-		font-weight: 600;
-		overflow-y: auto;
-		max-width: 800px;
-		min-height: 3rem;
+		overflow: hidden;
 		border-radius: 10px;
-		width: 120%;
+		padding: .8em;
+		width: 130%;
+	}
+	.inactive{
+		max-height:3rem;
+		transition: max-height 150ms ease-in-out;
+	}
+	.active{
+		max-height: 150% ;
+		transition: max-height 150ms ease-in-out;
 	}
 
+
 	div#about-contents{
-		z-index: 0;
-		width:inherit;
-		position: absolute;
-		padding: .8em;
 		:first-child{
-		font-size: 1.1rem;
-	}
+			font-size: 1.1rem;
+		}
 		& > :not(:first-of-type){
 			margin-top: 1em;
 		}
