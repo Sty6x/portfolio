@@ -1,6 +1,7 @@
 ---
 import BarChart from "../components/BarChart.astro";
 import Layout from "../layouts/Layout.astro";
+import ToBtn from "../components/ToBtn.astro";
 ---
 
 <Layout title="FDiaz">
@@ -10,8 +11,7 @@ import Layout from "../layouts/Layout.astro";
 			<p>Oh Hello!</p>
 			<p>I'm Franz Diaz</p>
 		</span>
-		
-<div id="about-panel">
+		<div id="about-panel">
 			<div id="about-contents">
 				<p>
 				I create UI for custom websites that specifies business needs.
@@ -32,11 +32,18 @@ import Layout from "../layouts/Layout.astro";
 			</p>
 		</div>
 	</section>
+		<div id="btn-container">
+			<ToBtn link="/projects"/>
+		</div>
 </Layout>
 
 <script></script>
 
 <style>
+	#btn-container{
+		position: absolute;
+		right: 10%;
+	}
 	section#hero{
 		position: relative;
 	}

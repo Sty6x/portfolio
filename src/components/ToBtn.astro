@@ -4,12 +4,10 @@ const {link} = Astro.props;
 
 <span id="to-project" class="to-btn-container">
 	<a href={link} class="to-btn">
-		<svg viewBox="0 0 155 155" fill="none" xmlns="http://www.w3.org/2000/svg">
-			<path
-				d="M67 64H75.4706L89 77.5L75.4706 91H67L80.5882 77.5L67 64Z"
-				fill="white"></path>
-			<rect x="3.5" y="3.5" width="148" height="148" rx="74"></rect>
-		</svg>
+		<svg width="107" height="102" viewBox="0 0 107 102" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<rect width="107" height="102" rx="51" transform="matrix(-1 0 0 1 107 0)" fill="#A3DFD5"/>
+			<path d="M42.168 35.368H51.384L66.104 49.896L51.384 64.424H42.168L56.952 49.896L42.168 35.368Z" fill="#1A1B1D"/>
+			</svg>
 	</a>
 </span>
 
@@ -60,20 +58,5 @@ const {link} = Astro.props;
 		to {
 			stroke-dashoffset: 100;
 		}
-	}
-	.to-btn svg {
-		width: 8em;
-		height: auto;
-	}
-	.to-btn rect {
-		stroke-width: 5px;
-		stroke: var(--accent1);
-		animation: animate-btn ease-in-out var(--anim-duration) forwards;
-	}
-	.to-btn path {
-		transform-origin: 50%;
-		opacity: 0;
-		animation: animate-arrow ease-in var(--anim-arrow-duration)
-			var(--anim-arrow-delay) forwards;
 	}
 </style>
