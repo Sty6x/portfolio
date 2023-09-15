@@ -3,15 +3,76 @@ import BarChart from "../components/BarChart.astro";
 import Layout from "../layouts/Layout.astro";
 ---
 
-
 <Layout title="FDiaz">
-	bkhb
+	<section id="hero">
+		<h1 id="profession">Software Developer</h1>
+		<span id="greet">
+			<p>Oh Hello!</p>
+			<p>I'm Franz Diaz</p>
+		</span>
+		
+<div id="about-panel">
+			<div id="about-contents">
+				<p>
+				I create UI for custom websites that specifies business needs.
+				</p>
+				<p>
+					I’ve been studying software development for 1 and a half years now,
+					through free and open source modules.
+				</p>
+				<p>
+					Currently I am a Frontend Developer, studying to become a Backend
+					developer I prefer building APIs, handling database queries, requests
+					and response cycles, authentication, validating user requests and all
+					that jazz.</
+				>
+				<p>
+				 *and will also code for food. *
+				</p>
+			</p>
+		</div>
+	</section>
 </Layout>
 
-<script>
-
-</script>
+<script></script>
 
 <style>
-	
+	section#hero{
+		position: relative;
+	}
+	#profession {
+		color: var(--accent1);
+		font-weight: 400;
+		font-size: 1.2rem;
+		text-transform: uppercase;
+		letter-spacing: 0.8em;
+	}
+	span#greet {
+		font-weight: 500;
+		font-size: 3rem;
+	}
+
+	div#about-panel {
+		background-color: var(--accent1);
+		color: var(--bg);
+		font-weight: 600;
+		overflow-y: auto;
+		max-width: 800px;
+		min-height: 3rem;
+		border-radius: 10px;
+		width: 120%;
+	}
+
+	div#about-contents{
+		z-index: 0;
+		width:inherit;
+		position: absolute;
+		padding: .8em;
+		:first-child{
+		font-size: 1.1rem;
+	}
+		& > :not(:first-of-type){
+			margin-top: 1em;
+		}
+	}
 </style>
