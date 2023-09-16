@@ -67,12 +67,16 @@ const placeholderRepos = [
 				<p class="text-content">
 					Making <span class="footer-highlight" id="ideas">Ideas</span> and <span
 						class="footer-highlight"
-						id="imagintations">Imaginations</span
+						id="imaginations">Imaginations</span
 					>
 					 come to life, to help me and others benefit from the usefulness of my
 					work.
 				</p>
-				<a href="https://github.com/Sty6x">More projects here.</a>
+				<span>
+				<a id="github-link" href="https://github.com/Sty6x"
+					>More projects here.</a
+				>
+				</span>
 			</div>
 			<div id="to-email-page">
 				<p>How to reach me.</p>
@@ -198,10 +202,6 @@ const placeholderRepos = [
 			margin: 0;
 			text-align: start;
 		}
-		& > :last-child {
-			font-weight: 500;
-			font-size: 1.2rem;
-		}
 	}
 	#to-email-page {
 		display: flex;
@@ -209,4 +209,36 @@ const placeholderRepos = [
 		justify-content: end;
 		gap: 1em;
 	}
+	.footer-highlight:first-of-type {
+		color: var(--accent2);
+	}
+
+	.footer-highlight:last-of-type {
+		color: var(--accent3);
+	}
+
+	#github-link {
+		position: relative;
+		font-weight: 500;
+		font-size: 1.2rem;
+	}
+
+	#github-link::after{
+		content: "";
+		position: absolute;
+		display: block;
+		height: 5px;
+		width:20%;
+		background-color: var(--accent1);
+		transition: width 100ms ease-in;
+	}
+	#github-link:hover{
+		&::after{
+		width:100%;
+		transition: width 100ms ease-in;
+		}
+	}
+
+
+
 </style>
