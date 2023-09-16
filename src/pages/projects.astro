@@ -34,7 +34,7 @@ const placeholderRepos = [
 				<ToBtn link="/" />
 				<p>Back</p>
 			</div>
-			<p>
+			<p class="text-content">
 				Here are some of the projects I’ve built throughout my journey of
 				studying
 				<span>
@@ -64,7 +64,7 @@ const placeholderRepos = [
 		</div>
 		<footer id="end">
 			<div id="footer-text">
-				<p>
+				<p class="text-content">
 					Making <span class="footer-highlight" id="ideas">Ideas</span> and <span
 						class="footer-highlight"
 						id="imagintations">Imaginations</span
@@ -89,14 +89,15 @@ const placeholderRepos = [
 		height: 100%;
 		flex: 1;
 	}
-	#right {
-		max-width: 46%;
-		margin-left: 1.5em;
-	}
-
+	#right,
 	#left {
 		display: flex;
 		flex-direction: column;
+	}
+
+	#right {
+		max-width: 46%;
+		margin-left: 1.5em;
 	}
 	#back-btn-container {
 		display: flex;
@@ -114,15 +115,17 @@ const placeholderRepos = [
 		display: flex;
 		align-items: center;
 		& > :not(:first-child) {
-			text-align: end;
-			max-width: 80%;
-			font-weight: 500;
-			font-size: 2.2rem;
-			margin-left: auto;
 			& > span {
 				color: var(--accent1);
 			}
 		}
+	}
+	.text-content {
+		text-align: end;
+		max-width: 80%;
+		font-weight: 500;
+		font-size: 2.2rem;
+		margin-left: auto;
 	}
 
 	#featured-projects {
@@ -173,11 +176,37 @@ const placeholderRepos = [
 			}
 		}
 	}
-	#current-projects-container{
+	#current-projects-container {
 		display: grid;
-		grid-template-rows: repeat(2,minmax(200px,1fr));
-		grid-template-columns: repeat(2,1fr);
-		gap: .6em;
+		grid-template-rows: repeat(2, minmax(200px, 1fr));
+		grid-template-columns: repeat(2, 1fr);
+		gap: 0.6em;
 		padding: 1em 0;
+	}
+
+	footer {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+	}
+	#footer-text {
+		margin-bottom: auto;
+		display: flex;
+		flex-direction: column;
+		gap: 1em;
+		& > :first-child {
+			margin: 0;
+			text-align: start;
+		}
+		& > :last-child {
+			font-weight: 500;
+			font-size: 1.2rem;
+		}
+	}
+	#to-email-page {
+		display: flex;
+		align-items: center;
+		justify-content: end;
+		gap: 1em;
 	}
 </style>
