@@ -2,16 +2,17 @@
 const {title, desc, lang} = Astro.props;
 ---
 
-<div id="repo-container">
+<a id="repo-container">
 	<div id="repo-title-desc">
 		<h2>{title}</h2>
 		<p>{desc}</p>
 	</div>
 	<div id="languages">{lang}</div>
-</div>
+</a>
 
 <style>
 	#repo-container {
+        cursor: pointer;
 		padding: 1.5em 1em;
 		border: 1px solid var(--lighter-shade);
 		border-radius: 10px;
