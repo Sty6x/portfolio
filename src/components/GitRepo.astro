@@ -1,0 +1,35 @@
+---
+const {title, desc, lang} = Astro.props;
+---
+
+<div id="repo-container">
+	<div id="repo-title-desc">
+		<h2>{title}</h2>
+		<p>{desc}</p>
+	</div>
+	<div id="languages">{lang}</div>
+</div>
+
+<style>
+	#repo-container {
+		padding: 1.5em 1em;
+		border: 1px solid var(--lighter-shade);
+		border-radius: 10px;
+		display: flex;
+		flex-direction: column;
+		& > :last-child {
+			margin-top: auto;
+		}
+	}
+
+	#repo-title-desc {
+		& > h2 {
+			font-weight: 500;
+			font-size: 1.1rem;
+			color: var(--accent3);
+		}
+		& > :last-child {
+			font-size: 1rem;
+		}
+	}
+</style>
