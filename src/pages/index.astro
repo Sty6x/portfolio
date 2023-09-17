@@ -37,12 +37,13 @@ import ToBtn from "../components/ToBtn.astro";
 <script is:inline>
 	const aboutPanel = document.getElementById("about-panel");
 	console.log(aboutPanel);
-	aboutPanel.addEventListener("click",(e)=>{
+	aboutPanel.addEventListener("mouseenter",(e)=>{
 		const target = e.currentTarget;
-		if(!target.classList.contains("active")){
 			target.classList.replace("inactive","active")
-			return
-		}
+	},false)
+
+	aboutPanel.addEventListener("mouseleave",(e)=>{
+		const target = e.currentTarget;
 			target.classList.replace("active","inactive")
 	},false)
 

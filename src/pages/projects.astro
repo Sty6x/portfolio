@@ -2,6 +2,8 @@
 import Layout from "../layouts/Layout.astro";
 import ToBtn from "../components/ToBtn.astro";
 import GitRepo from "../components/GitRepo.astro";
+import { Image } from "astro:assets";
+import vimnotesImg from "../assets/images/vimnotes-1.png"
 
 const placeholderRepos = [
 	{
@@ -44,7 +46,8 @@ const placeholderRepos = [
 		<div id="featured-projects">
 			<h1>Featured Projects</h1>
 			<div id="carousel">
-				<img alt="some-project-image" />
+				<img alt="some-project-image" src={vimnotesImg.src}/>
+				<!-- <Image loading="lazy" alt="some-project-image" src={vimnotesImg}/> -->
 			</div>
 		</div>
 	</section>
@@ -159,6 +162,11 @@ const placeholderRepos = [
 		& > img {
 			width: 100%;
 			height: 100%;
+			object-fit: cover;
+			-o-object-fit: cover;
+			object-position: center;
+			-o-object-position: center;
+			filter: blur(3px);
 		}
 	}
 

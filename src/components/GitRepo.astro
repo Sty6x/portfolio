@@ -7,19 +7,31 @@ const {title, desc, lang} = Astro.props;
 		<h2>{title}</h2>
 		<p>{desc}</p>
 	</div>
-	<div id="languages">{lang}</div>
+	<p id="languages">{lang}</p>
 </a>
 
 <style>
 	#repo-container {
-        cursor: pointer;
+		transform-origin: 50%;
+		cursor: pointer;
 		padding: 1.5em 1em;
 		border: 1px solid var(--lighter-shade);
 		border-radius: 10px;
 		display: flex;
 		flex-direction: column;
+		transition: background-color 150ms ease-in-out;
 		& > :last-child {
 			margin-top: auto;
+		}
+	}
+
+	#repo-container:hover {
+		background-color: var(--lighter-shade);
+		transition: background-color 150ms ease-in-out;
+		& > #repo-title-desc {
+			& > h2 {
+				color: var(--accent3);
+			}
 		}
 	}
 
