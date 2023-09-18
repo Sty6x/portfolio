@@ -1,8 +1,8 @@
 ---
-const {title, desc, lang} = Astro.props;
+const {title, desc, lang,link} = Astro.props;
 ---
 
-<a id="repo-container">
+<a id="repo-container" href={link}>
 	<div id="repo-title-desc">
 		<h2>{title}</h2>
 		<p>{desc}</p>
