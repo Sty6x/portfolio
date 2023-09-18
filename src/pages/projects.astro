@@ -3,34 +3,33 @@ import Layout from "../layouts/Layout.astro";
 import ToBtn from "../components/ToBtn.astro";
 import GitRepo from "../components/GitRepo.astro";
 import vimnotesImg from "../assets/images/vimnotes-1.png";
-import { Octokit,App } from "octokit";
-const octokit = new Octokit({auth:import.meta.env.GIT_KEY})
-console.log(import.meta.env.GIT_KEY)
-const {data} = await octokit.request("GET /user/repos?sort=pushed&per_page=4&type=public&direction=desc",{headers:{accept:"application/vnd.github+json"}});
-console.log(data);
+import {Octokit} from "octokit";
+const octokit = new Octokit({auth: import.meta.env.GIT_KEY});
 
-const placeholderRepos = [
-	{
-		title: "markdown-app",
-		desc: "A free note taking app using vim key bindings",
-		lang: "Typescript",
-	},
-	{
-		title: "warframe-event-status-cli",
-		desc: "A Warfame CLI tool to fetch and display current events in the comfort of your terminal",
-		lang: "Typescript",
-	},
-	{
-		title: "chrome-app",
-		desc: "Current events in the comfort of your terminal",
-		lang: "Typescript",
-	},
-	{
-		title: "event-cli",
-		desc: "CLI tool to fetch events in the comfort of your terminal",
-		lang: "Typescript",
-	},
-];
+const {data} = await octokit.request(
+	"GET /user/repos?sort=pushed&per_page=4&type=public&direction=desc",
+	{headers: {accept: "application/vnd.github+json"}},
+);
+const repositories = async () => {
+	try {
+		const relevantData = await data.map(async (repo) => {
+			const getLanguage = await repo.languages_url;
+			const lang = Object.keys(getLanguage);
+			console.log(getLanguage);
+			return {
+				id: repo.id,
+				name: repo.name,
+				url: repo.html_url,
+				desc: repo.description,
+				languageList: lang,
+			};
+		});
+		return relevantData
+	} catch (err) {
+		console.log("unable to get relevant data");
+		return {}
+	}
+};
 ---
 
 <Layout title="project">
@@ -59,9 +58,14 @@ const placeholderRepos = [
 			<h1>Projects im currently working on</h1>
 			<div id="current-projects-container">
 				{
-					data.map(({name,description,html_url}) => {
+					data.map(({name, description, html_url}, i) => {
 						return (
-							<GitRepo link={html_url} title={name} desc={description} lang="Typescript" />
+							<GitRepo
+								link={html_url}
+								title={name}
+								desc={description}
+								lang="Typescript"
+							/>
 						);
 					})
 				}
@@ -240,14 +244,14 @@ const placeholderRepos = [
 			opacity: 0;
 			transform: translateY(50px);
 		}
-		to{
+		to {
 			opacity: 1;
 			transform: translateY(0px);
 		}
 	}
 
 	#github-link {
-		opacity:0;
+		opacity: 0;
 		animation: github-link forwards normal 400ms 200ms ease-in-out;
 		position: absolute;
 		font-weight: 500;
@@ -264,12 +268,15 @@ const placeholderRepos = [
 		to {
 			height: 5px;
 			width: 20%;
-			opacity: 1;
 			left: 0;
+			opacity: 1;
 		}
 	}
 
 	#github-link::after {
+		height: 5px;
+		width: 20%;
+		left: 0;
 		content: "";
 		position: absolute;
 		display: block;
