@@ -6,30 +6,42 @@ import vimnotesImg from "../assets/images/vimnotes-1.png";
 import {Octokit} from "octokit";
 const octokit = new Octokit({auth: import.meta.env.GIT_KEY});
 
+// const rate = await octokit.request('GET /rate_limit', {
+//   headers: {
+//     'X-GitHub-Api-Version': '2022-11-28'
+//   }
+// })
+// console.log(rate)
+
 const {data} = await octokit.request(
 	"GET /user/repos?sort=pushed&per_page=4&type=public&direction=desc",
-	{headers: {accept: "application/vnd.github+json"}},
+	{
+		headers: {
+			accept: "application/vnd.github+json",
+			authorization: `Bearer ${import.meta.env.GIT_KEY}`,
+		},
+	},
 );
-const repositories = async () => {
-	try {
-		const relevantData = await data.map(async (repo) => {
-			const getLanguage = await repo.languages_url;
-			const lang = Object.keys(getLanguage);
-			console.log(getLanguage);
-			return {
-				id: repo.id,
-				name: repo.name,
-				url: repo.html_url,
-				desc: repo.description,
-				languageList: lang,
-			};
-		});
-		return relevantData
-	} catch (err) {
-		console.log("unable to get relevant data");
-		return {}
-	}
-};
+
+const getLanguages = await Promise.all(
+	data.map((repo) =>
+		fetch(repo.languages_url, {
+			method: "GET",
+			headers: {Authorization: `Bearer ${import.meta.env.GIT_KEY}`},
+		}).then((language) => language.json()),
+	),
+);
+console.log(getLanguages)
+const relevantData = data.map((repo,i) => {
+	const newData = {
+		id: repo.id,
+		name: repo.name,
+		url: repo.html_url,
+		desc: repo.description,
+		languageList: Object.keys(getLanguages[i]).length !== 0 ?  Object.keys(getLanguages[i])[0] : "Markdown",
+	};
+	return newData;
+});
 ---
 
 <Layout title="project">
@@ -56,15 +68,16 @@ const repositories = async () => {
 	<section id="right">
 		<div id="right-header">
 			<h1>Projects im currently working on</h1>
+
 			<div id="current-projects-container">
 				{
-					data.map(({name, description, html_url}, i) => {
+					relevantData.map(({name, description, url, languageList}) => {
 						return (
 							<GitRepo
-								link={html_url}
+								link={url}
 								title={name}
 								desc={description}
-								lang="Typescript"
+								lang={languageList}
 							/>
 						);
 					})
