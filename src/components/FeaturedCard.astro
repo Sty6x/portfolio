@@ -62,24 +62,23 @@ const featuredList = [
 		height: 100%;
 		object-fit: cover;
 		opacity: 0.5;
-		filter: blur(0px);
+		filter: blur(1px);
 		transition: all 200ms ease-in-out;
 	}
 	.text-contents {
-		padding: 1em .8em;
-		top: 80%;
 		text-align: left;
 		position: absolute;
 		z-index: 20;
 		width: 80%;
 		left: 50%;
+		bottom: 10%;
 		transform: translate(-50%, -50%);
 		& > h2 {
 			font-size: 1.6rem;
 			font-weight: 700;
 		}
 		& > p {
-			font-size: 1rem;
+			font-size: 1.2rem;
 			font-weight: 500;
 		}
 
@@ -87,8 +86,6 @@ const featuredList = [
 			display: flex;
 			gap: 1em;
 			font-size: 0.8rem;
-			& > li {
-			}
 		}
 		.tools {
 			display: flex;
