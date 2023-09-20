@@ -2,11 +2,9 @@
 import Layout from "../layouts/Layout.astro";
 import ToBtn from "../components/ToBtn.astro";
 import GitRepo from "../components/GitRepo.astro";
-import vimnotesImg from "../assets/images/vimnotes-1.png";
 import {Octokit} from "octokit";
 import FeaturedCard from "../components/FeaturedCard.astro";
 const octokit = new Octokit({auth: import.meta.env.GIT_KEY});
-
 
 const {data} = await octokit.request(
 	"GET /user/repos?sort=pushed&per_page=4&type=public&direction=desc",
@@ -26,13 +24,16 @@ const getLanguages = await Promise.all(
 	),
 );
 
-const relevantData = data.map((repo,i) => {
+const relevantData = data.map((repo, i) => {
 	const newData = {
 		id: repo.id,
 		name: repo.name,
 		url: repo.html_url,
 		desc: repo.description,
-		languageList: Object.keys(getLanguages[i]).length !== 0 ?  Object.keys(getLanguages[i])[0] : "Markdown",
+		languageList:
+			Object.keys(getLanguages[i]).length !== 0
+				? Object.keys(getLanguages[i])[0]
+				: "Markdown",
 	};
 	return newData;
 });
@@ -54,7 +55,7 @@ const relevantData = data.map((repo,i) => {
 		</div>
 		<div id="featured-projects">
 			<h1>Featured Projects</h1>
-			<FeaturedCard/>	
+			<FeaturedCard />
 		</div>
 	</section>
 	<section id="right">
@@ -164,7 +165,7 @@ const relevantData = data.map((repo,i) => {
 	}
 	#carousel {
 		display: flex;
-		position:relative;
+		position: relative;
 		justify-content: center;
 		align-items: center;
 		margin-top: 1em;
