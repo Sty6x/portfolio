@@ -4,6 +4,7 @@ import ToBtn from "../components/ToBtn.astro";
 import GitRepo from "../components/GitRepo.astro";
 import vimnotesImg from "../assets/images/vimnotes-1.png";
 import {Octokit} from "octokit";
+import FeaturedCard from "../components/FeaturedCard.astro";
 const octokit = new Octokit({auth: import.meta.env.GIT_KEY});
 
 
@@ -24,7 +25,7 @@ const getLanguages = await Promise.all(
 		}).then((language) => language.json()),
 	),
 );
-console.log(getLanguages)
+
 const relevantData = data.map((repo,i) => {
 	const newData = {
 		id: repo.id,
@@ -53,15 +54,12 @@ const relevantData = data.map((repo,i) => {
 		</div>
 		<div id="featured-projects">
 			<h1>Featured Projects</h1>
-			<div id="carousel">
-				<img alt="some-project-image" src={vimnotesImg.src} />
-			</div>
+			<FeaturedCard/>	
 		</div>
 	</section>
 	<section id="right">
 		<div id="right-header">
 			<h1>Projects im currently working on</h1>
-
 			<div id="current-projects-container">
 				{
 					relevantData.map(({name, desc, url, languageList}) => {
@@ -94,7 +92,7 @@ const relevantData = data.map((repo,i) => {
 				</span>
 			</div>
 			<div id="to-email-page">
-				<!-- <p>How to reach me.</p> -->
+				<p>How to reach me.</p>
 				<ToBtn link="/reach-me" />
 			</div>
 		</footer>
@@ -149,6 +147,7 @@ const relevantData = data.map((repo,i) => {
 		display: flex;
 		flex: 1;
 		flex-direction: column;
+		gap: 1em;
 		& > :first-child {
 			font-size: 2rem;
 			font-weight: 600;
@@ -165,6 +164,7 @@ const relevantData = data.map((repo,i) => {
 	}
 	#carousel {
 		display: flex;
+		position:relative;
 		justify-content: center;
 		align-items: center;
 		margin-top: 1em;
@@ -179,7 +179,7 @@ const relevantData = data.map((repo,i) => {
 			-o-object-fit: cover;
 			object-position: center;
 			-o-object-position: center;
-			filter: blur(3px);
+			filter: blur(2px);
 			transition: filter 150ms ease-in-out;
 			position: relative;
 		}
@@ -288,7 +288,7 @@ const relevantData = data.map((repo,i) => {
 		display: block;
 		background-color: var(--accent1);
 		transition: width 200ms ease-in-out;
-		animation: github-line 600ms 450ms ease-in-out forwards normal;
+		/* animation: github-line 600ms 450ms ease-in-out forwards normal; */
 	}
 	#github-link:hover {
 		&::after {

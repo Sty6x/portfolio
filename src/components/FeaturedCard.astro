@@ -1,0 +1,36 @@
+---
+const {title, desc, imgPath, link} = Astro.props;
+---
+
+<div id="featured-cards-container">
+	<div id="first-card" class="cards"></div>
+	<section id="right-cards">
+		<div id="second-card" class="cards"></div>
+		<div id="third-card" class="cards"></div>
+	</section>
+</div>
+
+<style>
+	#featured-cards-container,
+	#right-cards {
+		display: flex;
+        gap:1em;
+	}
+	.cards {
+		outline: red solid 1px;
+        border-radius: 3px;
+	}
+	#featured-cards-container,
+	.cards {
+		width: 100%;
+		height: 100%;
+	}
+
+	#right-cards {
+		flex-direction: column;
+	}
+	#first-card,
+	#right-cards {
+		flex: 1;
+	}
+</style>
