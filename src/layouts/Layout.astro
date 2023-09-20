@@ -20,19 +20,9 @@ const {title} = Astro.props;
 </html>
 <style is:global>
 	:root {
-		--gradient: radial-gradient(
-			circle at 50% -60%,
-			var(--light-shade) 6%,
-			8%,
-			var(--bg) 65%
-		);
-		--gradient-iso: radial-gradient(
-			circle at 50% -20%,
-			var(--accent1) 1%,
-			2%,
-			var(--lighter-shade) 60%
-		);
-
+		--outer-value:250%;
+		--gradient-angle:180deg;
+		
 		--bg: #1b1d1e;
 		--lighter-shade: #2B2C31;
 		--text: #ffffff;
