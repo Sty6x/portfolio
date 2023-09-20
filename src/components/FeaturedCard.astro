@@ -1,25 +1,27 @@
 ---
 import vimnotesImg from "../assets/images/vimnotes-1.png";
 import wfCLI from "../assets/images/wf-term.png";
-import timeTracker from "../assets/images/wf.png";
+import timeTracker from "../assets/images/timetracker-2.jpg";
 const featuredList = [
 	{
-		title: "Vimnotes",
-		desc: "A free note taking app using vim key bindings.",
+		title: "Warframe Event CLI",
+		desc: "Fetching and displaying current warframe events within your terminal.",
 		imgPath: wfCLI,
-		link: "/",
+		link: "https://www.npmjs.com/package/warframe-event-status-cli",
+		source: "https://github.com/Sty6x/warframe-event-status-cli",
 	},
 	{
-		title: "Vimnotes",
-		desc: "A free note taking app using vim key bindings.",
+		title: "Website Time Tracker",
+		desc: "A Chrome extension for tracking the times you've visited and the time spent on a website",
 		imgPath: timeTracker,
-		link: "/",
+		link: "https://chrome.google.com/webstore/detail/website-tracker/khdpmjbnljkpleaeigoneokglkkgmamf",
+		source: "https://github.com/Sty6x/website-time-tracker",
 	},
 ];
 ---
 
 <div id="featured-cards-container">
-	<a id="first-card" class="cards">
+	<a id="first-card" class="cards" href="https://github.com/Sty6x/markdown-app">
 		<div class="text-contents">
 			<h2>Vimnotes</h2>
 			<p>A Keyboard oriented approach of taking notes using vim key bindings</p>
@@ -34,13 +36,10 @@ const featuredList = [
 		{
 			featuredList.map((card) => {
 				return (
-					<a class="cards">
+					<a class="cards" href={card.link}>
 						<div class="text-contents">
-							<h2>Vimnotes</h2>
-							<p>
-								A Keyboard oriented approach of taking notes using vim key
-								bindings
-							</p>
+							<h2>{card.title}</h2>
+							<p>{card.desc}</p>
 							<ul class="source">
 								<li>Source Code</li>
 								<li>Visit Project</li>
@@ -75,7 +74,7 @@ const featuredList = [
 		transform: translate(-50%, -50%);
 		& > h2 {
 			font-size: 1.6rem;
-			font-weight: 700;
+			font-weight: 600;
 		}
 		& > p {
 			font-size: 1.2rem;
@@ -150,6 +149,9 @@ const featuredList = [
 
 	#right-cards {
 		flex-direction: column;
+		& > a .text-contents {
+			top: 50% !important;
+		}
 		& > a:first-child::after {
 			background: linear-gradient(
 				var(--gradient-angle),
