@@ -20,6 +20,14 @@ const featuredList = [
 
 <div id="featured-cards-container">
 	<a id="first-card" class="cards">
+		<div class="text-contents">
+			<h2>Vimnotes</h2>
+			<p>A Keyboard oriented approach of taking notes using vim key bindings</p>
+			<ul class="source">
+				<li>Source Code</li>
+				<li>Visit Project</li>
+			</ul>
+		</div>
 		<img src={vimnotesImg.src} />
 	</a>
 	<section id="right-cards">
@@ -27,6 +35,17 @@ const featuredList = [
 			featuredList.map((card) => {
 				return (
 					<a class="cards">
+						<div class="text-contents">
+							<h2>Vimnotes</h2>
+							<p>
+								A Keyboard oriented approach of taking notes using vim key
+								bindings
+							</p>
+							<ul class="source">
+								<li>Source Code</li>
+								<li>Visit Project</li>
+							</ul>
+						</div>
 						<img src={card.imgPath.src} />
 					</a>
 				);
@@ -42,15 +61,53 @@ const featuredList = [
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
-		opacity: 0.7;
-		filter: saturate(0.8);
-			filter: blur(0px);
+		opacity: 0.5;
+		filter: blur(0px);
 		transition: all 200ms ease-in-out;
+	}
+	.text-contents {
+		padding: 1em .8em;
+		top: 80%;
+		text-align: left;
+		position: absolute;
+		z-index: 20;
+		width: 80%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		& > h2 {
+			font-size: 1.6rem;
+			font-weight: 700;
+		}
+		& > p {
+			font-size: 1rem;
+			font-weight: 500;
+		}
+
+		.source {
+			display: flex;
+			gap: 1em;
+			font-size: 0.8rem;
+			& > li {
+			}
+		}
+		.tools {
+			display: flex;
+			gap: 1em;
+			font-size: 0.8rem;
+			& > li {
+				background-color: var(--accent3);
+				color: var(--bg);
+				font-weight: 600;
+				padding: 0.2em 0.4em;
+				border-radius: 2px;
+			}
+		}
 	}
 	#featured-cards-container,
 	#right-cards {
 		display: flex;
 		gap: 0.6em;
+		position: relative;
 	}
 	.cards {
 		overflow: hidden;
@@ -62,7 +119,7 @@ const featuredList = [
 	}
 	.cards:hover {
 		& > img {
-			transform: scale(1.2);
+			transform: scale(1.05);
 			filter: blur(5px);
 			transition: all 200ms ease-in-out;
 		}

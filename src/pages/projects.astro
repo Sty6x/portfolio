@@ -6,37 +6,38 @@ import {Octokit} from "octokit";
 import FeaturedCard from "../components/FeaturedCard.astro";
 const octokit = new Octokit({auth: import.meta.env.GIT_KEY});
 
-const {data} = await octokit.request(
-	"GET /user/repos?sort=pushed&per_page=4&type=public&direction=desc",
-	{
-		headers: {
-			accept: "application/vnd.github+json",
-			authorization: `Bearer ${import.meta.env.GIT_KEY}`,
-		},
-	},
-);
-const getLanguages = await Promise.all(
-	data.map((repo) =>
-		fetch(repo.languages_url, {
-			method: "GET",
-			headers: {Authorization: `Bearer ${import.meta.env.GIT_KEY}`},
-		}).then((language) => language.json()),
-	),
-);
+// const {data} = await octokit.request(
+// 	"GET /user/repos?sort=pushed&per_page=4&type=public&direction=desc",
+// 	{
+// 		headers: {
+// 			accept: "application/vnd.github+json",
+// 			authorization: `Bearer ${import.meta.env.GIT_KEY}`,
+// 		},
+// 	},
+// );
+// const getLanguages = await Promise.all(
+// 	data.map((repo) =>
+// 		fetch(repo.languages_url, {
+// 			method: "GET",
+// 			headers: {Authorization: `Bearer ${import.meta.env.GIT_KEY}`},
+// 		}).then((language) => language.json()),
+// 	),
+// );
 
-const relevantData = data.map((repo, i) => {
-	const newData = {
-		id: repo.id,
-		name: repo.name,
-		url: repo.html_url,
-		desc: repo.description,
-		languageList:
-			Object.keys(getLanguages[i]).length !== 0
-				? Object.keys(getLanguages[i])[0]
-				: "Markdown",
-	};
-	return newData;
-});
+// const relevantData = data.map((repo, i) => {
+// 	const newData = {
+// 		id: repo.id,
+// 		name: repo.name,
+// 		url: repo.html_url,
+// 		desc: repo.description,
+// 		languageList:
+// 			Object.keys(getLanguages[i]).length !== 0
+// 				? Object.keys(getLanguages[i])[0]
+// 				: "Markdown",
+// 	};
+// 	return newData;
+// });
+const relevantData = [];
 ---
 
 <Layout title="project">
