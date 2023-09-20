@@ -35,18 +35,17 @@ const featuredList = [
 	</section>
 </div>
 
-<script>
-
-</script>
-
+<script></script>
 
 <style>
 	img {
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
-		opacity: .7;
-		filter: saturate(.8);
+		opacity: 0.7;
+		filter: saturate(0.8);
+			filter: blur(0px);
+		transition: all 200ms ease-in-out;
 	}
 	#featured-cards-container,
 	#right-cards {
@@ -54,15 +53,19 @@ const featuredList = [
 		gap: 0.6em;
 	}
 	.cards {
+		overflow: hidden;
 		cursor: pointer;
 		position: relative;
 		display: block;
-		overflow: auto;
 		border-radius: 3px;
 		z-index: 20;
 	}
-	.cards:hover{
-		scale:1.05;
+	.cards:hover {
+		& > img {
+			transform: scale(1.2);
+			filter: blur(5px);
+			transition: all 200ms ease-in-out;
+		}
 	}
 	.cards::after {
 		position: absolute;
@@ -78,7 +81,11 @@ const featuredList = [
 			object-position: 0% 0%;
 		}
 		&::after {
-			background: linear-gradient(var(--gradient-angle), transparent 20%, var(--accent1) var(--outer-value));
+			background: linear-gradient(
+				var(--gradient-angle),
+				transparent 20%,
+				var(--accent1) var(--outer-value)
+			);
 		}
 	}
 	#featured-cards-container,
@@ -90,11 +97,19 @@ const featuredList = [
 	#right-cards {
 		flex-direction: column;
 		& > a:first-child::after {
-			background: linear-gradient(var(--gradient-angle), transparent 20%, var(--accent2) var(--outer-value));
+			background: linear-gradient(
+				var(--gradient-angle),
+				transparent 20%,
+				var(--accent2) var(--outer-value)
+			);
 		}
 
 		& > a:last-child::after {
-			background: linear-gradient(var(--gradient-angle), transparent 20%, var(--accent3) var(--outer-value));
+			background: linear-gradient(
+				var(--gradient-angle),
+				transparent 20%,
+				var(--accent3) var(--outer-value)
+			);
 		}
 	}
 	#first-card,
