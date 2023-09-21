@@ -12,7 +12,7 @@ const featuredList = [
 	},
 	{
 		title: "Website Time Tracker",
-		desc: "A Chrome extension for tracking the times you've visited and the time spent on a website",
+		desc: "A Chrome extension that tracks total visits and time spent on a website",
 		imgPath: timeTracker,
 		link: "https://chrome.google.com/webstore/detail/website-tracker/khdpmjbnljkpleaeigoneokglkkgmamf",
 		source: "https://github.com/Sty6x/website-time-tracker",
@@ -23,8 +23,18 @@ const featuredList = [
 <div id="featured-cards-container">
 	<a id="first-card" class="cards" href="https://github.com/Sty6x/markdown-app">
 		<div class="text-contents">
-			<h2>Vimnotes</h2>
-			<p>A Keyboard oriented approach of taking notes using vim key bindings</p>
+			<ul class="tools">
+				<li>TypeScript</li>
+				<li>React</li>
+				<li>Tailwind</li>
+				<li>Firebase</li>
+			</ul>
+			<div class="title-desc">
+				<h2>Vimnotes</h2>
+				<p>
+					A Keyboard oriented approach of taking notes using vim key bindings
+				</p>
+			</div>
 			<ul class="source">
 				<li>Source Code</li>
 				<li>Visit Project</li>
@@ -38,8 +48,16 @@ const featuredList = [
 				return (
 					<a class="cards" href={card.link}>
 						<div class="text-contents">
-							<h2>{card.title}</h2>
-							<p>{card.desc}</p>
+							<ul class="tools">
+								<li>TypeScript</li>
+								<li>React</li>
+								<li>Tailwind</li>
+								<li>Firebase</li>
+							</ul>
+							<div class="title-desc">
+								<h2>{card.title}</h2>
+								<p>{card.desc}</p>
+							</div>
 							<ul class="source">
 								<li>Source Code</li>
 								<li>Visit Project</li>
@@ -61,10 +79,13 @@ const featuredList = [
 		height: 100%;
 		object-fit: cover;
 		opacity: 0.5;
-		filter: blur(1px);
+		filter: blur(3px);
 		transition: all 200ms ease-in-out;
 	}
 	.text-contents {
+		display: flex;
+		flex-direction: column;
+		gap: 0.6em;
 		text-align: left;
 		position: absolute;
 		z-index: 20;
@@ -72,15 +93,15 @@ const featuredList = [
 		left: 50%;
 		bottom: 10%;
 		transform: translate(-50%, -50%);
-		& > h2 {
+
+		.title-desc > h2 {
 			font-size: 1.6rem;
 			font-weight: 600;
 		}
-		& > p {
+		.title-desc > p {
 			font-size: 1.2rem;
 			font-weight: 500;
 		}
-
 		.source {
 			display: flex;
 			gap: 1em;
@@ -88,17 +109,19 @@ const featuredList = [
 		}
 		.tools {
 			display: flex;
-			gap: 1em;
-			font-size: 0.8rem;
+			gap: .4em;
 			& > li {
-				background-color: var(--accent3);
-				color: var(--bg);
-				font-weight: 600;
-				padding: 0.2em 0.4em;
+			text-transform: uppercase;
+			font-size: 0.8rem;
+				background-color: var(--accent1);
+				color: var(--lighter-shade);
+				font-weight: 700;
+				padding: 0.4em 0.6em;
 				border-radius: 2px;
 			}
 		}
 	}
+
 	#featured-cards-container,
 	#right-cards {
 		display: flex;
@@ -116,7 +139,7 @@ const featuredList = [
 	.cards:hover {
 		& > img {
 			transform: scale(1.05);
-			filter: blur(5px);
+			filter: blur(1px);
 			transition: all 200ms ease-in-out;
 		}
 	}
