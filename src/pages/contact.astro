@@ -1,12 +1,109 @@
 ---
 import Layout from "../layouts/Layout.astro";
-
 ---
 
-
-
 <Layout title="Contacts">
-
+	<section id="left">
+		<div class="text-content-container">
+			<h1>I'm Free.</h1>
+			<h1>Let's chat, work together</h1>
+			<h1>and build things.</h1>
+			<p>Happy to work with you.</p>
+			<div id="mail-box">
+				<div id="mail-text-container">
+					<span id="mail-icon-container">
+						<span id="mail-icon"></span>
+					</span>
+					<span id="mail-text">
+						<p>Mail me at</p>
+						<p>franzdiaz460@gmail.com</p>
+					</span>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section id="right">
+		<form method="post" action="/create-message">
+			<h2>Send me a message</h2>
+			<div id="name" class="inputs">
+				<label for="name">Full name*</label>
+				<input type="text" id="name" name="name" />
+			</div>
+			<div id="email" class="inputs">
+				<label for="email">Email address*</label>
+				<input type="email" id="email" name="email" />
+			</div>
+			<div id="subject" class="inputs">
+				<label for="subject">Subject</label>
+				<input type="text" id="subject" name="subject" />
+			</div>
+			<div id="message" class="inputs">
+				<label for="message">Message</label>
+				<input type="text" id="message" name="message" />
+			</div>
+			<div class="submit-btn">
+				<button>Send message</button>
+			</div>
+		</form>
+	</section>
 </Layout>
 <script></script>
-<style></style>
+<style>
+	section {
+		flex: 1;
+		height: 100%;
+		outline: red solid 1px;
+	}
+	#left {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+	.text-content-container {
+		& > h1 {
+			font-weight: 600;
+			font-size: 3rem;
+		}
+		& > p {
+			color: var(--light-shade);
+			font-weight: 500;
+		}
+	}
+	#mail-box {
+		margin-top: 1em;
+		padding: 1em 2em;
+		width: min-content;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background-color: var(--lighter-shade);
+		border-radius: 5px;
+	}
+	#mail-text-container {
+		gap: 1em;
+		display: flex;
+		align-items: center;
+	}
+	#mail-text {
+		font-weight: 600;
+	}
+	#mail-text > :last-child {
+		color: var(--accent1);
+	}
+	#mail-icon-container {
+		width: 100%;
+		height: 100%;
+        background-color: var(--light-shade);
+        padding: .5em;
+        border-radius: 5px;
+		& > :first-child {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+			width: 30px;
+			height: 30px;
+			background-image: url("../assets/icons/mail.svg");
+		}
+	}
+</style>
