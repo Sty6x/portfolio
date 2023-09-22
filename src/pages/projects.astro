@@ -259,9 +259,9 @@ const relevantData = data.map((repo, i) => {
 	}
 
 	#github-link {
+		position: absolute;
 		opacity: 0;
 		animation: github-link forwards normal 400ms 200ms ease-in-out;
-		position: absolute;
 		font-weight: 500;
 		font-size: 1.2rem;
 	}
@@ -296,27 +296,6 @@ const relevantData = data.map((repo, i) => {
 		&::after {
 			width: 100%;
 			transition: width 200ms ease-in-out;
-		}
-	}
-	@keyframes text-cover {
-		from {
-			width: 100%;
-			border: 0;
-		}
-		25% {
-			border-left: 2px solid var(--accent1);
-		}
-
-		50% {
-			border-left: 3px solid var(--accent1);
-		}
-
-		75% {
-			border-left: 4px solid var(--accent1);
-		}
-		to {
-			width: 5px;
-			border-left: 5px solid var(--accent1);
 		}
 	}
 	.header-text {

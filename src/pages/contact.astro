@@ -5,10 +5,13 @@ import Layout from "../layouts/Layout.astro";
 <Layout title="Contacts">
 	<section id="left">
 		<div class="text-content-container">
-			<h1>I'm Free.</h1>
-			<h1>Let's chat, work together</h1>
-			<h1>and build things.</h1>
-			<p>Happy to work with you.</p>
+			<div class="text-content">
+				<h1>I'm Free.</h1>
+				<h1>Let's chat, work together</h1>
+				<h1>and build things.</h1>
+				<p>Get in touch.</p>
+			</div>
+
 			<div id="mail-box">
 				<div id="mail-text-container">
 					<span id="mail-icon-container">
@@ -24,7 +27,7 @@ import Layout from "../layouts/Layout.astro";
 	</section>
 	<section id="right">
 		<form method="post" action="/create-message">
-			<h2>Send me a message</h2>
+			<h2>Send me a message.</h2>
 			<div id="name" class="inputs">
 				<!-- <label for="name">Full name*</label> -->
 				<input type="text" id="name" name="name" placeholder="Fullname" />
@@ -69,17 +72,37 @@ import Layout from "../layouts/Layout.astro";
 		align-items: center;
 		justify-content: center;
 	}
-	.text-content-container {
+	.text-content {
+		position: relative;
 		& > h1 {
+			margin-left: 0.3em;
 			font-weight: 600;
-			font-size: 3rem;
+			font-size: 3.5rem;
 		}
 		& > p {
-			color: var(--light-shade);
-			font-weight: 500;
+			margin-left: 1em;
+			color: grey;
+			font-weight: 400;
+			font-size: 1.2rem;
 		}
 	}
+	.text-content::after {
+		content: "";
+		display: block;
+		position: absolute;
+		top: 0;
+		width: 105%;
+		height: 100%;
+		background-color: var(--bg);
+		z-index: 10;
+		/* left: -2%; */
+		animation: text-cover 700ms 450ms ease-in-out forwards normal;
+		transform: rotate(180deg);
+	}
 	#mail-box {
+		opacity: 0;
+		animation: github-link forwards normal 400ms 200ms ease-in-out;
+		position: absolute;
 		margin-top: 1em;
 		padding: 1em 2em;
 		width: min-content;
@@ -117,9 +140,9 @@ import Layout from "../layouts/Layout.astro";
 	}
 
 	#right > form {
-		padding: 3em ;
+		padding: 3em;
 		/* background-color: var(--lighter-shade); */
-        border: 2px solid var(--lighter-shade);
+		border: 2px solid var(--lighter-shade);
 		height: 80%;
 		width: calc(60% + 6em);
 		min-width: 500px;
@@ -147,7 +170,8 @@ import Layout from "../layouts/Layout.astro";
 		}
 	}
 
-	input,textarea {
+	input,
+	textarea {
 		font-size: 1rem;
 		padding: 0.4em;
 	}
