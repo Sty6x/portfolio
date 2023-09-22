@@ -29,24 +29,22 @@ import Layout from "../layouts/Layout.astro";
 		<form method="post" action="/create-message">
 			<h2>Send me a message.</h2>
 			<div id="name" class="inputs">
-				<!-- <label for="name">Full name*</label> -->
-				<input type="text" id="name" name="name" placeholder="Fullname" />
+				<input type="text" id="name" name="name" required placeholder="Fullname*" />
 			</div>
 			<div id="email" class="inputs">
-				<!-- <label for="email">Email address*</label> -->
 				<input
 					type="email"
 					id="email"
 					name="email"
-					placeholder="Email address"
+					placeholder="Email address*"
+					required
 				/>
 			</div>
 			<div id="subject" class="inputs">
-				<!-- <label for="subject">Subject</label> -->
 				<input type="text" id="subject" name="subject" placeholder="Subject" />
 			</div>
 			<div id="message" class="inputs">
-				<label for="message">Message</label>
+				<label for="message">Tell me what you think</label>
 				<textarea id="message" name="message"></textarea>
 			</div>
 			<div id="submit-btn">
@@ -157,13 +155,14 @@ import Layout from "../layouts/Layout.astro";
 		& > * {
 			appearance: none;
 			width: 100%;
-			border-radius: 2px;
+			border-radius: 5px;
 			display: block;
 		}
 		&:not(:last-child) {
 			margin-bottom: 2em;
 		}
 		& > textarea {
+			margin-top: .5em;
 			height: 200px;
 			min-height: 50px;
 			max-height: 200px;
@@ -173,7 +172,9 @@ import Layout from "../layouts/Layout.astro";
 	input,
 	textarea {
 		font-size: 1rem;
-		padding: 0.4em;
+		padding: 0.6em 1em;
+		transition: outline 200ms ease-in-out;
+		outline: 1px solid transparent;
 	}
 	input,
 	textarea {
@@ -181,15 +182,19 @@ import Layout from "../layouts/Layout.astro";
 	}
 	input:focus,
 	textarea:focus {
-		outline: 2px solid var(--accent1);
+		outline: 1px solid var(--accent1);
 		border: none;
+		transition: outline 200ms ease-in-out;
+	}
+	input::placeholder{
+		color: var(--light-shade);
 	}
 	#submit-btn {
 		& > button {
 			background-color: var(--accent1);
 			color: var(--bg);
 			font-weight: 600;
-			border-radius: 2px;
+			border-radius: 3px;
 			padding: 0.6em 1em;
 		}
 	}
