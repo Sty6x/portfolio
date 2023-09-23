@@ -37,7 +37,6 @@ const relevantData = data.map((repo, i) => {
 	};
 	return newData;
 });
-// const relevantData = [];
 ---
 
 <Layout title="project">
@@ -45,6 +44,7 @@ const relevantData = data.map((repo, i) => {
 		<div id="left-header">
 			<div id="back-btn-container">
 				<ToBtn link="/" />
+				<!-- <p>Home</p> -->
 			</div>
 			<p class="text-content header-text">
 				Here are some of the projects I’ve built throughout my journey of
@@ -120,9 +120,9 @@ const relevantData = data.map((repo, i) => {
 	}
 	#back-btn-container {
 		display: flex;
-		flex-direction: column;
 		align-items: center;
-		#to-btn {
+		gap: 1em;
+		#to-btn{
 			transform: rotate(180deg);
 		}
 	}
@@ -173,7 +173,6 @@ const relevantData = data.map((repo, i) => {
 		width: 100%;
 		height: 100%;
 		border-radius: 10px;
-		/* border: 1px solid var(--lighter-shade); */
 		& > img {
 			width: 100%;
 			height: 100%;
@@ -261,7 +260,7 @@ const relevantData = data.map((repo, i) => {
 	#github-link {
 		position: absolute;
 		opacity: 0;
-		animation: github-link forwards normal 400ms 200ms ease-in-out;
+		animation: reveal-y forwards normal 400ms 200ms ease-in-out;
 		font-weight: 500;
 		font-size: 1.2rem;
 	}
