@@ -108,7 +108,7 @@ import "../cssReset.css";
 			"Helvetica Neue",
 			sans-serif;
 		display: flex;
-		height: 100vh;
+		min-height: 100vh;
 		background-color: var(--bg);
 	}
 	main {
@@ -123,16 +123,18 @@ import "../cssReset.css";
 		main {
 			display: block;
 		}
-		main,
-		html,
-		body {
-			min-height: 100vh;
-		}
-
 		#left,
 		#right {
 			display: block !important;
 			min-height: 100vh;
+		}
+		section {
+			height: auto !important;
+		}
+		#right {
+			min-height: fit-content;
+			margin-top: 2em;
+			margin-left: 0 !important;
 		}
 	}
 </style>
