@@ -108,7 +108,6 @@ import ToBtn from "../components/ToBtn.astro";
 	@media (max-width: 1050px) {
 		#btn-container {
 			top: 50%;
-			/* left: 100%; */
 			transform: translate(-50%, -50%);
 			scale: 0.7;
 		}
@@ -125,13 +124,31 @@ import ToBtn from "../components/ToBtn.astro";
 	}
 	@media (max-width: 750px) {
 		#btn-container {
-			top: 80%;
+			top: 75%;
 			left: 50%;
 			transform: translate(-50%, -50%);
 			scale: 0.7;
 		}
 		#container {
 			flex-direction: column;
+		}
+	}
+
+	@media (max-width: 400px) {
+		#btn-container {
+			top: 75%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			scale: 0.7;
+		}
+		#profession {
+			font-size: 0.6rem !important;
+		}
+		#about-contents > p {
+			font-size: 0.5rem !important;
+		}
+		#about-contents {
+			width: 100%;
 		}
 	}
 </style>
