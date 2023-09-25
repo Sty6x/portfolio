@@ -1,9 +1,7 @@
 ---
 import "../cssReset.css";
-const {title} = Astro.props;
 ---
 
-<!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
@@ -12,27 +10,22 @@ const {title} = Astro.props;
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
+		<title>Projects</title>
 	</head>
-	<body>
-		<main><slot /></main>
-	</body>
+	<body> <main><slot /></main></body>
 </html>
 <style is:global>
 	:root {
 		--outer-value: 250%;
 		--gradient-angle: 180deg;
-
 		--bg: #1b1d1e;
 		--lighter-shade: #2b2c31;
 		--text: #ffffff;
 		--accent1: #a3dfd5;
 		--accent2: #deb3a2;
-		--accent3: #a0cfeb;
-		/* --accent4: #5394bd; */
-		/* --medium-shade: #2e3133; */
-		--light-shade: #5e6269;
-		/* animation */
+		--accent3: #a0cfeb; /* --accent4:
+#5394bd; */ /* --medium-shade: #2e3133; */
+		--light-shade: #5e6269; /* animation */
 		--anim-duration: 1200ms;
 		--anim-arrow-delay: 1200ms;
 		--anim-arrow-duration: 200ms;
@@ -51,7 +44,6 @@ const {title} = Astro.props;
 			url("/fonts/poppins-regular-webfont.woff2") format("woff2"),
 			url("/fonts/poppins-regular-webfont.woff") format("woff");
 	}
-
 	@font-face {
 		font-family: "poppins";
 		font-weight: 500;
@@ -59,7 +51,6 @@ const {title} = Astro.props;
 			url("/fonts/poppins-medium-webfont.woff2") format("woff2"),
 			url("/fonts/poppins-medium-webfont.woff") format("woff");
 	}
-
 	@font-face {
 		font-family: "poppins";
 		font-weight: 600;
@@ -67,7 +58,6 @@ const {title} = Astro.props;
 			url("/fonts/poppins-semibold-webfont.woff2") format("woff2"),
 			url("/fonts/poppins-semibold-webfont.woff") format("woff");
 	}
-
 	@font-face {
 		font-family: "poppins";
 		font-weight: 700;
@@ -83,11 +73,9 @@ const {title} = Astro.props;
 		25% {
 			border-left: 2px solid var(--accent1);
 		}
-
 		50% {
 			border-left: 3px solid var(--accent1);
 		}
-
 		75% {
 			border-left: 4px solid var(--accent1);
 		}
@@ -123,7 +111,6 @@ const {title} = Astro.props;
 		height: 100vh;
 		background-color: var(--bg);
 	}
-
 	main {
 		flex: 1;
 		color: white;
@@ -133,5 +120,19 @@ const {title} = Astro.props;
 		align-items: center;
 	}
 	@media (max-width: 1024px) {
+		main {
+			display: block;
+		}
+		main,
+		html,
+		body {
+			min-height: 100vh;
+		}
+
+		#left,
+		#right {
+			display: block !important;
+			min-height: 100vh;
+		}
 	}
 </style>

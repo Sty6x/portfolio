@@ -1,5 +1,5 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import ProjectLayout from "../layouts/ProjectLayout.astro";
 import ToBtn from "../components/ToBtn.astro";
 import GitRepo from "../components/GitRepo.astro";
 import {Octokit} from "octokit";
@@ -39,7 +39,7 @@ const relevantData = data.map((repo, i) => {
 });
 ---
 
-<Layout title="project">
+<ProjectLayout>
 	<section id="left">
 		<div id="left-header">
 			<div id="back-btn-container">
@@ -99,11 +99,19 @@ const relevantData = data.map((repo, i) => {
 			</div>
 		</footer>
 	</section>
-</Layout>
+</ProjectLayout>
 
 <script></script>
 
 <style>
+	main {
+		flex: 1;
+		color: white;
+		margin: 4em 3em;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
 	section {
 		height: 100%;
 		flex: 1;
@@ -112,10 +120,10 @@ const relevantData = data.map((repo, i) => {
 	#left {
 		display: flex;
 		flex-direction: column;
+		gap: 1em;
 	}
 
 	#right {
-		max-width: 46%;
 		margin-left: 1.5em;
 	}
 	#back-btn-container {
@@ -167,7 +175,7 @@ const relevantData = data.map((repo, i) => {
 			}
 		}
 	}
-	#carousel {
+	/* #carousel {
 		display: flex;
 		position: relative;
 		justify-content: center;
@@ -195,9 +203,11 @@ const relevantData = data.map((repo, i) => {
 			transition: filter 150ms ease-in-out;
 			filter: blur(0);
 		}
-	}
+	} */
 
 	#right-header {
+		display: flex;
+		flex-direction: column;
 		& > :first-child {
 			font-weight: 500;
 			/* font-size: 2rem; */
@@ -240,6 +250,7 @@ const relevantData = data.map((repo, i) => {
 		align-items: center;
 		justify-content: end;
 		gap: 1em;
+		margin-top: 1em;
 	}
 	.footer-highlight:first-of-type {
 		color: var(--accent2);
@@ -328,15 +339,27 @@ const relevantData = data.map((repo, i) => {
 		transform: rotate(180deg);
 	}
 
-	@media (max-width: 1024px) {
-		.text-content {
-			font-size: clamp(0.8rem, 1vw + 0.5rem, 1.2rem);
+	@media (min-width: 1921px) {
+		.text-content,
+		#github-link {
+			font-size: clamp(1rem, 1vw + 1.3rem, 3rem);
 		}
 	}
 
 	@media (min-width: 2560px) {
 		.text-content {
 			font-size: 3rem;
+		}
+	}
+	@media (max-height: 768px) {
+		#back-btn-container,
+		#to-email-page {
+			scale: 0.7;
+		}
+	}
+	@media (max-width: 1024px) {
+		section {
+			/* height: inherit !important; */
 		}
 	}
 </style>

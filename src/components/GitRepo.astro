@@ -14,7 +14,7 @@ const {title, desc, lang, link} = Astro.props;
 	#repo-container {
 		transform-origin: 50%;
 		cursor: pointer;
-		padding: 1.5em 1em;
+		padding: 1em 0.8em;
 		border: 1px solid var(--lighter-shade);
 		border-radius: 10px;
 		display: flex;
@@ -38,11 +38,11 @@ const {title, desc, lang, link} = Astro.props;
 	#repo-title-desc {
 		& > h2 {
 			font-weight: 600;
-			font-size: clamp(0.5rem, 1vw + 0.4rem, 1.2rem);
+			font-size: clamp(0.5rem, 1vw + 0.3rem, 1.2rem);
 			color: var(--accent3);
 		}
 		& > :last-child {
-			font-size: clamp(0.4rem, 1vw + 0.1rem, 1rem);
+			font-size: clamp(0.4rem, 1vw + 0.2rem, 1rem);
 		}
 	}
 	#languages {
@@ -52,10 +52,10 @@ const {title, desc, lang, link} = Astro.props;
 	@media (min-width: 1920px) {
 		#repo-title-desc {
 			& > h2 {
-				font-size: clamp(1rem, 1vw + 1rem, 2rem);
+				font-size: clamp(1rem, 1vw + 1rem, 1.8rem);
 			}
 			& > :last-child {
-				font-size: clamp(1rem, 1vw + 0.8rem, 1.5rem);
+				font-size: clamp(1rem, 1vw + 0.8rem, 1.4rem);
 			}
 		}
 		#languages {

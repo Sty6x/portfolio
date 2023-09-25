@@ -197,7 +197,15 @@ const featuredList = [
 	}
 
 	@media (max-width: 1024px) {
-		.text-content {
+		#featured-cards-container {
+			flex-direction: column;
+		}
+		#right-cards {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+		}
+		.text-contents {
+			top: 50%;
 		}
 	}
 </style>
