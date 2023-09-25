@@ -1,5 +1,5 @@
 ---
-const {title, desc, lang,link} = Astro.props;
+const {title, desc, lang, link} = Astro.props;
 ---
 
 <a id="repo-container" href={link}>
@@ -38,15 +38,15 @@ const {title, desc, lang,link} = Astro.props;
 	#repo-title-desc {
 		& > h2 {
 			font-weight: 600;
-			font-size: 1.2rem;
+			font-size: clamp(0.7rem, 1vw + 0.4rem, 1.2rem);
 			color: var(--accent3);
 		}
 		& > :last-child {
-			font-size: 1rem;
+			font-size: clamp(0.7rem, 1vw + 0.2rem, 1rem);
 		}
 	}
-	#languages{
-		font-size: .8rem;
+	#languages {
+		font-size: 0.8rem;
 		color: var(--accent3);
 	}
 </style>

@@ -95,11 +95,11 @@ const featuredList = [
 		transform: translate(-50%, -50%);
 
 		.title-desc > h2 {
-			font-size: 1.6rem;
+			font-size: clamp(1rem, 1vw + 0.4rem, 1.6rem);
 			font-weight: 600;
 		}
 		.title-desc > p {
-			font-size: 1.2rem;
+			font-size: clamp(0.5rem, 1vw + 0.2rem, 1.2rem);
 			font-weight: 500;
 		}
 		.source {
@@ -109,10 +109,10 @@ const featuredList = [
 		}
 		.tools {
 			display: flex;
-			gap: .4em;
+			gap: 0.4em;
 			& > li {
-			text-transform: uppercase;
-			font-size: 0.8rem;
+				text-transform: uppercase;
+				font-size: clamp(0.3rem, 0.5vw + 0.2rem, 0.8rem);
 				background-color: var(--accent1);
 				color: var(--lighter-shade);
 				font-weight: 700;
@@ -173,7 +173,7 @@ const featuredList = [
 	#right-cards {
 		flex-direction: column;
 		& > a .text-contents {
-			top: 50% ;
+			top: 50%;
 		}
 		& > a:first-child::after {
 			background: linear-gradient(
@@ -195,4 +195,37 @@ const featuredList = [
 	#right-cards {
 		flex: 1;
 	}
+
+	@media (max-width: 1024px) {
+		.text-content {
+		}
+	}
+	/* @media (max-width: 1024px) {
+		.text-contents {
+			.title-desc > h2 {
+				font-size: clamp(1rem, 1vw + 0.4rem, 1.6rem);
+			}
+			.title-desc > p {
+				font-size: clamp(0.5rem, 1vw + 0.2rem, 1.2rem);
+			}
+			.source {
+				display: flex;
+				gap: 1em;
+				font-size: 0.8rem;
+			}
+			.tools {
+				display: flex;
+				gap: 0.4em;
+				& > li {
+					text-transform: uppercase;
+					font-size: clamp(0.3rem, 0.5vw + 0.2rem, 0.8rem);
+					background-color: var(--accent1);
+					color: var(--lighter-shade);
+					font-weight: 700;
+					padding: 0.4em 0.6em;
+					border-radius: 2px;
+				}
+			}
+		}
+	} */
 </style>
