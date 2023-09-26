@@ -132,7 +132,6 @@ const relevantData = data.map((repo, i) => {
 	#back-btn-container {
 		display: flex;
 		align-items: center;
-		/* gap: 1em; */
 		#to-btn {
 			transform: rotate(180deg);
 		}
@@ -155,6 +154,10 @@ const relevantData = data.map((repo, i) => {
 		font-weight: 500;
 		font-size: clamp(1rem, 1vw + 0.8rem, 2.4rem);
 		margin-left: auto;
+	}
+	#header-text,
+	#footer-text {
+		flex: 1;
 	}
 	.title {
 		font-size: clamp(1rem, 1vw + 1rem, 2rem);
@@ -179,36 +182,6 @@ const relevantData = data.map((repo, i) => {
 			}
 		}
 	}
-	/* #carousel {
-		display: flex;
-		position: relative;
-		justify-content: center;
-		align-items: center;
-		margin-top: 1em;
-		width: 100%;
-		height: 100%;
-		border-radius: 10px;
-		& > img {
-			width: 100%;
-			height: 100%;
-			object-fit: cover;
-			-o-object-fit: cover;
-			object-position: center;
-			-o-object-position: center;
-			filter: blur(2px);
-			transition: filter 150ms ease-in-out;
-			position: relative;
-		}
-	}
-	#carousel:hover {
-		cursor: pointer;
-		border-radius: 10px;
-		& > img {
-			transition: filter 150ms ease-in-out;
-			filter: blur(0);
-		}
-	} */
-
 	#right-header {
 		display: flex;
 		flex-direction: column;
@@ -240,13 +213,17 @@ const relevantData = data.map((repo, i) => {
 		flex-direction: column;
 	}
 	#footer-text {
-		margin-bottom: auto;
+		/* margin-bottom: auto; */
 		display: flex;
 		flex-direction: column;
-		gap: 1em;
 		& > :first-child {
 			margin: 0;
 			text-align: start;
+		}
+		& > :last-child {
+			flex: 1;
+			display: flex;
+			align-items: center;
 		}
 	}
 	#to-email-page {
@@ -348,6 +325,10 @@ const relevantData = data.map((repo, i) => {
 		#github-link {
 			font-size: clamp(1rem, 1vw + 1.3rem, 3rem);
 		}
+		/* #current-projects-container {
+			grid-template-rows: repeat(2, minmax(200px, 300px));
+			grid-template-columns: repeat(2, 1fr);
+		} */
 	}
 
 	@media (min-width: 2560px) {
