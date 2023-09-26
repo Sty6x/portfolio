@@ -1,0 +1,68 @@
+---
+
+import Graph from "./Graph.astro";
+const graphs = [
+	{
+		title: "Eat",
+		percentage: 0.3,
+		color: "#5c64bd",
+	},
+	{
+		title: "Gaming",
+		percentage: 0.7,
+		color: "#dea657",
+	},
+	{
+		title: "Sleep",
+		percentage: 0.2,
+		color: "#bd706f",
+	},
+	{
+		title: "Code",
+		percentage: 0.9,
+		color: "#5394bd",
+	},
+];
+---
+
+<div id="graphs-container">
+	<div id="graphs">
+		{
+			graphs.map((graph) => {
+				return (
+					<Graph
+						color={graph.color}
+						title={graph.title}
+						percentage={graph.percentage}
+					/>
+				);
+			})
+		}
+	</div>
+</div>
+
+<style>
+	#graphs-container {
+        position: absolute;
+        z-index: 0;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 80%;
+		width: 50%;
+		margin-left: auto;
+	}
+	#graphs {
+
+		width: 100%;
+		padding: 0 2em 0 2em;
+		/* border: 2px solid var(--medium-shade); */
+		border-top: none;
+		height: inherit;
+		display: flex;
+		align-self: flex-end;
+		gap: 1em;
+		background-image: linear-gradient();
+		flex: 1;
+	}
+</style>

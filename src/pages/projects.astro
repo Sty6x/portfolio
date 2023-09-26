@@ -1,274 +1,383 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import ProjectLayout from "../layouts/ProjectLayout.astro";
 import ToBtn from "../components/ToBtn.astro";
-import LinkBtn from "../components/LinkBtn.astro";
+import GitRepo from "../components/GitRepo.astro";
+import {Octokit} from "octokit";
+import FeaturedCard from "../components/FeaturedCard.astro";
+const octokit = new Octokit({auth: import.meta.env.GIT_KEY});
 
-const featuredProjects = [
+const {data} = await octokit.request(
+	"GET /user/repos?sort=pushed&per_page=4&type=public&direction=desc",
 	{
-		title: "Vimnotes",
-		color: "#5C64BD",
-		desc: "A Keyboard oriented markdown note taking app using vim key bindings.",
-		link: "https://vimnotes.vercel.app/",
-		source: "https://github.com/Sty6x/markdown-app",
-		logo: `<svg width="86" height="86" viewBox="0 0 86 86" fill="none" xmlns="http://www.w3.org/2000/svg">
-			<path d="M65.8329 31.1036L47.7729 48.9918C47.4977 49.267 47.0853 49.439 46.6725 49.439H36.4897V38.9126C36.4897 38.4998 36.6617 38.1214 36.9369 37.8462L54.8253 20.0956" stroke="white" stroke-width="3" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-			<path d="M66.0742 41.2174V74.5166C66.0742 75.3422 65.4206 75.9958 64.595 75.9958H11.5156C10.69 75.9958 10.0364 75.3422 10.0364 74.5166V21.4372C10.0364 20.6116 10.69 19.958 11.5156 19.958H44.677" stroke="white" stroke-width="3" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-			<path d="M64.969 10.0043L59.7151 15.2584L70.7097 26.2529L75.9636 20.9989L64.969 10.0043Z" stroke="white" stroke-width="3" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-			</svg>`,
+		headers: {
+			accept: "application/vnd.github+json",
+			authorization: `Bearer ${import.meta.env.GIT_KEY}`,
+		},
 	},
+);
+const getLanguages = await Promise.all(
+	data.map((repo) =>
+		fetch(repo.languages_url, {
+			method: "GET",
+			headers: {Authorization: `Bearer ${import.meta.env.GIT_KEY}`},
+		}).then((language) => language.json()),
+	),
+);
 
-	{
-		title: "Warframe ClI ",
-		color: "#BD706F",
-		desc: "A CLI Tool to fetch and display current warframe events in the terminal.",
-		link: "https://www.npmjs.com/package/warframe-event-status-cli",
-		source: "https://github.com/Sty6x/warframe-event-status-cli",
-		logo: `<svg width="86" height="86" viewBox="0 0 86 86" fill="none" xmlns="http://www.w3.org/2000/svg">
-			<path d="M14.3333 64.5L35.8333 43L14.3333 21.5" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-			<path d="M43 64.5H71.6667" stroke="white" stroke-width="3" stroke-miterlimit="10" stroke-linecap="round"/>
-			</svg>`,
-	},
-	{
-		title: "Time Tracker",
-		color: "#5394BD",
-		desc: "A Chrome extension that enables users to track the time they spent on a website.",
-		link: "https://chrome.google.com/webstore/detail/website-tracker/khdpmjbnljkpleaeigoneokglkkgmamf",
-		source: "https://github.com/Sty6x/website-time-tracker",
-		logo: '<svg width="86" height="86" viewBox="0 0 86 86" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M67.5387 1.24987C65.876 -0.412798 63.124 -0.412798 61.4613 1.24987L44.2499 18.4613C42.5872 20.124 42.5872 22.876 44.2499 24.5387L61.4613 41.753C63.124 43.4157 65.876 43.4157 67.5387 41.753L84.753 24.5415C86.4157 22.8789 86.4157 20.1269 84.753 18.4642L67.5387 1.24987ZM65.5148 3.27947L82.7234 20.4881C83.3025 21.0671 83.3025 21.9357 82.7234 22.5148L65.5148 39.7263C64.9357 40.3053 64.0671 40.3053 63.4881 39.7263L46.2766 22.5148C45.6975 21.9357 45.6975 21.0671 46.2766 20.4881L63.4881 3.27947C64.0671 2.7004 64.9357 2.7004 65.5148 3.27947ZM47.3 51.6C44.9436 51.6 43 53.5436 43 55.9V81.7C43 84.0564 44.9436 86 47.3 86H73.1C75.4564 86 77.4 84.0564 77.4 81.7V55.9C77.4 53.5436 75.4564 51.6 73.1 51.6H47.3ZM47.3 54.4667H73.1C73.9199 54.4667 74.5333 55.0801 74.5333 55.9V81.7C74.5333 82.5199 73.9199 83.1333 73.1 83.1333H47.3C46.4801 83.1333 45.8667 82.5199 45.8667 81.7V55.9C45.8667 55.0801 46.4801 54.4667 47.3 54.4667ZM4.3 8.6C1.9436 8.6 0 10.5436 0 12.9V38.7C0 41.0564 1.9436 43 4.3 43H30.1C32.4564 43 34.4 41.0564 34.4 38.7V12.9C34.4 10.5436 32.4564 8.6 30.1 8.6H4.3ZM4.3 11.4667H30.1C30.9199 11.4667 31.5333 12.0801 31.5333 12.9V38.7C31.5333 39.5199 30.9199 40.1333 30.1 40.1333H4.3C3.48013 40.1333 2.86667 39.5199 2.86667 38.7V12.9C2.86667 12.0801 3.48013 11.4667 4.3 11.4667ZM4.3 51.6C1.9436 51.6 0 53.5436 0 55.9V81.7C0 84.0564 1.9436 86 4.3 86H30.1C32.4564 86 34.4 84.0564 34.4 81.7V55.9C34.4 53.5436 32.4564 51.6 30.1 51.6H4.3ZM4.3 54.4667H30.1C30.9199 54.4667 31.5333 55.0801 31.5333 55.9V81.7C31.5333 82.5199 30.9199 83.1333 30.1 83.1333H4.3C3.48013 83.1333 2.86667 82.5199 2.86667 81.7V55.9C2.86667 55.0801 3.48013 54.4667 4.3 54.4667Z" fill="white"/></svg>',
-	},
-];
+const relevantData = data.map((repo, i) => {
+	const newData = {
+		id: repo.id,
+		name: repo.name,
+		url: repo.html_url,
+		desc: repo.description,
+		languageList:
+			Object.keys(getLanguages[i]).length !== 0
+				? Object.keys(getLanguages[i])[0]
+				: "Markdown",
+	};
+	return newData;
+});
 ---
 
-<Layout title="project">
-	<main id="projects-container">
-		<div id="navigate-back-container">
-			<ToBtn link="/" />
+<ProjectLayout>
+	<section id="left">
+		<div id="left-header">
+			<div id="back-btn-container">
+				<ToBtn link="/" />
+				<!-- <p class="btn-text">Home</p> -->
+			</div>
+			<p class="text-content header-text">
+				Here are some of the projects I’ve built throughout my journey of
+				studying
+				<span>
+					{"<Software Development/>"}
+				</span>
+			</p>
 		</div>
-		<div id="projects-inner-container">
-			{
-				featuredProjects.map((project, i) => {
-					return (
-						<div class="projects" id={project.title}>
-							<div class={`${project.title}-logo project-logo inactive `}>
-								{project.logo}
-							</div>
-							<div class="project-title">
-								<h1>{project.title}</h1>
-								<span
-									style={{backgroundColor: project.color}}
-									class="title-underline"
-								/>
-							</div>
-							<p class={`${project.title}-desc project-desc inactive `}>
-								{project.desc}
-							</p>
-							<div
-								id={`link-to-${project.title}`}
-								class={`${project.title}-link project-link inactive`}>
-								<LinkBtn
-									link={project.link}
-									title={project.title}
-									color={project.color}
-								/>
-							</div>
-							<a href={project.source} id="source" class="link-source inactive">
-								Source Code
-								<span
-									style={{backgroundColor: project.color}}
-									class="source-underline"
-								/>
-							</a>
-						</div>
-					);
-				})
-			}
+		<div id="featured-projects">
+			<h1 class="title">Featured Projects</h1>
+			<FeaturedCard />
 		</div>
-	</main>
-</Layout>
+	</section>
+	<section id="right">
+		<div id="right-header">
+			<h1 class="title">Projects im currently working on</h1>
+			<div id="current-projects-container">
+				{
+					relevantData.map(({name, desc, url, languageList}) => {
+						return (
+							<GitRepo
+								link={url}
+								title={name}
+								desc={desc}
+								lang={languageList}
+							/>
+						);
+					})
+				}
+			</div>
+		</div>
+		<footer id="end">
+			<div id="footer-text">
+				<p class="text-content footer-text">
+					Making <span class="footer-highlight" id="ideas">Ideas</span> and <span
+						class="footer-highlight"
+						id="imaginations">Imaginations</span
+					>
+					 come to life, to help me and others benefit from the usefulness of my
+					work.
+				</p>
+				<span>
+					<a id="github-link" href="https://github.com/Sty6x"
+						>More projects here.</a
+					>
+				</span>
+			</div>
+			<div id="to-email-page">
+				<p class="btn-text">How to reach me.</p>
+				<ToBtn link="/contact" />
+			</div>
+		</footer>
+	</section>
+</ProjectLayout>
 
-<script>
-	import gsap from "gsap";
-	const projectList = document.querySelectorAll(".projects");
-	const logos = document.querySelectorAll(".project-logo");
-	const parseLogos = Array.from(logos).map((logo) => {
-		const parser = new DOMParser();
-		const parsedSVG = parser.parseFromString(logo.textContent, "image/svg+xml");
-		return parsedSVG.documentElement;
-	});
-
-	Array.from(logos).forEach((logo, i) => {
-		console.log(parseLogos[i]);
-		logo.textContent = "";
-		logo.append(parseLogos[i]);
-	});
-		gsap.from(".projects", {
-			y: -1000,
-			stagger: 0.3,
-			duration: 0.6,
-		});
-
-		gsap.to(".projects", {
-			y: 0,
-			stagger: 0.3,
-			duration: 0.6,
-		});
-		gsap.from(".project-title", {
-			y: 100,
-			delay: 0.8,
-			opacity: 0,
-			stagger: 0.3,
-			duration: 0.5,
-		});
-
-		gsap.to(".project-title", {
-			y: 0,
-			delay: 0.8,
-			opacity: 1,
-			stagger: 0.3,
-			duration: 0.5,
-		});
-
-	setTimeout(() => {
-		console.log("hover active");
-		projectList.forEach((project) => {
-			project.addEventListener("mouseenter", () => {
-				const ch = Array.from(project.children).filter((c, i) => i > 1);
-				gsap.from(ch, {
-					y: 100,
-					opacity: 0,
-					stagger: 0.1,
-					duration: 0.2,
-				});
-				gsap.to(ch, {
-					y: 0,
-					opacity: 1,
-					stagger: 0.1,
-					duration: 0.2,
-				});
-				Array.from(project.children).forEach((child) => {
-					if (child.classList.contains("inactive")) {
-						child.classList.replace("inactive", "active");
-					}
-				});
-			});
-			project.addEventListener("mouseleave", () => {
-				const ch = Array.from(project.children).filter((c, i) => i > 1);
-				gsap.to(ch, {
-					y: 50,
-					opacity: 0,
-					duration: 0.1,
-				});
-				Array.from(project.children).forEach((child) => {
-					if (child.classList.contains("active")) {
-						child.classList.replace("active", "inactive");
-					}
-				});
-			});
-		});
-	}, 1200);
-</script>
+<script></script>
 
 <style>
-	#projects-container {
-		transition: background-color 150ms ease-in-out;
-		overflow: hidden;
+	main {
+		flex: 1;
+		color: white;
+		margin: 4em 3em;
 		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	section {
+		height: 100%;
 		flex: 1;
 	}
-	#projects-inner-container {
-		display: flex;
-		max-width: 100vw;
-		overflow-x: auto;
-		overflow-y: hidden;
-	}
-	.projects {
-		position: relative;
+	#right,
+	#left {
 		display: flex;
 		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		min-width: 30em;
-		flex: 1;
-		border: var(--medium-shade) 1px solid;
-		border-top: 0;
-		border-bottom: 0;
-		transition: background-color 150ms ease-in-out;
-		color: var(--text);
-		padding: 0 3em;
-		& > div {
-			display: flex;
-			flex-direction: column;
-			box-sizing: content-box;
-			& > h1 {
-				font-size: 2.2rem;
-				font-weight: 600;
-			}
-			& > .title-underline {
-				display: inline-block;
-				width: 50px;
-				height: 5px;
-				align-self: start;
-				transition: width 150ms ease-in-out;
-			}
-		}
-		& > p {
-			text-align: center;
-			font-weight: 500;
-			font-size: 1.3rem;
-			margin-top: 0.8em;
-		}
+		gap: 1em;
 	}
-	.projects > :nth-child(2n) {
-		margin-top: 2.5em;
+
+	#right {
+		margin-left: 1.5em;
 	}
-	#navigate-back-container {
-		border: var(--medium-shade) 1px solid;
-		border-top: 0;
-		min-width: 20em;
+	#back-btn-container {
 		display: flex;
-		justify-content: center;
 		align-items: center;
-		transform: rotate(180deg);
-	}
-	body:has(.projects:hover) {
-		& > main {
-			transition: background-color 2000ms ease-in-out;
-			background-color: var(--bg-dark);
+		gap: 1em;
+		#to-btn {
+			transform: rotate(180deg);
 		}
 	}
 
-	.projects:hover {
-		transition: background-color 150ms ease-in-out;
-		& > :not(:first-child) > span.title-underline {
-			width: 100%;
-			transition: width 500ms ease-in-out;
+	#left-header {
+		display: flex;
+		align-items: center;
+		& > :not(:first-child) {
+			& > span {
+				color: var(--accent1);
+			}
 		}
-		background-image: var(--gradient-iso);
+	}
+	.text-content {
+		position: relative;
+		text-align: end;
+		max-width: 80%;
+		font-weight: 500;
+		font-size: clamp(1rem, 1vw + 0.8rem, 2.4rem);
+		margin-left: auto;
+	}
+	.title {
+		font-size: clamp(1rem, 1vw + 1rem, 2rem);
+	}
+
+	#featured-projects {
+		display: flex;
+		flex: 1;
+		flex-direction: column;
+		gap: 1em;
+		& > :first-child {
+			/* font-size: 2rem; */
+			font-weight: 600;
+			position: relative;
+			&::after {
+				content: "";
+				position: absolute;
+				display: block;
+				width: 100%;
+				height: 5px;
+				background-color: var(--lighter-shade);
+			}
+		}
+	}
+	/* #carousel {
+		display: flex;
+		position: relative;
+		justify-content: center;
+		align-items: center;
+		margin-top: 1em;
+		width: 100%;
+		height: 100%;
+		border-radius: 10px;
+		& > img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			-o-object-fit: cover;
+			object-position: center;
+			-o-object-position: center;
+			filter: blur(2px);
+			transition: filter 150ms ease-in-out;
+			position: relative;
+		}
+	}
+	#carousel:hover {
 		cursor: pointer;
+		border-radius: 10px;
+		& > img {
+			transition: filter 150ms ease-in-out;
+			filter: blur(0);
+		}
+	} */
+
+	#right-header {
+		display: flex;
+		flex-direction: column;
+		& > :first-child {
+			font-weight: 500;
+			/* font-size: 2rem; */
+			position: relative;
+			&::after {
+				display: block;
+				position: absolute;
+				content: "";
+				width: 100%;
+				height: 5px;
+				background-color: var(--lighter-shade);
+			}
+		}
 	}
-	.inactive {
-		opacity: 0;
+	#current-projects-container {
+		display: grid;
+		grid-template-rows: repeat(2, minmax(200px, 1fr));
+		grid-template-columns: repeat(2, 1fr);
+		gap: 0.6em;
+		padding: 1em 0;
 	}
-	.link-source {
-		position: absolute;
-		bottom: 5%;
+
+	footer {
+		flex: 1;
 		display: flex;
 		flex-direction: column;
 	}
-	.link-source:hover {
-		& > span.source-underline {
-			width: 100%;
-			transition: width 150ms ease-in-out;
+	#footer-text {
+		margin-bottom: auto;
+		display: flex;
+		flex-direction: column;
+		gap: 1em;
+		& > :first-child {
+			margin: 0;
+			text-align: start;
 		}
 	}
-	.source-underline {
-		display: inline-block;
-		width: 20px;
-		height: 5px;
-		align-self: start;
-		transition: width 150ms ease-in-out;
+	#to-email-page {
+		display: flex;
+		align-items: center;
+		justify-content: end;
+		gap: 1em;
+		margin-top: 1em;
 	}
-	.project-logo{
-		scale: .6;
+	.footer-highlight:first-of-type {
+		color: var(--accent2);
+	}
+
+	.footer-highlight:last-of-type {
+		color: var(--accent3);
+	}
+
+	@keyframes github-link {
+		from {
+			opacity: 0;
+			transform: translateY(50px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0px);
+		}
+	}
+
+	#github-link {
+		position: absolute;
+		opacity: 0;
+		animation: reveal-y forwards normal 400ms 200ms ease-in-out;
+		font-weight: 500;
+		font-size: 1.2rem;
+	}
+
+	@keyframes github-line {
+		from {
+			opacity: 0;
+			left: 100%;
+			height: 5px;
+			width: 20%;
+		}
+		to {
+			height: 5px;
+			width: 20%;
+			left: 0;
+			opacity: 1;
+		}
+	}
+
+	#github-link::after {
+		height: 5px;
+		width: 20%;
+		left: 0;
+		content: "";
+		position: absolute;
+		display: block;
+		background-color: var(--accent1);
+		transition: width 200ms ease-in-out;
+		/* animation: github-line 600ms 450ms ease-in-out forwards normal; */
+	}
+	#github-link:hover {
+		&::after {
+			width: 100%;
+			transition: width 200ms ease-in-out;
+		}
+	}
+	.header-text {
+		margin-right: 0.3em;
+	}
+	#footer-text > .text-content {
+		margin-left: 0.3em;
+	}
+	.header-text::after {
+		right: -2%;
+		animation: text-cover 700ms 150ms ease-in-out forwards normal;
+	}
+
+	.footer-text::after,
+	.header-text::after {
+		content: "";
+		display: block;
+		position: absolute;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		background-color: var(--bg);
+		z-index: 10;
+	}
+	.footer-text::after {
+		left: -2%;
+		animation: text-cover 700ms 450ms ease-in-out forwards normal;
+		transform: rotate(180deg);
+	}
+
+	@media (min-width: 1921px) {
+		.text-content,
+		#github-link {
+			font-size: clamp(1rem, 1vw + 1.3rem, 3rem);
+		}
+	}
+
+	@media (min-width: 2560px) {
+		.text-content {
+			font-size: 3rem;
+		}
+	}
+
+	@media (max-width: 1024px) {
+		#left {
+			min-height: min-content !important;
+		}
+		.text-content {
+			width: 80%;
+			font-size: clamp(0.5rem, 1vw + 1.2rem, 2rem);
+		}
+	}
+	@media (min-width: 320px) and (max-width: 600px) {
+		.text-content {
+			font-size: clamp(0.5rem, 1vw + 0.7rem, 1.2rem);
+		}
+		#current-projects-container {
+			display: grid;
+			grid-template-rows: repeat(2, minmax(100px, 1fr));
+			grid-template-columns: repeat(2, minmax(100px, 1fr));
+			gap: 0.6em;
+			padding: 1em 0;
+		}
+		.title {
+			font-size: clamp(0.8rem, 1vw + 0.5rem, 1rem);
+		}
+		#github-link,
+		.btn-text {
+			font-size: clamp(0.4rem, 1vw + 0.3rem, 1rem);
+		}
 	}
 </style>
