@@ -208,6 +208,10 @@ const featuredList = [
 		}
 	}
 	@media (max-width: 1024px) {
+		#right-cards {
+			display: grid;
+			min-height: 200px;
+		}
 		#right-cards > a .text-contents {
 			.title-desc > h2 {
 				font-size: clamp(0.4rem, 1vw + 0.6rem, 1.5rem);
@@ -265,9 +269,6 @@ const featuredList = [
 		}
 	}
 	@media (max-width: 600px) {
-		/* #right-cards {
-			display: flex;
-		} */
 		#right-cards > a .text-contents {
 			.title-desc > h2 {
 				font-size: clamp(0.9rem, 1vw + 0.4rem, 1.6rem);
