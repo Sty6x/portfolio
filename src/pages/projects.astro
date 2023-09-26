@@ -44,7 +44,7 @@ const relevantData = data.map((repo, i) => {
 		<div id="left-header">
 			<div id="back-btn-container">
 				<ToBtn link="/" />
-				<!-- <p>Home</p> -->
+				<!-- <p class="btn-text">Home</p> -->
 			</div>
 			<p class="text-content header-text">
 				Here are some of the projects I’ve built throughout my journey of
@@ -94,7 +94,7 @@ const relevantData = data.map((repo, i) => {
 				</span>
 			</div>
 			<div id="to-email-page">
-				<p>How to reach me.</p>
+				<p class="btn-text">How to reach me.</p>
 				<ToBtn link="/contact" />
 			</div>
 		</footer>
@@ -351,16 +351,29 @@ const relevantData = data.map((repo, i) => {
 			font-size: 3rem;
 		}
 	}
-	@media (max-height: 768px) {
-		#back-btn-container,
-		#to-email-page {
-			scale: 0.7;
-		}
-	}
 
 	@media (max-width: 1024px) {
 		#left {
 			min-height: min-content !important;
+		}
+	}
+	@media (min-width: 320px) and (max-width: 500px) {
+		.text-content {
+			font-size: clamp(0.8rem, 1vw + 0.5rem, 1rem);
+		}
+		#current-projects-container {
+			display: grid;
+			grid-template-rows: repeat(2, minmax(100px, 1fr));
+			grid-template-columns: repeat(2, minmax(100px, 1fr));
+			gap: 0.6em;
+			padding: 1em 0;
+		}
+		.title {
+			font-size: clamp(0.8rem, 1vw + 0.5rem, 1rem);
+		}
+		#github-link,
+		.btn-text {
+			font-size: clamp(0.4rem, 1vw + 0.3rem, 1rem);
 		}
 	}
 </style>

@@ -125,7 +125,7 @@ import "../cssReset.css";
 		}
 		#left,
 		#right {
-			display: block !important;
+			/* display: block !important; */
 			min-height: 100vh;
 		}
 		section {
@@ -135,6 +135,17 @@ import "../cssReset.css";
 			min-height: fit-content;
 			margin-top: 2em;
 			margin-left: 0 !important;
+		}
+	}
+	@media (min-width: 320px) and (max-width: 500px) {
+		html {
+			display: flex;
+		}
+		body {
+			flex: 1;
+		}
+		main {
+			margin: 2em;
 		}
 	}
 </style>

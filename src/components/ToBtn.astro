@@ -4,15 +4,27 @@ const {link} = Astro.props;
 
 <span id="to-btn" class="to-btn-container">
 	<a href={link} class="to-btn">
-		<svg width="107" height="102" viewBox="0 0 107 102" fill="none" xmlns="http://www.w3.org/2000/svg">
-			<rect width="107" height="102" rx="51" transform="matrix(-1 0 0 1 107 0)" fill="#A3DFD5"/>
-			<path d="M42.168 35.368H51.384L66.104 49.896L51.384 64.424H42.168L56.952 49.896L42.168 35.368Z" fill="#1A1B1D"/>
-			</svg>
+		<svg
+			width="107"
+			height="102"
+			viewBox="0 0 107 102"
+			fill="none"
+			xmlns="http://www.w3.org/2000/svg">
+			<rect
+				width="107"
+				height="102"
+				rx="51"
+				transform="matrix(-1 0 0 1 107 0)"
+				fill="#A3DFD5"></rect>
+			<path
+				d="M42.168 35.368H51.384L66.104 49.896L51.384 64.424H42.168L56.952 49.896L42.168 35.368Z"
+				fill="#1A1B1D"></path>
+		</svg>
 	</a>
 </span>
 
 <style>
-	a{
+	a {
 		z-index: 1;
 	}
 	@keyframes animate-btn {
@@ -57,6 +69,11 @@ const {link} = Astro.props;
 		}
 		to {
 			stroke-dashoffset: 100;
+		}
+	}
+	@media (min-width: 320px) and (max-width: 500px) {
+		.to-btn-container {
+			scale: 0.7;
 		}
 	}
 </style>
