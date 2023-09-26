@@ -260,23 +260,27 @@ const featuredList = [
 		#right-cards > a .text-contents {
 			.title-desc > p {
 				font-size: clamp(0.5rem, 1vw + 0.2rem, 1.2rem);
-				display: none;
+				/* display: none; */
 			}
 			.source {
 				font-size: 0.8rem;
-				display: none;
+				/* display: none; */
 			}
 		}
 	}
 	@media (max-width: 600px) {
+		.source {
+			font-size: 0.8rem;
+			display: none;
+		}
 		#right-cards > a .text-contents {
 			.title-desc > h2 {
 				font-size: clamp(0.9rem, 1vw + 0.4rem, 1.6rem);
-				text-align: center;
+				/* text-align: center; */
 			}
 			.title-desc > p {
 				font-size: clamp(0.5rem, 1vw + 0.2rem, 1.2rem);
-				display: none;
+				/* display: none; */
 			}
 			.source {
 				font-size: 0.8rem;
@@ -284,7 +288,7 @@ const featuredList = [
 			}
 			.tools {
 				& > li {
-					display: none;
+					/* display: none; */
 					font-size: clamp(0.5rem, 0.5vw + 0.2rem, 0.8rem);
 					padding: 0.4em 0.6em;
 				}

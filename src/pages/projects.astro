@@ -119,8 +119,11 @@ const relevantData = data.map((repo, i) => {
 	#right,
 	#left {
 		display: flex;
-		flex-direction: column;
+		flex-direction: column-reverse;
 		gap: 1em;
+	}
+	#left {
+		flex-direction: column-reverse;
 	}
 
 	#right {
@@ -129,7 +132,7 @@ const relevantData = data.map((repo, i) => {
 	#back-btn-container {
 		display: flex;
 		align-items: center;
-		gap: 1em;
+		/* gap: 1em; */
 		#to-btn {
 			transform: rotate(180deg);
 		}
@@ -138,7 +141,7 @@ const relevantData = data.map((repo, i) => {
 	#left-header {
 		display: flex;
 		/* align-items: center; */
-		flex-direction: column;
+		flex-direction: column-reverse;
 		& > :not(:first-child) {
 			& > span {
 				color: var(--accent1);
@@ -250,7 +253,7 @@ const relevantData = data.map((repo, i) => {
 		display: flex;
 		align-items: center;
 		justify-content: end;
-		gap: 1em;
+		/* gap: 1em; */
 		margin-top: 1em;
 	}
 	.footer-highlight:first-of-type {
@@ -356,6 +359,11 @@ const relevantData = data.map((repo, i) => {
 	@media (max-width: 1024px) {
 		#left {
 			min-height: min-content !important;
+
+			flex-direction: column;
+		}
+		#right {
+			flex-direction: column;
 		}
 		.text-content {
 			width: 80%;
