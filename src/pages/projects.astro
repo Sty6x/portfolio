@@ -154,6 +154,7 @@ const relevantData = data.map((repo, i) => {
 		font-weight: 500;
 		font-size: clamp(1rem, 1vw + 0.8rem, 2.4rem);
 		margin-left: auto;
+		/* display: inline-block; */
 	}
 	#header-text,
 	#footer-text {
@@ -214,6 +215,7 @@ const relevantData = data.map((repo, i) => {
 	}
 	#footer-text {
 		/* margin-bottom: auto; */
+		gap: 1em;
 		display: flex;
 		flex-direction: column;
 		& > :first-child {
@@ -222,8 +224,6 @@ const relevantData = data.map((repo, i) => {
 		}
 		& > :last-child {
 			flex: 1;
-			display: flex;
-			align-items: center;
 		}
 	}
 	#to-email-page {
@@ -334,6 +334,12 @@ const relevantData = data.map((repo, i) => {
 	@media (min-width: 2560px) {
 		.text-content {
 			font-size: 3rem;
+		}
+	}
+	@media (max-width: 1450px) {
+		.text-content {
+			max-width: 100%;
+			font-size: clamp(1rem, 1vw + 0.8rem, 2.4rem);
 		}
 	}
 
