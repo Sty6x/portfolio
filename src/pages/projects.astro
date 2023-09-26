@@ -44,7 +44,7 @@ const relevantData = data.map((repo, i) => {
 		<div id="left-header">
 			<div id="back-btn-container">
 				<ToBtn link="/" />
-				<!-- <p class="btn-text">Home</p> -->
+				<p class="btn-text">Back to home.</p>
 			</div>
 			<p class="text-content header-text">
 				Here are some of the projects I’ve built throughout my journey of
@@ -137,7 +137,8 @@ const relevantData = data.map((repo, i) => {
 
 	#left-header {
 		display: flex;
-		align-items: center;
+		/* align-items: center; */
+		flex-direction: column;
 		& > :not(:first-child) {
 			& > span {
 				color: var(--accent1);
