@@ -195,9 +195,23 @@ const featuredList = [
 	#right-cards {
 		flex: 1;
 	}
-
+	@media (max-width: 1200px) {
+		.text-contents {
+			top: 50%;
+		}
+		#featured-cards-container {
+			flex-direction: column;
+		}
+		#right-cards {
+			display: grid;
+			grid-template-columns: repeat(2, minmax(200px, 1fr));
+		}
+	}
 	@media (max-width: 1024px) {
 		#right-cards > a .text-contents {
+			.title-desc > h2 {
+				font-size: clamp(0.4rem, 1vw + 0.6rem, 1.5rem);
+			}
 			.title-desc > p {
 				font-size: clamp(0.8rem, 1vw + 0.3rem, 1.6rem);
 			}
@@ -235,6 +249,18 @@ const featuredList = [
 				& > li {
 					font-size: clamp(0.4rem, 1vw + 0.3rem, 1rem);
 				}
+			}
+		}
+	}
+	@media (max-width: 700px) {
+		#right-cards > a .text-contents {
+			.title-desc > p {
+				font-size: clamp(0.5rem, 1vw + 0.2rem, 1.2rem);
+				display: none;
+			}
+			.source {
+				font-size: 0.8rem;
+				display: none;
 			}
 		}
 	}
