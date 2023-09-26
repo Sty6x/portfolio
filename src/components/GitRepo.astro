@@ -49,7 +49,7 @@ const {title, desc, lang, link} = Astro.props;
 		font-size: 0.8rem;
 		color: var(--accent3);
 	}
-	@media (max-height: 960px) {
+	@media (min-height: 1000px) {
 		#repo-title-desc {
 			& > h2 {
 				font-size: clamp(1rem, 1vw + 1rem, 1.4rem);
