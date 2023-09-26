@@ -257,7 +257,7 @@ const relevantData = data.map((repo, i) => {
 		opacity: 0;
 		animation: reveal-y forwards normal 400ms 200ms ease-in-out;
 		font-weight: 500;
-		font-size: 1.2rem;
+		/* font-size: 1.2rem; */
 	}
 
 	@keyframes github-line {
@@ -320,20 +320,49 @@ const relevantData = data.map((repo, i) => {
 		transform: rotate(180deg);
 	}
 
-	@media (min-width: 1921px) {
-		.text-content,
-		#github-link {
-			font-size: clamp(1rem, 1vw + 1.3rem, 3rem);
-		}
-		/* #current-projects-container {
+	@media (min-height: 960px) {
+		#current-projects-container {
 			grid-template-rows: repeat(2, minmax(200px, 300px));
 			grid-template-columns: repeat(2, 1fr);
-		} */
+		}
+	}
+	@media (max-width: 1920px) and (min-height: 1080px) {
+		.text-content {
+			font-size: clamp(1rem, 1vw + 1.2rem 3rem) !important;
+		}
+		#github-link {
+			font-size: clamp(1rem, 1vw + 1rem, 1.8rem) !important;
+		}
+
+		.btn-text {
+			font-size: clamp(1rem, 1vw + 1.2rem, 1.5rem) !important;
+		}
+		#back-btn-container,
+		#to-email-page {
+			gap: 2em;
+		}
+	}
+	@media (min-width: 1921px) {
+		#current-projects-container {
+			grid-template-rows: repeat(2, minmax(200px, 300px));
+			grid-template-columns: repeat(2, 1fr);
+		}
 	}
 
-	@media (min-width: 2560px) {
+	@media (max-width: 2560px) and (min-width: 1920px) {
 		.text-content {
-			font-size: 3rem;
+			font-size: clamp(1rem, 1vw + 1.2rem 3rem);
+		}
+		#github-link {
+			font-size: clamp(1rem, 1vw + 1rem, 1.8rem) !important;
+		}
+
+		.btn-text {
+			font-size: clamp(1rem, 1vw + 1.2rem, 1.5rem) !important;
+		}
+		#back-btn-container,
+		#to-email-page {
+			gap: 2em;
 		}
 	}
 	@media (max-width: 1450px) {

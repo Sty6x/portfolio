@@ -49,6 +49,19 @@ const {title, desc, lang, link} = Astro.props;
 		font-size: 0.8rem;
 		color: var(--accent3);
 	}
+	@media (min-height: 960px) {
+		#repo-title-desc {
+			& > h2 {
+				font-size: clamp(1rem, 1vw + 1rem, 1.4rem);
+			}
+			& > :last-child {
+				font-size: clamp(0.8rem, 1vw + 0.8rem, 1rem);
+			}
+		}
+		#languages {
+			font-size: clamp(1rem, 1vw + 0.8rem, 1rem);
+		}
+	}
 	@media (min-width: 1921px) {
 		#repo-title-desc {
 			& > h2 {
