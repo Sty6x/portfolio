@@ -9,13 +9,16 @@ const featuredList = [
 		imgPath: wfCLI,
 		link: "https://www.npmjs.com/package/warframe-event-status-cli",
 		source: "https://github.com/Sty6x/warframe-event-status-cli",
+		tools: ["TypesSript", "Chalk", "Cli table", "Boxen"],
 	},
+
 	{
 		title: "Website Time Tracker",
 		desc: "A Chrome extension that tracks total visits and time spent on a website",
 		imgPath: timeTracker,
 		link: "https://chrome.google.com/webstore/detail/website-tracker/khdpmjbnljkpleaeigoneokglkkgmamf",
 		source: "https://github.com/Sty6x/website-time-tracker",
+		tools: ["Javascript", "Chrome Extension APi"],
 	},
 ];
 ---
@@ -35,10 +38,6 @@ const featuredList = [
 					A Keyboard oriented approach of taking notes using vim key bindings
 				</p>
 			</div>
-			<ul class="source">
-				<li>Source Code</li>
-				<li>Visit Project</li>
-			</ul>
 		</div>
 		<img src={vimnotesImg.src} />
 	</a>
@@ -49,19 +48,14 @@ const featuredList = [
 					<a class="cards" href={card.link}>
 						<div class="text-contents">
 							<ul class="tools">
-								<li>TypeScript</li>
-								<li>React</li>
-								<li>Tailwind</li>
-								<li>Firebase</li>
+								{card.tools.map((tool) => {
+									return <li>{tool}</li>;
+								})}
 							</ul>
 							<div class="title-desc">
 								<h2>{card.title}</h2>
 								<p>{card.desc}</p>
 							</div>
-							<ul class="source">
-								<li>Source Code</li>
-								<li>Visit Project</li>
-							</ul>
 						</div>
 						<img src={card.imgPath.src} />
 					</a>
@@ -95,7 +89,7 @@ const featuredList = [
 		transform: translate(-50%, -50%);
 
 		.title-desc > h2 {
-			font-size: clamp(0.8rem, 1vw + 0.4rem, 1.6rem);
+			font-size: clamp(0.8rem, 1vw + 0.4rem, 1.5rem);
 			font-weight: 600;
 		}
 		.title-desc > p {
