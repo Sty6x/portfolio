@@ -197,6 +197,13 @@ const featuredList = [
 	}
 
 	@media (max-width: 1024px) {
+		#right-cards > a .text-contents {
+			.tools {
+				& > li {
+					font-size: clamp(0.5rem, 1vw + 0.1rem, 0.7rem) !important;
+				}
+			}
+		}
 		#featured-cards-container {
 			flex-direction: column;
 		}
@@ -208,7 +215,44 @@ const featuredList = [
 			display: grid;
 			grid-template-columns: repeat(2, minmax(200px, 1fr));
 		}
+		#first-card > .text-contents {
+			.title-desc > h2 {
+				font-size: clamp(1rem, 1vw + 1.2rem, 2rem);
+			}
+			.title-desc > p {
+				font-size: clamp(0.8rem, 1vw + 0.7rem, 1.6rem);
+			}
+			.source {
+				font-size: 0.8rem;
+			}
+			.tools {
+				& > li {
+					font-size: clamp(0.4rem, 1vw + 0.3rem, 1rem);
+				}
+			}
+		}
 	}
-	/* @media (max-width: 600px) {
-	} */
+	@media (max-width: 600px) {
+		#right-cards > a .text-contents {
+			.title-desc > h2 {
+				font-size: clamp(0.9rem, 1vw + 0.4rem, 1.6rem);
+				text-align: center;
+			}
+			.title-desc > p {
+				font-size: clamp(0.5rem, 1vw + 0.2rem, 1.2rem);
+				display: none;
+			}
+			.source {
+				font-size: 0.8rem;
+				display: none;
+			}
+			.tools {
+				& > li {
+					display: none;
+					font-size: clamp(0.5rem, 0.5vw + 0.2rem, 0.8rem);
+					padding: 0.4em 0.6em;
+				}
+			}
+		}
+	}
 </style>
