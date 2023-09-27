@@ -87,11 +87,11 @@ const relevantData = data.map((repo, i) => {
 					 come to life, to help me and others benefit from the usefulness of my
 					work.
 				</p>
-				<span>
+				<div>
 					<a id="github-link" href="https://github.com/Sty6x"
 						>More projects here.</a
 					>
-				</span>
+				</div>
 			</div>
 			<div id="to-email-page">
 				<p class="btn-text">How to reach me.</p>
@@ -387,12 +387,19 @@ const relevantData = data.map((repo, i) => {
 		}
 		.text-content {
 			width: 75%;
-			font-size: clamp(0.5rem, 1vw + 1.2rem, 2rem);
+			font-size: clamp(0.5rem, 1vw + 1.1rem, 2rem);
+		}
+	}
+
+	@media (max-width: 900px) {
+		.text-content {
+			width: 80%;
+			font-size: clamp(0.5rem, 1vw + 1.1rem, 2rem);
 		}
 	}
 	@media (min-width: 320px) and (max-width: 600px) {
 		.text-content {
-			font-size: clamp(0.5rem, 1vw + 0.7rem, 1.2rem);
+			font-size: clamp(0.5rem, 1vw + 0.9rem, 1.2rem);
 		}
 		#current-projects-container {
 			display: grid;
