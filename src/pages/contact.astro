@@ -1,14 +1,17 @@
 ---
 import ToBtn from "../components/ToBtn.astro";
 import Layout from "../layouts/Layout.astro";
+import ProjectLayout from "../layouts/ProjectLayout.astro";
 ---
 
-<Layout title="Contacts">
+<ProjectLayout title="Contacts">
 	<section id="left">
 		<div class="text-content-container">
 			<div id="back-btn-container">
-				<ToBtn link="/projects" />
-				<p>Back to projects.</p>
+				<div id="back-btn">
+					<ToBtn link="/projects" />
+					<p>Back to projects.</p>
+				</div>
 			</div>
 			<div class="text-content">
 				<h1>I'm Free.</h1>
@@ -62,7 +65,7 @@ import Layout from "../layouts/Layout.astro";
 			</div>
 		</form>
 	</section>
-</Layout>
+</ProjectLayout>
 <script></script>
 <style>
 	section {
@@ -74,6 +77,7 @@ import Layout from "../layouts/Layout.astro";
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
+		min-height: 0vh;
 	}
 	#right {
 		display: flex;
@@ -86,7 +90,7 @@ import Layout from "../layouts/Layout.astro";
 		& > h1 {
 			margin-left: 0.3em;
 			font-weight: 600;
-			font-size: 3.5rem;
+			font-size: clamp(0.8rem, 1vw + 1.8rem, 3.5rem);
 		}
 		& > p {
 			margin-left: 1em;
@@ -95,7 +99,7 @@ import Layout from "../layouts/Layout.astro";
 			font-size: 1.2rem;
 		}
 	}
-	#back-btn-container {
+	#back-btn {
 		display: flex;
 		align-items: center;
 		gap: 1em;
@@ -158,9 +162,8 @@ import Layout from "../layouts/Layout.astro";
 
 	#right > form {
 		padding: 3em;
-		/* background-color: var(--lighter-shade); */
 		border: 2px solid var(--lighter-shade);
-		height: 80%;
+		max-height: 80%;
 		width: calc(60% + 6em);
 		min-width: 500px;
 		border-radius: 5px;
@@ -182,9 +185,8 @@ import Layout from "../layouts/Layout.astro";
 		}
 		& > textarea {
 			margin-top: 0.5em;
-			height: 200px;
-			min-height: 50px;
-			max-height: 200px;
+			min-height: 100px;
+			max-height: 150px;
 		}
 	}
 
@@ -215,6 +217,62 @@ import Layout from "../layouts/Layout.astro";
 			font-weight: 600;
 			border-radius: 3px;
 			padding: 0.6em 1em;
+		}
+	}
+
+	@media (max-width: 1024px) {
+		#left {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			min-height: 0vh;
+		}
+		#right {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		.text-content {
+			& > h1 {
+				font-size: clamp(0.8rem, 1vw + 2rem, 3.5rem);
+			}
+			& > p {
+				font-size: 1.2rem;
+			}
+		}
+		.text-content-container,
+		.text-content {
+			width: 100%;
+		}
+		#right > form {
+			height: 80%;
+			width: 100%;
+			min-width: 400px;
+			border-radius: 5px;
+			& > h2 {
+				font-weight: 600;
+				font-size: clamp(0.8rem, 1vw + 1.3rem, 2rem);
+				margin-bottom: 1em;
+			}
+		}
+	}
+
+	@media (max-width: 500px) {
+		#mail-box {
+			/* display: none; */
+		}
+		.text-content-container,
+		.text-content {
+			width: 100%;
+		}
+		.text-content {
+			& > h1 {
+				font-size: clamp(0.8rem, 1vw + 1.5rem, 3.5rem);
+			}
+			& > p {
+				font-size: 1.2rem;
+			}
 		}
 	}
 </style>
