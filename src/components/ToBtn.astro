@@ -71,9 +71,18 @@ const {link} = Astro.props;
 			stroke-dashoffset: 100;
 		}
 	}
+
+	.to-btn-container {
+		scale: 0.8;
+	}
 	@media (min-width: 320px) and (max-width: 600px) {
 		.to-btn-container {
 			scale: 0.7;
+		}
+	}
+	@media (max-width: 2560px) and (min-width: 1921px) {
+		.to-btn-container {
+			scale: 1.2;
 		}
 	}
 </style>

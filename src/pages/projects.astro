@@ -87,11 +87,11 @@ const relevantData = data.map((repo, i) => {
 					 come to life, to help me and others benefit from the usefulness of my
 					work.
 				</p>
-				<span>
+				<div>
 					<a id="github-link" href="https://github.com/Sty6x"
 						>More projects here.</a
 					>
-				</span>
+				</div>
 			</div>
 			<div id="to-email-page">
 				<p class="btn-text">How to reach me.</p>
@@ -119,8 +119,11 @@ const relevantData = data.map((repo, i) => {
 	#right,
 	#left {
 		display: flex;
-		flex-direction: column;
+		flex-direction: column-reverse;
 		gap: 1em;
+	}
+	#left {
+		flex-direction: column-reverse;
 	}
 
 	#right {
@@ -129,7 +132,6 @@ const relevantData = data.map((repo, i) => {
 	#back-btn-container {
 		display: flex;
 		align-items: center;
-		gap: 1em;
 		#to-btn {
 			transform: rotate(180deg);
 		}
@@ -138,7 +140,7 @@ const relevantData = data.map((repo, i) => {
 	#left-header {
 		display: flex;
 		/* align-items: center; */
-		flex-direction: column;
+		flex-direction: column-reverse;
 		& > :not(:first-child) {
 			& > span {
 				color: var(--accent1);
@@ -152,6 +154,11 @@ const relevantData = data.map((repo, i) => {
 		font-weight: 500;
 		font-size: clamp(1rem, 1vw + 0.8rem, 2.4rem);
 		margin-left: auto;
+		/* display: inline-block; */
+	}
+	#header-text,
+	#footer-text {
+		flex: 1;
 	}
 	.title {
 		font-size: clamp(1rem, 1vw + 1rem, 2rem);
@@ -176,36 +183,6 @@ const relevantData = data.map((repo, i) => {
 			}
 		}
 	}
-	/* #carousel {
-		display: flex;
-		position: relative;
-		justify-content: center;
-		align-items: center;
-		margin-top: 1em;
-		width: 100%;
-		height: 100%;
-		border-radius: 10px;
-		& > img {
-			width: 100%;
-			height: 100%;
-			object-fit: cover;
-			-o-object-fit: cover;
-			object-position: center;
-			-o-object-position: center;
-			filter: blur(2px);
-			transition: filter 150ms ease-in-out;
-			position: relative;
-		}
-	}
-	#carousel:hover {
-		cursor: pointer;
-		border-radius: 10px;
-		& > img {
-			transition: filter 150ms ease-in-out;
-			filter: blur(0);
-		}
-	} */
-
 	#right-header {
 		display: flex;
 		flex-direction: column;
@@ -237,20 +214,23 @@ const relevantData = data.map((repo, i) => {
 		flex-direction: column;
 	}
 	#footer-text {
-		margin-bottom: auto;
+		/* margin-bottom: auto; */
+		gap: 1em;
 		display: flex;
 		flex-direction: column;
-		gap: 1em;
 		& > :first-child {
 			margin: 0;
 			text-align: start;
+		}
+		& > :last-child {
+			flex: 1;
 		}
 	}
 	#to-email-page {
 		display: flex;
 		align-items: center;
 		justify-content: end;
-		gap: 1em;
+		/* gap: 1em; */
 		margin-top: 1em;
 	}
 	.footer-highlight:first-of-type {
@@ -340,41 +320,100 @@ const relevantData = data.map((repo, i) => {
 		transform: rotate(180deg);
 	}
 
-	@media (min-width: 1921px) {
-		.text-content,
+	/* @media (min-height: 960px) {
+		#current-projects-container {
+			grid-template-rows: repeat(2, minmax(200px, 300px));
+			grid-template-columns: repeat(2, 1fr);
+		}
+	} */
+	@media (max-width: 1920px) and (min-height: 1000px) {
+		#current-projects-container {
+			grid-template-rows: repeat(2, minmax(200px, 300px));
+			grid-template-columns: repeat(2, 1fr);
+		}
+		.text-content {
+			font-size: clamp(1rem, 1vw + 1.2rem 3rem) !important;
+		}
 		#github-link {
-			font-size: clamp(1rem, 1vw + 1.3rem, 3rem);
+			font-size: clamp(1rem, 1vw + 1rem, 1.8rem) !important;
+		}
+
+		.btn-text {
+			font-size: clamp(1rem, 1vw + 1.2rem, 1.5rem) !important;
+		}
+		#back-btn-container,
+		#to-email-page {
+			gap: 2em;
+		}
+	}
+	@media (min-width: 1921px) {
+		#current-projects-container {
+			grid-template-rows: repeat(2, minmax(200px, 300px));
+			grid-template-columns: repeat(2, 1fr);
 		}
 	}
 
-	@media (min-width: 2560px) {
+	@media (max-width: 2560px) and (min-width: 1921px) {
 		.text-content {
-			font-size: 3rem;
+			font-size: clamp(1rem, 1vw + 1.2rem 3rem);
+			width: 70%;
+		}
+		#github-link {
+			font-size: clamp(1rem, 1vw + 1rem, 1.8rem) !important;
+		}
+
+		.btn-text {
+			font-size: clamp(1rem, 1vw + 1.2rem, 1.5rem) !important;
+		}
+		#back-btn-container,
+		#to-email-page {
+			gap: 2em;
+		}
+	}
+	@media (max-width: 1450px) {
+		.text-content {
+			max-width: 100%;
+			font-size: clamp(1rem, 1vw + 0.8rem, 2.4rem);
 		}
 	}
 
 	@media (max-width: 1024px) {
+		#left-header {
+			flex-direction: column;
+		}
 		#left {
 			min-height: min-content !important;
+
+			flex-direction: column;
+		}
+		#right {
+			flex-direction: column;
 		}
 		.text-content {
+			width: 75%;
+			font-size: clamp(0.5rem, 1vw + 1.1rem, 2rem);
+		}
+	}
+
+	@media (max-width: 900px) {
+		.text-content {
 			width: 80%;
-			font-size: clamp(0.5rem, 1vw + 1.2rem, 2rem);
+			font-size: clamp(0.5rem, 1vw + 1.1rem, 2rem);
 		}
 	}
 	@media (min-width: 320px) and (max-width: 600px) {
 		.text-content {
-			font-size: clamp(0.5rem, 1vw + 0.7rem, 1.2rem);
+			font-size: clamp(0.5rem, 1vw + 0.9rem, 1.2rem);
 		}
 		#current-projects-container {
 			display: grid;
-			grid-template-rows: repeat(2, minmax(100px, 1fr));
+			grid-template-rows: repeat(2, minmax(200px, 1fr));
 			grid-template-columns: repeat(2, minmax(100px, 1fr));
 			gap: 0.6em;
 			padding: 1em 0;
 		}
 		.title {
-			font-size: clamp(0.8rem, 1vw + 0.5rem, 1rem);
+			font-size: clamp(0.8rem, 1vw + 0.9rem, 1rem);
 		}
 		#github-link,
 		.btn-text {
