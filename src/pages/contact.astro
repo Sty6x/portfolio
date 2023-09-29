@@ -34,7 +34,7 @@ import ProjectLayout from "../layouts/ProjectLayout.astro";
 		</div>
 	</section>
 	<section id="right">
-		<span id="pop-up-notification" class="">
+		<span id="pop-up-notification" class="inactive">
 			<p id="pop-up-text"></p>
 			<span id="pop-up-icon" class="on-success"></span>
 		</span>
@@ -115,12 +115,45 @@ import ProjectLayout from "../layouts/ProjectLayout.astro";
 	async function setPopUpText(text) {
 		const popUpText = document.getElementById("pop-up-text");
 		popUpText.textContent = text;
+		showPopUp();
+	}
+	function showPopUp() {
+		const popUp = document.getElementById("pop-up-notification");
+		if (popUp.classList.contains("inactive")) {
+			popUp.classList.replace("inactive", "active");
+		}
+
+		setTimeout(() => {
+			popUp.classList.replace("active", "inactive");
+		}, 2000);
 	}
 
 	form.addEventListener("submit", handleOnSubmit);
 </script>
 <style>
+	@keyframes pop-up-show {
+		from {
+			top: -20%;
+		}
+		to {
+			opacity: 1;
+			top: 10%;
+		}
+	}
+
+	@keyframes pop-up-hide {
+		from {
+			opacity: 1;
+			top: 10%;
+		}
+		to {
+			opacity: 0;
+			top: -20%;
+		}
+	}
+
 	#pop-up-notification {
+		opacity: 0;
 		position: absolute;
 		padding: 1em 2em;
 		font-size: 0.9rem;
@@ -145,6 +178,14 @@ import ProjectLayout from "../layouts/ProjectLayout.astro";
 
 	.on-error {
 		background-image: url("../assets/icons/error.svg");
+	}
+
+	.active {
+		animation: pop-up-show 200ms forwards normal ease-in-out;
+	}
+
+	.inactive {
+		animation: pop-up-hide 200ms forwards normal ease-in-out;
 	}
 
 	section {
