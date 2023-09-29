@@ -34,6 +34,10 @@ import ProjectLayout from "../layouts/ProjectLayout.astro";
 		</div>
 	</section>
 	<section id="right">
+		<span id="pop-up-notification" class="">
+			<p id="pop-up-text"></p>
+			<span id="pop-up-icon" class="on-success"></span>
+		</span>
 		<form>
 			<h2>Send me a message.</h2>
 			<div id="name" class="inputs">
@@ -93,21 +97,56 @@ import ProjectLayout from "../layouts/ProjectLayout.astro";
 		console.log(inputs);
 		try {
 			const emailsRef = collection(db, "emails");
-			await addDoc(emailsRef, {...inputs});
+			// await addDoc(emailsRef, {...inputs});
+			setPopUpText("Message sent successfully!");
 		} catch (err) {
 			console.log(err);
+			setPopUpText("Something went wrong, please try again later.");
 			throw err;
 		}
 	}
-	form.addEventListener("submit", async (e) => {
+	async function handleOnSubmit(e) {
 		e.preventDefault();
 		const messageBody = new FormData(form);
 		const toPbj = Object.fromEntries(messageBody);
 		const data = await sendMessage(toPbj);
-		console.log(data);
-	});
+	}
+
+	async function setPopUpText(text) {
+		const popUpText = document.getElementById("pop-up-text");
+		popUpText.textContent = text;
+	}
+
+	form.addEventListener("submit", handleOnSubmit);
 </script>
 <style>
+	#pop-up-notification {
+		position: absolute;
+		padding: 1em 2em;
+		font-size: 0.9rem;
+		background-color: var(--bg);
+		border: 1px solid var(--lighter-shade);
+		border-radius: 5px;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 0.9em;
+		box-shadow: 3px 3px 15px 3px rgba(0, 0, 0, 0.6);
+	}
+	#pop-up-icon {
+		width: 25px;
+		height: 25px;
+		background-position: center;
+		background-repeat: no-repeat;
+	}
+	.on-success {
+		background-image: url("../assets/icons/success.svg");
+	}
+
+	.on-error {
+		background-image: url("../assets/icons/error.svg");
+	}
+
 	section {
 		flex: 1;
 		height: 100%;
@@ -120,6 +159,7 @@ import ProjectLayout from "../layouts/ProjectLayout.astro";
 		min-height: 0vh;
 	}
 	#right {
+		position: relative;
 		display: flex;
 		align-items: center;
 		justify-content: center;
