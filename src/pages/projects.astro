@@ -1,5 +1,5 @@
 ---
-import ProjectLayout from "../layouts/ProjectLayout.astro";
+import MainLayout from "../layouts/MainLayout.astro";
 import ToBtn from "../components/ToBtn.astro";
 import GitRepo from "../components/GitRepo.astro";
 import {Octokit} from "octokit";
@@ -39,7 +39,7 @@ const relevantData = data.map((repo, i) => {
 });
 ---
 
-<ProjectLayout>
+<MainLayout>
 	<section id="left">
 		<div id="left-header">
 			<div id="back-btn-container">
@@ -99,7 +99,7 @@ const relevantData = data.map((repo, i) => {
 			</div>
 		</footer>
 	</section>
-</ProjectLayout>
+</MainLayout>
 
 <script></script>
 
@@ -206,7 +206,6 @@ const relevantData = data.map((repo, i) => {
 		display: flex;
 		flex-direction: column;
 		& > :first-child {
-			margin: 0;
 			text-align: start;
 		}
 		& > :last-child {
@@ -279,13 +278,22 @@ const relevantData = data.map((repo, i) => {
 			transition: width 200ms ease-in-out;
 		}
 	}
+	.header-text {
+		margin-right: 17px;
+	}
+	.footer-text {
+		display: block;
+		margin-left: 17px;
+	}
 	.header-text::after {
 		right: -2%;
 		animation: text-cover 700ms 150ms ease-in-out forwards normal;
+		right: -20px;
 	}
 
 	.footer-text::after {
 		left: -2%;
+		left: -20px;
 		animation: text-cover 700ms 450ms ease-in-out forwards normal;
 		transform: rotate(180deg);
 	}
