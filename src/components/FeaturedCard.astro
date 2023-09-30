@@ -88,6 +88,11 @@ const featuredList = [
 		top: 50%;
 		transform: translate(-50%, -50%);
 
+		.title-desc {
+			display: flex;
+			flex-direction: column;
+			gap: 0.3em;
+		}
 		.title-desc > h2 {
 			font-size: clamp(0.8rem, 1vw + 0.4rem, 1.5rem);
 			font-weight: 600;
@@ -95,6 +100,7 @@ const featuredList = [
 		.title-desc > p {
 			font-size: clamp(0.4rem, 1vw + 0.1rem, 1rem);
 			font-weight: 500;
+			line-height: 20px;
 		}
 		.source {
 			display: flex;
@@ -190,6 +196,9 @@ const featuredList = [
 		flex: 1;
 	}
 	@media (max-width: 1200px) {
+		.title-desc > p {
+			line-height: normal;
+		}
 		.text-contents {
 			top: 50%;
 		}
