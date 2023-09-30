@@ -114,12 +114,12 @@ import ProjectLayout from "../layouts/ProjectLayout.astro";
 		console.log(inputs);
 		try {
 			const emailsRef = collection(db, "emails");
-			// await addDoc(emailsRef, {...inputs});
-			setPopUpText("Message sent successfully!");
+			await addDoc(emailsRef, {...inputs});
+			clearInputText();
+			return "Message sent successfully!";
 		} catch (err) {
 			console.log(err);
-			setPopUpText("Something went wrong, please try again later.");
-			throw err;
+			return "Something went wrong, please try again later.";
 		}
 	}
 	async function handleOnSubmit(e) {
@@ -129,12 +129,11 @@ import ProjectLayout from "../layouts/ProjectLayout.astro";
 		});
 		const messageBody = new FormData(form);
 		const toPbj = Object.fromEntries(messageBody);
-		setTimeout(async () => {
-			Array.from(inputs).forEach((child) => {
-				child.removeAttribute("disabled");
-			});
-		}, 2000);
-		const data = await sendMessage(toPbj);
+		const message = await sendMessage(toPbj);
+		Array.from(inputs).forEach((child) => {
+			child.removeAttribute("disabled");
+		});
+		setPopUpText(message);
 	}
 
 	async function setPopUpText(text) {
@@ -151,6 +150,12 @@ import ProjectLayout from "../layouts/ProjectLayout.astro";
 		setTimeout(() => {
 			popUp.classList.replace("active", "inactive");
 		}, 2000);
+	}
+	function clearInputText() {
+		const inputs = document.querySelectorAll("input");
+		Array.from(inputs).forEach((input) => {
+			input.value = "";
+		});
 	}
 
 	form.addEventListener("submit", handleOnSubmit);
