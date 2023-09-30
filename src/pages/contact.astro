@@ -41,10 +41,17 @@ import ProjectLayout from "../layouts/ProjectLayout.astro";
 		<form>
 			<h2>Send me a message.</h2>
 			<div id="name" class="inputs">
-				<input type="text" id="name" name="name" placeholder="Fullname*" />
+				<input
+					class="input"
+					type="text"
+					id="name"
+					name="name"
+					placeholder="Fullname*"
+				/>
 			</div>
 			<div id="email" class="inputs">
 				<input
+					class="input"
 					type="email"
 					id="email"
 					name="email"
@@ -52,14 +59,20 @@ import ProjectLayout from "../layouts/ProjectLayout.astro";
 				/>
 			</div>
 			<div id="subject" class="inputs">
-				<input type="text" id="subject" name="subject" placeholder="Subject" />
+				<input
+					class="input"
+					type="text"
+					id="subject"
+					name="subject"
+					placeholder="Subject"
+				/>
 			</div>
 			<div id="message" class="inputs">
 				<label for="message">Tell me what you think</label>
-				<textarea id="message" name="message"></textarea>
+				<textarea class="input" id="message" name="message"></textarea>
 			</div>
 			<div id="submit-btn">
-				<button type="submit">Send message</button>
+				<button class="input" type="submit">Send message</button>
 			</div>
 		</form>
 	</section>
@@ -93,6 +106,10 @@ import ProjectLayout from "../layouts/ProjectLayout.astro";
 	const app = initializeApp(firebaseConfig);
 	const db = getFirestore(app);
 	const form = document.querySelector("form");
+	const submitBtn = document.querySelector('button[type="submit"]');
+	const inputs = document.querySelectorAll(".input");
+	console.log(submitBtn);
+
 	async function sendMessage(inputs) {
 		console.log(inputs);
 		try {
@@ -107,8 +124,16 @@ import ProjectLayout from "../layouts/ProjectLayout.astro";
 	}
 	async function handleOnSubmit(e) {
 		e.preventDefault();
+		Array.from(inputs).forEach((child) => {
+			child.setAttribute("disabled", "");
+		});
 		const messageBody = new FormData(form);
 		const toPbj = Object.fromEntries(messageBody);
+		setTimeout(async () => {
+			Array.from(inputs).forEach((child) => {
+				child.removeAttribute("disabled");
+			});
+		}, 2000);
 		const data = await sendMessage(toPbj);
 	}
 
@@ -153,6 +178,7 @@ import ProjectLayout from "../layouts/ProjectLayout.astro";
 	}
 
 	#pop-up-notification {
+		z-index: 10;
 		opacity: 0;
 		position: absolute;
 		padding: 1em 2em;
@@ -282,6 +308,7 @@ import ProjectLayout from "../layouts/ProjectLayout.astro";
 	}
 
 	#right > form {
+		transition: all 200ms ease-in-out;
 		padding: 3em;
 		border: 2px solid var(--lighter-shade);
 		max-height: 80%;
@@ -294,6 +321,13 @@ import ProjectLayout from "../layouts/ProjectLayout.astro";
 			margin-bottom: 1em;
 		}
 	}
+
+	form:has(.input:disabled) {
+		transition: all 200ms ease-in-out;
+		filter: blur(5px);
+		opacity: 0.5;
+	}
+
 	.inputs {
 		& > * {
 			appearance: none;
@@ -338,6 +372,14 @@ import ProjectLayout from "../layouts/ProjectLayout.astro";
 			font-weight: 600;
 			border-radius: 3px;
 			padding: 0.6em 1em;
+			transition: background-color ease-in-out 200ms;
+		}
+	}
+
+	#submit-btn {
+		& > button:disabled {
+			transition: background-color ease-in-out 200ms;
+			background-color: #a3dfd580;
 		}
 	}
 
