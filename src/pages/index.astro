@@ -35,25 +35,25 @@ import ToBtn from "../components/ToBtn.astro";
 </Layout>
 
 <script is:inline>
-	const aboutPanel = document.getElementById("about-panel");
-	console.log(aboutPanel);
-	aboutPanel.addEventListener(
-		"mouseenter",
-		(e) => {
-			const target = e.currentTarget;
-			target.classList.replace("inactive", "active");
-		},
-		false,
-	);
+const aboutPanel = document.getElementById("about-panel");
+console.log(aboutPanel);
+aboutPanel.addEventListener(
+	"mouseenter",
+	(e) => {
+		const target = e.currentTarget;
+		target.classList.replace("inactive", "active");
+	},
+	false,
+);
 
-	aboutPanel.addEventListener(
-		"mouseleave",
-		(e) => {
-			const target = e.currentTarget;
-			target.classList.replace("active", "inactive");
-		},
-		false,
-	);
+aboutPanel.addEventListener(
+	"mouseleave",
+	(e) => {
+		const target = e.currentTarget;
+		target.classList.replace("active", "inactive");
+	},
+	false,
+);
 </script>
 
 <style>
@@ -77,6 +77,10 @@ import ToBtn from "../components/ToBtn.astro";
 		letter-spacing: 0.8em;
 	}
 	span#greet {
+		display: block;
+		margin-top: 0.4em;
+		margin-bottom: 0.4em;
+		line-height: 60px;
 		font-weight: 500;
 		font-size: clamp(1rem, 1vw + 2rem, 3rem);
 	}
@@ -123,6 +127,9 @@ import ToBtn from "../components/ToBtn.astro";
 		}
 	}
 	@media (max-width: 750px) {
+		span#greet {
+			line-height: normal;
+		}
 		#btn-container {
 			top: 75%;
 			left: 50%;

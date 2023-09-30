@@ -42,16 +42,15 @@ const {title, desc, lang, link} = Astro.props;
 		display: flex;
 		flex-direction: column;
 		gap: 0.2em;
-		& #repo-title > h2 {
-			font-weight: 600;
-			font-size: clamp(0.5rem, 1vw + 0.5rem, 1rem);
-			color: var(--accent3);
-		}
+
 		& #repo-title > h2:hover {
 			text-decoration: underline;
 		}
 
 		& > #repo-title {
+			font-weight: 600;
+			font-size: clamp(0.5rem, 1vw + 0.5rem, 1rem);
+			color: var(--accent3);
 			display: flex;
 			gap: 0.7em;
 			align-items: center;
@@ -65,6 +64,7 @@ const {title, desc, lang, link} = Astro.props;
 			}
 		}
 		& > :last-child {
+			line-height: 18px;
 			font-size: clamp(0.5rem, 1vw + 0.4rem, 0.9rem);
 		}
 	}
