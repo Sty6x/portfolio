@@ -127,3 +127,26 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+
+a:visited,a:link{
+  color: white;
+  text-decoration: none;
+}
+textarea{
+  max-width: 100%;
+  min-width: 100%;
+}
+input,textarea{
+  border: none;
+  appearance: none ;
+  box-sizing: border-box;
+  width: 100%;
+  font-family: poppins;
+}
+button{
+  appearance: none;
+  border: none;
+}
+form{
+  box-sizing: border-box;
+}
