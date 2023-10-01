@@ -447,4 +447,15 @@ import MainLayout from "../layouts/MainLayout.astro";
 			}
 		}
 	}
+	@media (min-width: 1921px) {
+		.text-content {
+			margin-top: 2em;
+		}
+		#back-btn {
+			gap: 2em;
+			:last-child {
+				font-size: clamp(1rem, 1vw + 1.2rem, 1.5rem) !important;
+			}
+		}
+	}
 </style>
