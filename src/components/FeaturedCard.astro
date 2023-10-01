@@ -157,13 +157,13 @@ const featuredList = [
 		& > img {
 			object-position: 0% 0%;
 		}
-		&::after {
+		/* &::after {
 			background: linear-gradient(
 				var(--gradient-angle),
 				transparent 20%,
 				var(--accent1) var(--outer-value)
 			);
-		}
+		} */
 	}
 	#featured-cards-container,
 	.cards {
@@ -176,7 +176,7 @@ const featuredList = [
 		& > a .text-contents {
 			top: 50%;
 		}
-		& > a:first-child::after {
+		/* & > a:first-child::after {
 			background: linear-gradient(
 				var(--gradient-angle),
 				transparent 20%,
@@ -190,7 +190,7 @@ const featuredList = [
 				transparent 20%,
 				var(--accent3) var(--outer-value)
 			);
-		}
+		} */
 	}
 	#first-card,
 	#right-cards {
@@ -290,6 +290,28 @@ const featuredList = [
 			}
 			.source {
 				font-size: 0.8rem;
+				display: none;
+			}
+			.tools {
+				& > li {
+					/* display: none; */
+					font-size: clamp(0.5rem, 0.5vw + 0.2rem, 0.8rem);
+					padding: 0.4em 0.6em;
+				}
+			}
+		}
+	}
+	@media (min-width: 1921px) {
+		.text-contents {
+			.title-desc > h2 {
+				font-size: clamp(0.9rem, 1vw + 1rem, 2rem);
+			}
+			.title-desc > p {
+				font-size: clamp(0.5rem, 1vw + 1rem, 1.4rem);
+				line-height: 25px;
+			}
+			.source {
+				font-size: 1rem;
 				display: none;
 			}
 			.tools {
