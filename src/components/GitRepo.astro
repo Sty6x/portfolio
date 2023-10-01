@@ -93,12 +93,12 @@ const {title, desc, lang, link} = Astro.props;
 		}
 	}
 	@media (min-width: 1921px) {
-		#repo-title-desc {
-			& > #repos-title h2 {
-				font-size: clamp(1rem, 1vw + 1rem, 1.8rem);
-			}
+		#repo-title > h2 {
+			font-size: clamp(1rem, 1vw + 0.8rem, 1.6rem) !important;
+			/* font-size: 2rem; */
 		}
 		#repo-title-desc > :last-child {
+			line-height: 20px;
 			font-size: clamp(1rem, 1vw + 0.8rem, 1.4rem);
 		}
 		#languages {
