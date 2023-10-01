@@ -42,6 +42,7 @@ import MainLayout from "../layouts/MainLayout.astro";
 			<h2>Send me a message.</h2>
 			<div id="name" class="inputs">
 				<input
+					required
 					class="input"
 					type="text"
 					id="name"
@@ -51,6 +52,7 @@ import MainLayout from "../layouts/MainLayout.astro";
 			</div>
 			<div id="email" class="inputs">
 				<input
+					required
 					class="input"
 					type="email"
 					id="email"
@@ -124,16 +126,16 @@ import MainLayout from "../layouts/MainLayout.astro";
 	}
 	async function handleOnSubmit(e) {
 		e.preventDefault();
+		const messageBody = new FormData(form);
+		const toPbj = Object.fromEntries(messageBody);
 		Array.from(inputs).forEach((child) => {
 			child.setAttribute("disabled", "");
 		});
-		const messageBody = new FormData(form);
-		const toPbj = Object.fromEntries(messageBody);
 		const message = await sendMessage(toPbj);
+		setPopUpText(message);
 		Array.from(inputs).forEach((child) => {
 			child.removeAttribute("disabled");
 		});
-		setPopUpText(message);
 	}
 
 	async function setPopUpText(text) {
@@ -146,16 +148,17 @@ import MainLayout from "../layouts/MainLayout.astro";
 		if (popUp.classList.contains("inactive")) {
 			popUp.classList.replace("inactive", "active");
 		}
-
 		setTimeout(() => {
 			popUp.classList.replace("active", "inactive");
 		}, 2000);
 	}
 	function clearInputText() {
 		const inputs = document.querySelectorAll("input");
+		const textArea = document.querySelector("textarea");
 		Array.from(inputs).forEach((input) => {
 			input.value = "";
 		});
+		textArea.value = "";
 	}
 
 	form.addEventListener("submit", handleOnSubmit);
@@ -330,7 +333,7 @@ import MainLayout from "../layouts/MainLayout.astro";
 
 	form:has(.input:disabled) {
 		transition: all 200ms ease-in-out;
-		filter: blur(5px);
+		filter: blur(2px);
 		opacity: 0.5;
 	}
 
@@ -430,9 +433,6 @@ import MainLayout from "../layouts/MainLayout.astro";
 	}
 
 	@media (max-width: 500px) {
-		#mail-box {
-			/* display: none; */
-		}
 		.text-content-container,
 		.text-content {
 			width: 100%;
@@ -440,6 +440,7 @@ import MainLayout from "../layouts/MainLayout.astro";
 		.text-content {
 			& > h1 {
 				font-size: clamp(0.8rem, 1vw + 1.5rem, 3.5rem);
+				line-height: 2rem;
 			}
 			& > p {
 				font-size: 1.2rem;
