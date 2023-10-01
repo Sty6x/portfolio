@@ -15,6 +15,7 @@ const {data} = await octokit.request(
 		},
 	},
 );
+console.log(data);
 const getLanguages = await Promise.all(
 	data.map((repo) =>
 		fetch(repo.languages_url, {
