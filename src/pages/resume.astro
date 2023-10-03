@@ -1,14 +1,12 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
 import Layout from "../layouts/Layout.astro";
+import pdfReference from "../assets/pdf/Jeryl Franz Benjamin Resume.pdf";
 ---
 
 <Layout title="Jeryl Franz Benjamin Resume">
 	<div class="container">
-		<embed
-			src="../../public/pdf/Jeryl Franz Benjamin Resume.pdf"
-			type="application/pdf"
-		/>
+		<embed src={pdfReference} type="application/pdf" />
 	</div>
 </Layout>
 
