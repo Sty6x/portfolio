@@ -10,7 +10,7 @@ const key = import.meta.env.GIT_KEY;
 const relevantData = [];
 ---
 
-<MainLayout>
+<MainLayout title="Projects">
 	<section id="left">
 		<div id="left-header">
 			<div id="back-btn-container">
@@ -335,7 +335,7 @@ async function displayRepoData(data) {
 		display: block;
 		position: absolute;
 		top: 0;
-		width: 100%;
+		width: 105%;
 		height: 102%;
 		background-color: var(--bg);
 		z-index: 10;
@@ -372,16 +372,13 @@ async function displayRepoData(data) {
 			grid-template-rows: repeat(2, minmax(200px, 300px));
 			grid-template-columns: repeat(2, 1fr);
 		}
-	}
-
-	@media (max-width: 2560px) and (min-width: 1921px) {
 		.text-content {
 			line-height: 50px;
-			font-size: clamp(1rem, 1vw + 1.2rem 3rem);
-			width: 70%;
+			font-size: clamp(1rem, 1vw + 1.5em, 5rem) !important;
+			width: 80%;
 		}
 		#github-link {
-			font-size: clamp(1rem, 1vw + 1rem, 1.8rem) !important;
+			font-size: clamp(1rem, 1vw + 0.9rem, 1.4rem) !important;
 		}
 
 		.btn-text {
@@ -392,6 +389,7 @@ async function displayRepoData(data) {
 			gap: 2em;
 		}
 	}
+
 	@media (max-width: 1450px) {
 		.text-content {
 			max-width: 100%;

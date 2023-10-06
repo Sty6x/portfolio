@@ -21,15 +21,28 @@ import MainLayout from "../layouts/MainLayout.astro";
 				<p>Get in touch.</p>
 			</div>
 			<div id="mail-box">
-				<div id="mail-text-container">
-					<span id="mail-icon-container">
+				<a
+					target="_blank"
+					rel="noopener noreferrer"
+					href="/resume"
+					class="box-container">
+					<span id="icon-container">
+						<span id="pdf-icon"></span>
+					</span>
+					<span class="box">
+						<p>Get my resume</p>
+						<p>Resume</p>
+					</span>
+				</a>
+				<a class="box-container">
+					<span id="icon-container">
 						<span id="mail-icon"></span>
 					</span>
-					<span id="mail-text">
+					<span class="box">
 						<p>Mail me at</p>
 						<p>franzdiaz460@gmail.com</p>
 					</span>
-				</div>
+				</a>
 			</div>
 		</div>
 	</section>
@@ -272,50 +285,59 @@ import MainLayout from "../layouts/MainLayout.astro";
 		height: 100%;
 		background-color: var(--bg);
 		z-index: 10;
-		/* left: -2%; */
 		animation: text-cover 700ms 450ms ease-in-out forwards normal;
 		transform: rotate(180deg);
 	}
 	#mail-box {
 		opacity: 0;
-		animation: reveal-y forwards normal 400ms 200ms ease-in-out;
 		position: relative;
-		margin-top: 1em;
-		padding: 1em 2em;
+		animation: reveal-y forwards normal 400ms 200ms ease-in-out;
 		width: min-content;
 		display: flex;
 		justify-content: center;
-		align-items: center;
-		background-color: var(--lighter-shade);
-		border-radius: 5px;
+		align-items: start;
+		flex-direction: column;
 	}
-	#mail-text-container {
+	.box-container {
 		gap: 1em;
 		display: flex;
 		align-items: center;
+
+		/* width: 100%; */
+		margin-top: 1em;
+		padding: 1em 2em;
+		background-color: var(--lighter-shade);
+		border-radius: 5px;
 	}
-	#mail-text {
+	.box {
 		font-weight: 600;
 	}
-	#mail-text > :last-child {
+	.box > :last-child {
 		color: var(--accent1);
 	}
-	#mail-icon-container {
-		width: 100%;
+	#icon-container {
+		width: max-content;
 		height: 100%;
 		background-color: var(--light-shade);
 		padding: 0.5em;
 		border-radius: 5px;
-		& > :first-child {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			width: 30px;
-			height: 30px;
-			background-image: url("../assets/icons/mail.svg");
-		}
 	}
-
+	#mail-icon {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 30px;
+		height: 30px;
+		background-image: url("../assets/icons/mail.svg");
+	}
+	#pdf-icon {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 30px;
+		height: 30px;
+		background-image: url("../assets/icons/pdf.svg");
+	}
 	#right > form {
 		transition: all 200ms ease-in-out;
 		padding: 3em;
@@ -444,6 +466,17 @@ import MainLayout from "../layouts/MainLayout.astro";
 			}
 			& > p {
 				font-size: 1.2rem;
+			}
+		}
+	}
+	@media (min-width: 1921px) {
+		.text-content {
+			margin-top: 2em;
+		}
+		#back-btn {
+			gap: 2em;
+			:last-child {
+				font-size: clamp(1rem, 1vw + 1.2rem, 1.5rem) !important;
 			}
 		}
 	}
