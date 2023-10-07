@@ -65,6 +65,8 @@ const relevantData = [];
 </MainLayout>
 
 <script define:vars={{key}} is:inline>
+const gitRepoComponents = document.querySelectorAll(".repo-container");
+const gitRepos = Array.from(gitRepoComponents);
 async function fetchRepositories() {
 	try {
 		const repos = await fetch(
