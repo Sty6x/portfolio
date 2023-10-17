@@ -20,20 +20,22 @@ const key = import.meta.env.GIT_KEY;
 				<p class="btn-text">Back to home.</p>
 			</div>
 			<p class="text-content header-text">
-				Here are some of the projects I’ve built throughout my journey of
+				Here are some of the projects that I've built throughout my journey of
 				studying
 				<span>
-					{"<Software Development/>"}
+					{"<Software Development/>."}
 				</span>
+				 after a year and a half of continuos studying and building things that
+				I am passionate about makes me enjoy this field even more.
 			</p>
 		</div>
-		<div id="featured-projects">
+		<div id="featured-projects" class="projects-list">
 			<h1 class="title">Featured Projects</h1>
 			<FeaturedCard />
 		</div>
 	</section>
 	<section id="right">
-		<div id="right-header">
+		<div id="right-header" class="projects-list">
 			<h1 class="title">Projects im currently working on</h1>
 			<div id="current-projects-container">
 				<GitRepo />
@@ -159,20 +161,21 @@ async function displayRepoData(data) {
 	}
 	#left {
 		margin-top: 4em;
-		flex-direction: column;
 	}
 
 	#back-btn-container {
 		display: flex;
 		align-items: center;
+		margin-left: auto;
 		#to-btn {
-			transform: rotate(180deg);
+			/* transform: rotate(180deg); */
 		}
 	}
 
 	#left-header {
 		display: flex;
-		/* flex-direction: column; */
+		flex-direction: column;
+		gap: 2em;
 		& > :not(:first-child) {
 			& > span {
 				color: var(--accent1);
@@ -181,11 +184,11 @@ async function displayRepoData(data) {
 	}
 	.text-content {
 		position: relative;
-		text-align: end;
-		max-width: 60%;
-		font-weight: 500;
-		font-size: clamp(1rem, 1vw + 1.2rem, 3rem);
-		margin-left: auto;
+		font-weight: 400;
+		font-size: clamp(1rem, 1vw + 0.2rem, 3rem);
+		color: var(--light-shade);
+		max-width: 80%;
+		line-height: 30px;
 	}
 	#header-text,
 	#footer-text {
@@ -212,7 +215,7 @@ async function displayRepoData(data) {
 		display: flex;
 		flex: 1;
 		flex-direction: column;
-		gap: 1em;
+		min-height: 400px;
 	}
 	#right-header {
 		display: flex;
@@ -310,16 +313,17 @@ async function displayRepoData(data) {
 		}
 	}
 	.header-text {
-		margin-right: 17px;
+		margin-left: 17px;
 	}
 	.footer-text {
 		display: block;
 		margin-left: 17px;
 	}
 	.header-text::after {
-		right: -2%;
+		left: -2%;
 		animation: text-cover 700ms 150ms ease-in-out forwards normal;
-		right: -20px;
+		left: -20px;
+		transform: rotate(180deg);
 	}
 
 	.footer-text::after {
@@ -340,12 +344,10 @@ async function displayRepoData(data) {
 		z-index: 10;
 	}
 
-	/* @media (min-height: 960px) {
-		#current-projects-container {
-			grid-template-rows: repeat(2, minmax(200px, 300px));
-			grid-template-columns: repeat(2, 1fr);
-		}
-	} */
+	.projects-list {
+		gap: 1.5em;
+	}
+
 	@media (max-width: 1920px) and (min-height: 1000px) {
 		#current-projects-container {
 			grid-template-rows: repeat(2, minmax(200px, 300px));

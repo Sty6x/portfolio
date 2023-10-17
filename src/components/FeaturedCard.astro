@@ -2,27 +2,27 @@
 import vimnotesImg from "../assets/images/vimnotes-1.png";
 import wfCLI from "../assets/images/wf-term.png";
 import timeTracker from "../assets/images/timetracker-2.jpg";
+
 const featuredList = [
 	{
+		title: "Vimnotes",
+		desc: "A Keyboard oriented approach for taking notes.",
+		imgPath: vimnotesImg,
+		link: "https://vimnotes.vercel.app/#/sign-in",
+		source: "https://github.com/Sty6x/markdown-app",
+		tools: ["TypeScript", "ReactJs", "Tailwind", "Firebase"],
+	},
+	{
 		title: "Warframe Event CLI",
-		desc: "Fetching and displaying current warframe events within your terminal.",
+		desc: "Displaying current warframe events within your terminal.",
 		imgPath: wfCLI,
 		link: "https://www.npmjs.com/package/warframe-event-status-cli",
 		source: "https://github.com/Sty6x/warframe-event-status-cli",
 		tools: ["TypeScript", "Chalk", "Cli table", "Boxen"],
 	},
-
 	{
 		title: "Website Time Tracker",
-		desc: "A Chrome extension that tracks total visits and time spent on a website",
-		imgPath: timeTracker,
-		link: "https://chrome.google.com/webstore/detail/website-tracker/khdpmjbnljkpleaeigoneokglkkgmamf",
-		source: "https://github.com/Sty6x/website-time-tracker",
-		tools: ["Javascript", "Chrome Extension APi"],
-	},
-	{
-		title: "Website Time Tracker",
-		desc: "A Chrome extension that tracks total visits and time spent on a website",
+		desc: "A Chrome extension that tracks the time spent on a website",
 		imgPath: timeTracker,
 		link: "https://chrome.google.com/webstore/detail/website-tracker/khdpmjbnljkpleaeigoneokglkkgmamf",
 		source: "https://github.com/Sty6x/website-time-tracker",
@@ -105,10 +105,8 @@ const featuredList = [
 			& > li {
 				text-transform: uppercase;
 				font-size: clamp(0.3rem, 0.5vw + 0.1rem, 0.7rem);
-				background-color: var(--accent1);
-				color: var(--lighter-shade);
-				font-weight: 700;
-				padding: 0.4em 0.6em;
+				color: var(--accent1);
+				font-weight: 600;
 				border-radius: 2px;
 			}
 		}
