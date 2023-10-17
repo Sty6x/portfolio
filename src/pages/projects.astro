@@ -215,13 +215,12 @@ async function displayRepoData(data) {
 		flex-direction: column;
 	}
 	#current-projects-container {
-		/* display: grid;
-		grid-template-rows: repeat(2, minmax(200px, 1fr));
-		grid-template-columns: repeat(2, 1fr); */
 		display: flex;
 		flex-direction: column;
 		gap: 0.6em;
 		padding: 1em 0;
+		min-height: max-content;
+		overflow-y: auto;
 	}
 
 	footer {
