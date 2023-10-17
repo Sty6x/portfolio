@@ -20,27 +20,18 @@ const featuredList = [
 		source: "https://github.com/Sty6x/website-time-tracker",
 		tools: ["Javascript", "Chrome Extension APi"],
 	},
+	{
+		title: "Website Time Tracker",
+		desc: "A Chrome extension that tracks total visits and time spent on a website",
+		imgPath: timeTracker,
+		link: "https://chrome.google.com/webstore/detail/website-tracker/khdpmjbnljkpleaeigoneokglkkgmamf",
+		source: "https://github.com/Sty6x/website-time-tracker",
+		tools: ["Javascript", "Chrome Extension APi"],
+	},
 ];
 ---
 
 <div id="featured-cards-container">
-	<a id="first-card" class="cards" href="https://github.com/Sty6x/markdown-app">
-		<div class="text-contents">
-			<ul class="tools">
-				<li>TypeScript</li>
-				<li>React</li>
-				<li>Tailwind</li>
-				<li>Firebase</li>
-			</ul>
-			<div class="title-desc">
-				<h2>Vimnotes</h2>
-				<p>
-					A Keyboard oriented approach of taking notes using vim key bindings
-				</p>
-			</div>
-		</div>
-		<img src={vimnotesImg.src} />
-	</a>
 	<section id="right-cards">
 		{
 			featuredList.map((card) => {
@@ -157,13 +148,6 @@ const featuredList = [
 		& > img {
 			object-position: 0% 0%;
 		}
-		/* &::after {
-			background: linear-gradient(
-				var(--gradient-angle),
-				transparent 20%,
-				var(--accent1) var(--outer-value)
-			);
-		} */
 	}
 	#featured-cards-container,
 	.cards {
@@ -172,25 +156,9 @@ const featuredList = [
 	}
 
 	#right-cards {
-		flex-direction: column;
 		& > a .text-contents {
 			top: 50%;
 		}
-		/* & > a:first-child::after {
-			background: linear-gradient(
-				var(--gradient-angle),
-				transparent 20%,
-				var(--accent2) var(--outer-value)
-			);
-		}
-
-		& > a:last-child::after {
-			background: linear-gradient(
-				var(--gradient-angle),
-				transparent 20%,
-				var(--accent3) var(--outer-value)
-			);
-		} */
 	}
 	#first-card,
 	#right-cards {

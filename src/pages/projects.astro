@@ -136,14 +136,6 @@ async function displayRepoData(data) {
 </script>
 
 <style>
-	main {
-		flex: 1;
-		color: white;
-		margin: 4em 3em;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
 	section {
 		height: 100%;
 		flex: 1;
@@ -151,11 +143,11 @@ async function displayRepoData(data) {
 	#right,
 	#left {
 		display: flex;
-		flex-direction: column-reverse;
+		flex-direction: column;
 		gap: 1em;
 	}
 	#left {
-		flex-direction: column-reverse;
+		flex-direction: column;
 	}
 
 	#right {
@@ -171,8 +163,7 @@ async function displayRepoData(data) {
 
 	#left-header {
 		display: flex;
-		/* align-items: center; */
-		flex-direction: column-reverse;
+		/* flex-direction: column; */
 		& > :not(:first-child) {
 			& > span {
 				color: var(--accent1);
@@ -186,8 +177,6 @@ async function displayRepoData(data) {
 		font-weight: 500;
 		font-size: clamp(1rem, 1vw + 0.8rem, 2.4rem);
 		margin-left: auto;
-		/* line-height: 35px; */
-		line-height: normal;
 	}
 	#header-text,
 	#footer-text {
@@ -353,7 +342,6 @@ async function displayRepoData(data) {
 			grid-template-rows: repeat(2, minmax(200px, 300px));
 			grid-template-columns: repeat(2, 1fr);
 		}
-
 		#back-btn-container,
 		#to-email-page {
 			gap: 2em;
