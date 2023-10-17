@@ -353,16 +353,7 @@ async function displayRepoData(data) {
 			grid-template-rows: repeat(2, minmax(200px, 300px));
 			grid-template-columns: repeat(2, 1fr);
 		}
-		.text-content {
-			font-size: clamp(1rem, 1vw + 1.2rem 3rem) !important;
-		}
-		#github-link {
-			font-size: clamp(1rem, 1vw + 1rem, 1.8rem) !important;
-		}
 
-		.btn-text {
-			font-size: clamp(1rem, 1vw + 1.2rem, 1.5rem) !important;
-		}
 		#back-btn-container,
 		#to-email-page {
 			gap: 2em;
@@ -373,35 +364,13 @@ async function displayRepoData(data) {
 			grid-template-rows: repeat(2, minmax(200px, 300px));
 			grid-template-columns: repeat(2, 1fr);
 		}
-		.text-content {
-			line-height: 50px;
-			font-size: clamp(1rem, 1vw + 1.5em, 5rem) !important;
-			width: 80%;
-		}
-		#github-link {
-			font-size: clamp(1rem, 1vw + 0.9rem, 1.4rem) !important;
-		}
-
-		.btn-text {
-			font-size: clamp(1rem, 1vw + 1.2rem, 1.5rem) !important;
-		}
 		#back-btn-container,
 		#to-email-page {
 			gap: 2em;
 		}
 	}
 
-	@media (max-width: 1450px) {
-		.text-content {
-			max-width: 100%;
-			font-size: clamp(1rem, 1vw + 0.8rem, 2.4rem);
-		}
-	}
-
 	@media (max-width: 1024px) {
-		.text-content {
-			line-height: none;
-		}
 		#left-header {
 			flex-direction: column;
 		}
@@ -413,36 +382,17 @@ async function displayRepoData(data) {
 		#right {
 			flex-direction: column;
 		}
-		.text-content {
-			width: 75%;
-			font-size: clamp(0.5rem, 1vw + 1.1rem, 2rem);
-		}
 	}
 
 	@media (max-width: 900px) {
-		.text-content {
-			width: 80%;
-			font-size: clamp(0.5rem, 1vw + 1.1rem, 2rem);
-		}
 	}
 	@media (min-width: 320px) and (max-width: 600px) {
-		.text-content {
-			font-size: clamp(0.5rem, 1vw + 0.9rem, 1.2rem);
-			line-height: normal;
-		}
 		#current-projects-container {
 			display: flex;
 			flex-direction: column;
 			height: 500px;
 			gap: 0.6em;
 			padding: 1em 0;
-		}
-		.title {
-			font-size: clamp(0.8rem, 1vw + 0.9rem, 1rem);
-		}
-		#github-link,
-		.btn-text {
-			font-size: clamp(0.4rem, 1vw + 0.4rem, 1rem);
 		}
 	}
 </style>
