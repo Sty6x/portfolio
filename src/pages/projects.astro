@@ -11,14 +11,14 @@ const key = import.meta.env.GIT_KEY;
 
 <MainLayout title="Projects">
 	<section id="title-container">
+		<div id="back-btn-container">
+			<ToBtn link="/" />
+			<p class="btn-text">Back to home.</p>
+		</div>
 		<h1 id="page-title">Work. Hobby. Passion.</h1>
 	</section>
 	<section id="left">
 		<div id="left-header">
-			<div id="back-btn-container">
-				<ToBtn link="/" />
-				<p class="btn-text">Back to home.</p>
-			</div>
 			<p class="text-content header-text">
 				Here are some of the projects that I've built throughout my journey of
 				studying
@@ -56,7 +56,7 @@ const key = import.meta.env.GIT_KEY;
 				</p>
 				<div>
 					<a id="github-link" href="https://github.com/Sty6x"
-						>More projects here.</a
+						>Visit my Github repositories.</a
 					>
 				</div>
 			</div>
@@ -148,6 +148,7 @@ async function displayRepoData(data) {
 		font-size: 4rem;
 		text-align: start;
 		font-weight: 600;
+		margin-top: 1em;
 	}
 	section {
 		height: 100%;
@@ -160,7 +161,7 @@ async function displayRepoData(data) {
 		gap: 4em;
 	}
 	#left {
-		margin-top: 4em;
+		/* margin-top: 4em; */
 	}
 
 	#back-btn-container {
@@ -168,7 +169,7 @@ async function displayRepoData(data) {
 		align-items: center;
 		margin-left: auto;
 		#to-btn {
-			/* transform: rotate(180deg); */
+			transform: rotate(180deg);
 		}
 	}
 
@@ -206,7 +207,7 @@ async function displayRepoData(data) {
 			position: absolute;
 			display: block;
 			width: 100%;
-			height: 5px;
+			height: 2px;
 			background-color: var(--lighter-shade);
 		}
 	}
