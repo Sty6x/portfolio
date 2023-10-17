@@ -52,7 +52,7 @@ const {title, desc, lang, link} = Astro.props;
 
 		& > .repo-title {
 			font-weight: 600;
-			font-size: clamp(0.5rem, 1vw + 0.5rem, 1rem);
+			font-size: 1rem;
 			color: var(--accent3);
 			display: flex;
 			gap: 0.7em;
@@ -67,63 +67,14 @@ const {title, desc, lang, link} = Astro.props;
 			}
 		}
 		& > :last-child {
+			max-width: 700px;
 			color: var(--light-shade);
 			line-height: 18px;
-			font-size: clamp(0.5rem, 1vw + 0.4rem, 0.9rem);
+			font-size: 0.9rem;
 		}
 	}
 	#languages {
 		font-size: 0.8rem;
 		color: var(--light-shade);
-	}
-	@media (min-height: 1000px) {
-		& .repo-title {
-			& > :last-child {
-				font-size: clamp(1rem, 1vw + 1rem, 1.4rem);
-			}
-		}
-		#repo-title-desc {
-			& #repos-title > h2 {
-				font-size: clamp(1rem, 1vw + 1rem, 1.4rem);
-			}
-			& > :last-child {
-				font-size: clamp(0.8rem, 1vw + 0.8rem, 1rem);
-			}
-		}
-		#languages {
-			font-size: clamp(1rem, 1vw + 0.8rem, 1rem);
-		}
-	}
-	@media (min-width: 1921px) {
-		#repo-title > h2 {
-			font-size: clamp(1rem, 1vw + 0.8rem, 1.6rem) !important;
-			/* font-size: 2rem; */
-		}
-		#repo-title-desc > :last-child {
-			line-height: 25px;
-			font-size: clamp(1rem, 1vw + 0.8rem, 1.4rem);
-		}
-		#languages {
-			font-size: clamp(0.3rem, 1vw + 0.6rem, 1rem);
-		}
-	}
-	@media (min-width: 320px) and (max-width: 600px) {
-		#repo-title-desc > .repo-title {
-			& > :last-child {
-				font-size: clamp(0.5rem, 1vw + 0.4rem, 1.2rem);
-			}
-		}
-		#repo-title-desc {
-			& #repo-title > h2 {
-				font-size: clamp(0.8rem, 1vw + 0.2rem, 1.2rem);
-			}
-			& > :last-child {
-				line-height: 13px;
-				font-size: clamp(0.5rem, 1vw + 0.4rem, 1rem);
-			}
-		}
-		#languages {
-			font-size: clamp(0.5rem, 1vw + 0.3rem, 0.8rem);
-		}
 	}
 </style>

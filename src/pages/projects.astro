@@ -15,7 +15,11 @@ const key = import.meta.env.GIT_KEY;
 			<ToBtn link="/" />
 			<p class="btn-text">Back to home.</p>
 		</div>
-		<h1 id="page-title">Work. Hobby. Passion.</h1>
+		<h1 id="page-title">
+			<span> Learn.</span>
+			<span> Hobby.</span>
+			<span> Work.</span>
+		</h1>
 	</section>
 	<section id="left">
 		<div id="left-header">
@@ -23,7 +27,7 @@ const key = import.meta.env.GIT_KEY;
 				Here are some of the projects that I've built throughout my journey of
 				studying
 				<span>
-					{"<Software Development/>."}
+					{"Software Development."}
 				</span>
 				 after a year and a half of continuos studying and building things that
 				I am passionate about makes me enjoy this field even more.
@@ -141,6 +145,16 @@ async function displayRepoData(data) {
 		text-align: start;
 		font-weight: 600;
 		margin-top: 1em;
+		& > :first-child {
+			color: var(--accent3);
+		}
+
+		& > :nth-child(2) {
+			color: var(--accent2);
+		}
+		& > :last-child {
+			color: var(--accent1);
+		}
 	}
 	section {
 		height: 100%;
@@ -169,10 +183,9 @@ async function displayRepoData(data) {
 		display: flex;
 		flex-direction: column;
 		gap: 2em;
-		& > :not(:first-child) {
-			& > span {
-				color: var(--accent1);
-			}
+		& > p span {
+			color: var(--accent3);
+			font-weight: 700;
 		}
 	}
 	.text-content {
@@ -215,13 +228,12 @@ async function displayRepoData(data) {
 		flex-direction: column;
 	}
 	#current-projects-container {
-		/* display: grid;
-		grid-template-rows: repeat(2, minmax(200px, 1fr));
-		grid-template-columns: repeat(2, 1fr); */
 		display: flex;
 		flex-direction: column;
 		gap: 0.6em;
 		padding: 1em 0;
+		min-height: max-content;
+		overflow-y: auto;
 	}
 
 	footer {
