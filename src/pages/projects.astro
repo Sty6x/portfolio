@@ -10,6 +10,9 @@ const key = import.meta.env.GIT_KEY;
 ---
 
 <MainLayout title="Projects">
+	<section id="title-container">
+		<h1 id="page-title">Work. Hobby. Passion.</h1>
+	</section>
 	<section id="left">
 		<div id="left-header">
 			<div id="back-btn-container">
@@ -136,6 +139,14 @@ async function displayRepoData(data) {
 </script>
 
 <style>
+	#title-container {
+		display: block;
+	}
+	#page-title {
+		font-size: 4rem;
+		text-align: start;
+		font-weight: 600;
+	}
 	section {
 		height: 100%;
 		flex: 1;
@@ -144,15 +155,13 @@ async function displayRepoData(data) {
 	#left {
 		display: flex;
 		flex-direction: column;
-		gap: 1em;
+		gap: 4em;
 	}
 	#left {
+		margin-top: 4em;
 		flex-direction: column;
 	}
 
-	#right {
-		margin-left: 1.5em;
-	}
 	#back-btn-container {
 		display: flex;
 		align-items: center;
@@ -173,9 +182,9 @@ async function displayRepoData(data) {
 	.text-content {
 		position: relative;
 		text-align: end;
-		max-width: 80%;
+		max-width: 60%;
 		font-weight: 500;
-		font-size: clamp(1rem, 1vw + 0.8rem, 2.4rem);
+		font-size: clamp(1rem, 1vw + 1.2rem, 3rem);
 		margin-left: auto;
 	}
 	#header-text,
