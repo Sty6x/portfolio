@@ -90,9 +90,9 @@ const featuredList = [
 			font-weight: 600;
 		}
 		.title-desc > p {
-			font-size: 1rem;
-			font-weight: 500;
-			line-height: 20px;
+			font-size: 0.8rem;
+			font-weight: 400;
+			line-height: 16px;
 		}
 		.source {
 			display: flex;
@@ -129,7 +129,7 @@ const featuredList = [
 		border-radius: 3px;
 		z-index: 20;
 		flex: 1;
-		height: 300px;
+		height: 350px;
 	}
 	.cards:hover {
 		& > img {
@@ -154,9 +154,6 @@ const featuredList = [
 	}
 
 	@media (max-width: 1200px) {
-		.title-desc > p {
-			line-height: normal;
-		}
 		.text-contents {
 			top: 50%;
 		}
@@ -177,6 +174,9 @@ const featuredList = [
 					font-size: clamp(0.3rem, 1vw + 0.1rem, 0.7rem) !important;
 				}
 			}
+		}
+		.cards {
+			max-height: 300px;
 		}
 		#cards-container {
 			flex-direction: column;

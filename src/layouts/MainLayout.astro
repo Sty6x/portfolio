@@ -127,27 +127,11 @@ const {title} = Astro.props;
 	}
 	@media (max-width: 1024px) {
 		main {
-			display: block;
-		}
-		#left,
-		#right {
-			/* display: block !important; */
-			min-height: 100vh;
-		}
-		section {
-			height: auto !important;
-		}
-		#right {
-			min-height: fit-content;
-			margin-top: 2em;
-			margin-left: 0 !important;
+			margin: 2em;
 		}
 	}
 
 	@media (min-width: 500px) and (max-width: 800px) {
-		main {
-			margin: 2em;
-		}
 	}
 	@media (min-width: 320px) and (max-width: 500px) {
 		html {

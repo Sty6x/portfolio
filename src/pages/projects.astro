@@ -46,14 +46,6 @@ const key = import.meta.env.GIT_KEY;
 		</div>
 		<footer id="end">
 			<div id="footer-text">
-				<p class="text-content footer-text">
-					Making <span class="footer-highlight" id="ideas">Ideas</span> and <span
-						class="footer-highlight"
-						id="imaginations">Imaginations</span
-					>
-					 come to life, to help me and others benefit from the usefulness of my
-					work.
-				</p>
 				<div>
 					<a id="github-link" href="https://github.com/Sty6x"
 						>Visit my Github repositories.</a
@@ -351,34 +343,6 @@ async function displayRepoData(data) {
 		gap: 1.5em;
 	}
 
-	@media (max-width: 1920px) and (min-height: 1000px) {
-		#back-btn-container,
-		#to-email-page {
-			gap: 2em;
-		}
-	}
-	@media (min-width: 1921px) {
-		#back-btn-container,
-		#to-email-page {
-			gap: 2em;
-		}
-	}
-
-	@media (max-width: 1024px) {
-		#left-header {
-			flex-direction: column;
-		}
-		#left {
-			min-height: min-content !important;
-			flex-direction: column;
-		}
-		#right {
-			flex-direction: column;
-		}
-	}
-
-	@media (max-width: 900px) {
-	}
 	@media (min-width: 320px) and (max-width: 600px) {
 		#current-projects-container {
 			display: flex;
