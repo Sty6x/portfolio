@@ -2,95 +2,96 @@
 import ToBtn from "../components/ToBtn.astro";
 import Layout from "../layouts/Layout.astro";
 import MainLayout from "../layouts/MainLayout.astro";
-// Import the functions you need from the SDKs you need
 ---
 
 <MainLayout title="Contacts">
-	<section id="left">
-		<div class="text-content-container">
-			<div id="back-btn-container">
-				<div id="back-btn">
-					<ToBtn link="/projects" />
-					<p>Back to projects.</p>
+	<div id="contents">
+		<section id="left">
+			<div class="text-content-container">
+				<div id="back-btn-container">
+					<div id="back-btn">
+						<ToBtn link="/projects" />
+						<p>Back to projects.</p>
+					</div>
+				</div>
+				<div class="text-content">
+					<h1>I'm Free.</h1>
+					<h1>Let's chat, work together</h1>
+					<h1>and build things.</h1>
+					<p>Get in touch.</p>
+				</div>
+				<div id="mail-box">
+					<a
+						target="_blank"
+						rel="noopener noreferrer"
+						href="/resume"
+						class="box-container">
+						<span id="icon-container">
+							<span id="pdf-icon"></span>
+						</span>
+						<span class="box">
+							<p>Get my resume</p>
+							<p>Resume</p>
+						</span>
+					</a>
+					<a class="box-container">
+						<span id="icon-container">
+							<span id="mail-icon"></span>
+						</span>
+						<span class="box">
+							<p>Mail me at</p>
+							<p>franzdiaz460@gmail.com</p>
+						</span>
+					</a>
 				</div>
 			</div>
-			<div class="text-content">
-				<h1>I'm Free.</h1>
-				<h1>Let's chat, work together</h1>
-				<h1>and build things.</h1>
-				<p>Get in touch.</p>
-			</div>
-			<div id="mail-box">
-				<a
-					target="_blank"
-					rel="noopener noreferrer"
-					href="/resume"
-					class="box-container">
-					<span id="icon-container">
-						<span id="pdf-icon"></span>
-					</span>
-					<span class="box">
-						<p>Get my resume</p>
-						<p>Resume</p>
-					</span>
-				</a>
-				<a class="box-container">
-					<span id="icon-container">
-						<span id="mail-icon"></span>
-					</span>
-					<span class="box">
-						<p>Mail me at</p>
-						<p>franzdiaz460@gmail.com</p>
-					</span>
-				</a>
-			</div>
-		</div>
-	</section>
-	<section id="right">
-		<span id="pop-up-notification" class="inactive">
-			<p id="pop-up-text"></p>
-			<span id="pop-up-icon" class="on-success"></span>
-		</span>
-		<form>
-			<h2>Send me a message.</h2>
-			<div id="name" class="inputs">
-				<input
-					required
-					class="input"
-					type="text"
-					id="name"
-					name="name"
-					placeholder="Fullname*"
-				/>
-			</div>
-			<div id="email" class="inputs">
-				<input
-					required
-					class="input"
-					type="email"
-					id="email"
-					name="email"
-					placeholder="Email address*"
-				/>
-			</div>
-			<div id="subject" class="inputs">
-				<input
-					class="input"
-					type="text"
-					id="subject"
-					name="subject"
-					placeholder="Subject"
-				/>
-			</div>
-			<div id="message" class="inputs">
-				<label for="message">Tell me what you think</label>
-				<textarea class="input" id="message" name="message"></textarea>
-			</div>
-			<div id="submit-btn">
-				<button class="input" type="submit">Send message</button>
-			</div>
-		</form>
-	</section>
+		</section>
+		<section id="right">
+			<span id="pop-up-notification" class="inactive">
+				<p id="pop-up-text"></p>
+				<span id="pop-up-icon" class="on-success"></span>
+			</span>
+			<form>
+				<h2>Send me a message.</h2>
+				<div id="name" class="inputs">
+					<input
+						required
+						class="input"
+						type="text"
+						id="name"
+						name="name"
+						placeholder="Fullname*"
+					/>
+				</div>
+				<div id="email" class="inputs">
+					<input
+						required
+						class="input"
+						type="email"
+						id="email"
+						name="email"
+						placeholder="Email address*"
+					/>
+				</div>
+				<div id="subject" class="inputs">
+					<input
+						class="input"
+						type="text"
+						id="subject"
+						name="subject"
+						placeholder="Subject"
+					/>
+				</div>
+				<div id="message" class="inputs">
+					<label for="message">Tell me what you think</label>
+					<textarea class="input" id="message" name="message"></textarea>
+				</div>
+				<div id="submit-btn">
+					<button class="input" type="submit">Send message</button>
+				</div>
+			</form>
+		</section>
+	</div>
 </MainLayout>
 <script>
 	import {initializeApp} from "firebase/app";
@@ -102,11 +103,6 @@ import MainLayout from "../layouts/MainLayout.astro";
 		setDoc,
 		collection,
 	} from "firebase/firestore";
-	// TODO: Add SDKs for Firebase products that you want to use
-	// https://firebase.google.com/docs/web/setup#available-libraries
-
-	// Your web app's Firebase configuration
-	// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 	const firebaseConfig = {
 		apiKey: "AIzaSyD3IuiWmJ1IrrU0JTd4mii1aHiKzEKv4-Y",
 		authDomain: "portfolio-db-b657d.firebaseapp.com",
@@ -177,6 +173,19 @@ import MainLayout from "../layouts/MainLayout.astro";
 	form.addEventListener("submit", handleOnSubmit);
 </script>
 <style>
+	#contents {
+		flex: 1;
+		color: var(--text);
+		/* max-width: 1024px; */
+		display: flex;
+		justify-content: center;
+		gap: 4em;
+	}
+	@media (max-width: 1024px) {
+		#contents {
+			flex-direction: column;
+		}
+	}
 	@keyframes pop-up-show {
 		from {
 			top: -20%;
@@ -252,14 +261,19 @@ import MainLayout from "../layouts/MainLayout.astro";
 		align-items: center;
 		justify-content: center;
 	}
+	.text-content-container {
+		display: flex;
+		flex-direction: column;
+		flex: 1;
+		height: 100%;
+	}
 	.text-content {
 		position: relative;
 		margin-top: 1em;
-		line-height: 50px;
 		& > h1 {
 			margin-left: 0.5em;
 			font-weight: 600;
-			font-size: clamp(0.8rem, 1vw + 1.8rem, 3.5rem);
+			font-size: 3rem;
 		}
 		& > p {
 			margin-left: 1em;
