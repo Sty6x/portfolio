@@ -50,13 +50,13 @@ const key = import.meta.env.GIT_KEY;
 					my repositories.
 				</p>
 			</div>
+		</div>
+		<div id="current-projects-container">
 			<h1 class="title">Projects im currently working on</h1>
-			<div id="current-projects-container">
-				<GitRepo />
-				<GitRepo />
-				<GitRepo />
-				<GitRepo />
-			</div>
+			<GitRepo />
+			<GitRepo />
+			<GitRepo />
+			<GitRepo />
 		</div>
 		<footer id="end">
 			<div id="footer-text">
@@ -189,7 +189,8 @@ async function displayRepoData(data) {
 		}
 	}
 
-	#left-header {
+	#left-header,
+	#end {
 		display: flex;
 		flex-direction: column;
 		gap: 2em;
@@ -262,6 +263,11 @@ async function displayRepoData(data) {
 			flex: 1;
 		}
 	}
+	#end {
+		display: flex;
+		flex-direction: column;
+		gap: 1.5em;
+	}
 	#to-email-page {
 		display: flex;
 		align-items: center;
@@ -314,6 +320,7 @@ async function displayRepoData(data) {
 	#github-link::after {
 		height: 5px;
 		width: 20%;
+		top: 140%;
 		left: 0;
 		content: "";
 		position: absolute;
