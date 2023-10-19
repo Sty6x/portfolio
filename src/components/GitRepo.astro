@@ -1,5 +1,5 @@
 ---
-const {title, desc, lang, link, stars} = Astro.props;
+const {title, desc, lang, link, stars, pushedDate} = Astro.props;
 ---
 
 <a class="repo-container" href={link}>
@@ -8,6 +8,7 @@ const {title, desc, lang, link, stars} = Astro.props;
 			<h2>{title}</h2>
 			<p>Public</p>
 		</div>
+		<p>{pushedDate}</p>
 		<p>{desc}</p>
 	</div>
 	<div class="stars-languages">
