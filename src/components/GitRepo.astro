@@ -1,5 +1,5 @@
 ---
-const {title, desc, lang, link} = Astro.props;
+const {title, desc, lang, link, stars} = Astro.props;
 ---
 
 <a class="repo-container" href={link}>
@@ -10,7 +10,14 @@ const {title, desc, lang, link} = Astro.props;
 		</div>
 		<p>{desc}</p>
 	</div>
-	<p id="languages">{lang}</p>
+	<div class="stars-languages">
+		<span>
+			<p id="languages">{lang}</p>
+		</span>
+		<span>
+			<p id="stars">{stars}</p>
+		</span>
+	</div>
 </a>
 
 <script></script>
@@ -73,7 +80,37 @@ const {title, desc, lang, link} = Astro.props;
 			font-size: 0.9rem;
 		}
 	}
+	.stars-languages {
+		display: flex;
+		gap: 1.2em;
+		& > span {
+			display: flex;
+			align-items: center;
+			gap: 0.6em;
+		}
+		& > span:first-child::before,
+		& > span:last-child::before {
+			content: "";
+			background-position: center;
+			width: 20px;
+			height: 20px;
+			background-size: 20px 20px;
+			display: inline-block;
+		}
+
+		& > span:first-child::before {
+			background-image: url("../assets/icons/language.svg");
+		}
+		& > span:last-child::before {
+			background-image: url("../assets/icons/stars.svg");
+		}
+	}
 	#languages {
+		font-size: 0.8rem;
+		color: var(--light-shade);
+	}
+
+	#stars {
 		font-size: 0.8rem;
 		color: var(--light-shade);
 	}

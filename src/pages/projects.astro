@@ -115,6 +115,7 @@ fetchRepositories()
 				name: repo.name,
 				url: repo.html_url,
 				desc: repo.description,
+				stars: repo.stargazers_count,
 				languageList:
 					Object.keys(getLanguages[i]).length !== 0
 						? Object.keys(getLanguages[i])[0]
@@ -131,17 +132,20 @@ fetchRepositories()
 async function displayRepoData(data) {
 	const gitRepoComponents = document.querySelectorAll(".repo-container");
 	const gitRepos = Array.from(gitRepoComponents);
-	data.map(({ id, name, url, desc, languageList }, i) => {
+	data.map(({ id, name, url, desc, languageList, stars }, i) => {
 		const repoTitle = gitRepos[i].childNodes[0].childNodes[0].childNodes[0];
 		const repoDesc = gitRepos[i].childNodes[0].childNodes[1];
-		const languageText = gitRepos[i].childNodes[1];
+		const languageText =
+			gitRepos[i].childNodes[1].childNodes[0].childNodes[0];
+		const starCount = gitRepos[i].childNodes[1].childNodes[1].childNodes[0];
 
 		gitRepos[i].setAttribute("href", url);
 
 		repoTitle.textContent = name;
 		repoDesc.textContent = desc;
 
-		languageText.textContent = languageList;
+		languageText.textContent = `${languageList}`;
+		starCount.textContent = `${stars}`;
 	});
 }
 </script>
