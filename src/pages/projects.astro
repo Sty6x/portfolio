@@ -74,7 +74,8 @@ const key = import.meta.env.GIT_KEY;
 	</section>
 </MainLayout>
 
-<script define:vars={{key}} is:inline>
+<script define:vars={{key}}>
+// import formatDistance from "date-fns/formatDistance";
 const gitRepoComponents = document.querySelectorAll(".repo-container");
 const gitRepos = Array.from(gitRepoComponents);
 async function fetchRepositories() {
@@ -136,6 +137,12 @@ async function displayRepoData(data) {
 	data.map(({ id, name, url, desc, languageList, stars, pushedDate }, i) => {
 		const repoTitle = gitRepos[i].childNodes[0].childNodes[0].childNodes[0];
 		const repoDate = gitRepos[i].childNodes[0].childNodes[1];
+		const dateOptions = {
+			weekday: "short",
+			year: "numeric",
+			month: "short",
+			day: "numeric",
+		};
 		const repoDesc = gitRepos[i].childNodes[0].childNodes[2];
 		const languageText =
 			gitRepos[i].childNodes[1].childNodes[0].childNodes[0];
@@ -144,7 +151,12 @@ async function displayRepoData(data) {
 		gitRepos[i].setAttribute("href", url);
 
 		repoTitle.textContent = name;
-		repoDate.textContent = pushedDate;
+		// repoDate.textContent = formatDistance(new Date(), new Date(pushedDate));
+
+		repoDate.textContent = new Date(pushedDate).toLocaleDateString(
+			"en-US",
+			dateOptions,
+		);
 		repoDesc.textContent = desc;
 
 		languageText.textContent = `${languageList}`;

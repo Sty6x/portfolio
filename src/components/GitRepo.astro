@@ -54,6 +54,10 @@ const {title, desc, lang, link, stars, pushedDate} = Astro.props;
 		flex-direction: column;
 		gap: 0.5em;
 
+		& > :nth-child(2) {
+			font-size: 0.8rem;
+			color: var(--light-shade);
+		}
 		& #repo-title > h2:hover {
 			text-decoration: underline;
 		}
