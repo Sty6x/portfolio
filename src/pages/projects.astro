@@ -29,7 +29,7 @@ const key = import.meta.env.GIT_KEY;
 				<span>
 					{"Software Development."}
 				</span>
-				 after a year and a half of continuos studying and building things that
+				 after a year and a half of continuous studying and building things that
 				I am passionate about makes me enjoy this field even more.
 			</p>
 		</div>
@@ -46,18 +46,20 @@ const key = import.meta.env.GIT_KEY;
 					all of my upcoming projects, <span>Building and planning</span>
 					 whenever I have the time.
 					<br />
-					 They are updated whenever there are any events that occured on any of
+					 These are updated whenever there are any events that occured on any of
 					my repositories.
 				</p>
 			</div>
 		</div>
-		<div id="current-projects-container">
+    <div>
 			<h1 class="title">Projects im currently working on</h1>
+		<div id="current-projects-container">
 			<GitRepo />
 			<GitRepo />
 			<GitRepo />
 			<GitRepo />
 		</div>
+    </div>
 		<footer id="end">
 			<div id="footer-text">
 				<div>
@@ -258,6 +260,7 @@ async function displayRepoData(data) {
 		flex-direction: column;
 	}
 	#current-projects-container {
+  margin-top:1.5em;
 		display: flex;
 		flex-direction: column;
 		gap: 0.6em;
