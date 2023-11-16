@@ -1,78 +1,30 @@
 ---
-const {link} = Astro.props;
+const {link, text} = Astro.props;
 ---
 
 <span id="to-btn" class="to-btn-container">
-	<a href={link} class="to-btn">
-		<svg
-			width="107"
-			height="102"
-			viewBox="0 0 107 102"
-			fill="none"
-			xmlns="http://www.w3.org/2000/svg">
-			<rect
-				width="107"
-				height="102"
-				rx="51"
-				transform="matrix(-1 0 0 1 107 0)"
-				fill="#A3DFD5"></rect>
-			<path
-				d="M42.168 35.368H51.384L66.104 49.896L51.384 64.424H42.168L56.952 49.896L42.168 35.368Z"
-				fill="#1A1B1D"></path>
-		</svg>
-	</a>
+	<a href={link} class="to-btn">{text}<span class="arrow">{">"}</span></a>
 </span>
 
 <style>
-	a {
-		z-index: 1;
-	}
-	@keyframes animate-btn {
-		from {
-			stroke-dashoffset: 456;
-			stroke-dasharray: 465;
-		}
-		to {
-			stroke-dashoffset: 0;
-			stroke-dasharray: 465;
-		}
-	}
-
-	@keyframes animate-arrow {
-		0% {
-			transform: scale(0);
-			opacity: 0;
-		}
-		50% {
-			transform: scale(0.5);
-			opacity: 0.5;
-		}
-		60% {
-			transform: scale(0.8);
-			opacity: 1;
-		}
-
-		80% {
-			transform: scale(1);
-			opacity: 1;
-		}
-
-		100% {
-			transform: scale(0.8);
-			opacity: 1;
-		}
-	}
-
-	@keyframes spin {
-		from {
-			stroke-dashoffset: 200;
-		}
-		to {
-			stroke-dashoffset: 100;
-		}
-	}
-
 	.to-btn-container {
-		scale: 0.8;
+		background-color: var(--accent1);
+		position: relative;
+		& > a {
+			padding: 1em 1.5em;
+			color: var(--bg);
+			font-weight: 600;
+			display: flex;
+			gap: 0.6em;
+			box-shadow: 5px 5px 0px 0px var(--accent1-shadow);
+			transition: all 200ms ease-in-out;
+			& > .arrow {
+				font-size: 1.2em;
+			}
+		}
+		& > a:hover {
+			transition: all 200ms ease-in-out;
+			box-shadow: 12px 6px 0px 0px var(--accent1-shadow);
+		}
 	}
 </style>

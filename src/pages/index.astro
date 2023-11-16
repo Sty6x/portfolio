@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import ToBtn from "../components/ToBtn.astro";
 ---
 
 <Layout title="FDiaz">
@@ -21,9 +22,7 @@ import Layout from "../layouts/Layout.astro";
 				</p>
 			</div>
 		</div>
-		<div id="btn-container">
-			<button> More about me {">"}</button>
-		</div>
+		<ToBtn link="/about" text={"More about me"} />
 	</section>
 </Layout>
 <script is:inline></script>
