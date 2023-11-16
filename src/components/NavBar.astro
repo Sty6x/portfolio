@@ -41,6 +41,26 @@
 	.inactive-link {
 		color: #ffffff60;
 	}
+	.inactive-link::after {
+		content: "";
+		margin-top: 0.3em;
+		position: absolute;
+		display: block;
+		width: 0%;
+		height: 2px;
+		left: 50%;
+		transform: translateX(-50%);
+		top: 100%;
+		background-color: var(--accent1);
+		transition: all 200ms ease-in-out;
+	}
+
+	.inactive-link:hover::after {
+		width: 100%;
+		box-shadow: 0px 1px 10px 1px #a3dfd560;
+		transition: all 200ms ease-in-out;
+	}
+
 	.active-link::before {
 		content: "";
 		position: absolute;
@@ -52,5 +72,14 @@
 		width: 5px;
 		height: 5px;
 		border-radius: 50%;
+		transition: all 200ms ease-in-out;
+		box-shadow: 0px 1px 10px 1px #a3dfd560;
+	}
+	.active-link:hover {
+		&::before {
+			transition: all 200ms ease-in-out;
+			width: 8px;
+			height: 8px;
+		}
 	}
 </style>
