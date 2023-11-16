@@ -4,12 +4,13 @@ import ToBtn from "../components/ToBtn.astro";
 import GitRepo from "../components/GitRepo.astro";
 import {Octokit} from "octokit";
 import FeaturedCard from "../components/FeaturedCard.astro";
+import Layout from "../layouts/Layout.astro";
 const octokit = new Octokit({auth: import.meta.env.GIT_KEY});
 
 const key = import.meta.env.GIT_KEY;
 ---
 
-<MainLayout title="Projects">
+<Layout title="Projects">
 	<section id="title-container">
 		<div id="back-btn-container">
 			<ToBtn link="/" />
@@ -46,20 +47,20 @@ const key = import.meta.env.GIT_KEY;
 					all of my upcoming projects, <span>Building and planning</span>
 					 whenever I have the time.
 					<br />
-					 These are updated whenever there are any events that occured on any of
-					my repositories.
+					 These are updated whenever there are any events that occured on any
+					of my repositories.
 				</p>
 			</div>
 		</div>
-    <div>
+		<div>
 			<h1 class="title">Projects im currently working on</h1>
-		<div id="current-projects-container">
-			<GitRepo />
-			<GitRepo />
-			<GitRepo />
-			<GitRepo />
+			<div id="current-projects-container">
+				<GitRepo />
+				<GitRepo />
+				<GitRepo />
+				<GitRepo />
+			</div>
 		</div>
-    </div>
 		<footer id="end">
 			<div id="footer-text">
 				<div>
@@ -74,97 +75,97 @@ const key = import.meta.env.GIT_KEY;
 			</div>
 		</footer>
 	</section>
-</MainLayout>
+</Layout>
 
 <script define:vars={{key}}>
-// import formatDistance from "date-fns/formatDistance";
-const gitRepoComponents = document.querySelectorAll(".repo-container");
-const gitRepos = Array.from(gitRepoComponents);
-async function fetchRepositories() {
-	try {
-		const repos = await fetch(
-			"https://api.github.com/user/repos?sort=pushed&per_page=4&type=public&direction=desc",
-			{
-				method: "GET",
-				headers: {
-					accept: "application/vnd.github+json",
-					authorization: `Bearer ${key}`,
-				},
-			},
-		);
-		const fetchedRepos = await repos.json();
-		return fetchedRepos;
-	} catch (error) {
-		console.log(error);
-		throw err;
-	}
-}
-fetchRepositories()
-	.then(async (data) => {
-		const getLanguages = await Promise.all(
-			data.map((repo) =>
-				fetch(repo.languages_url, {
-					method: "GET",
-					headers: { Authorization: `Bearer ${key}` },
-				}).then((language) => language.json()),
-			),
-		);
-		return { getLanguages, data };
-	})
-	.then(({ getLanguages, data }) => {
-		const relevantData = data.map((repo, i) => {
-			const newData = {
-				id: repo.id,
-				name: repo.name,
-				url: repo.html_url,
-				desc: repo.description,
-				stars: repo.stargazers_count,
-				pushedDate: repo.pushed_at,
-				languageList:
-					Object.keys(getLanguages[i]).length !== 0
-						? Object.keys(getLanguages[i])[0]
-						: "Markdown",
-			};
-			return newData;
-		});
-
-		console.log(relevantData);
-		return relevantData;
-	})
-	.then(displayRepoData);
-
-async function displayRepoData(data) {
+	// import formatDistance from "date-fns/formatDistance";
 	const gitRepoComponents = document.querySelectorAll(".repo-container");
 	const gitRepos = Array.from(gitRepoComponents);
-	data.map(({ id, name, url, desc, languageList, stars, pushedDate }, i) => {
-		const repoTitle = gitRepos[i].childNodes[0].childNodes[0].childNodes[0];
-		const repoDate = gitRepos[i].childNodes[0].childNodes[1];
-		const dateOptions = {
-			weekday: "short",
-			year: "numeric",
-			month: "short",
-			day: "numeric",
-		};
-		const repoDesc = gitRepos[i].childNodes[0].childNodes[2];
-		const languageText =
-			gitRepos[i].childNodes[1].childNodes[0].childNodes[0];
-		const starCount = gitRepos[i].childNodes[1].childNodes[1].childNodes[0];
+	async function fetchRepositories() {
+		try {
+			const repos = await fetch(
+				"https://api.github.com/user/repos?sort=pushed&per_page=4&type=public&direction=desc",
+				{
+					method: "GET",
+					headers: {
+						accept: "application/vnd.github+json",
+						authorization: `Bearer ${key}`,
+					},
+				},
+			);
+			const fetchedRepos = await repos.json();
+			return fetchedRepos;
+		} catch (error) {
+			console.log(error);
+			throw err;
+		}
+	}
+	fetchRepositories()
+		.then(async (data) => {
+			const getLanguages = await Promise.all(
+				data.map((repo) =>
+					fetch(repo.languages_url, {
+						method: "GET",
+						headers: {Authorization: `Bearer ${key}`},
+					}).then((language) => language.json()),
+				),
+			);
+			return {getLanguages, data};
+		})
+		.then(({getLanguages, data}) => {
+			const relevantData = data.map((repo, i) => {
+				const newData = {
+					id: repo.id,
+					name: repo.name,
+					url: repo.html_url,
+					desc: repo.description,
+					stars: repo.stargazers_count,
+					pushedDate: repo.pushed_at,
+					languageList:
+						Object.keys(getLanguages[i]).length !== 0
+							? Object.keys(getLanguages[i])[0]
+							: "Markdown",
+				};
+				return newData;
+			});
 
-		gitRepos[i].setAttribute("href", url);
+			console.log(relevantData);
+			return relevantData;
+		})
+		.then(displayRepoData);
 
-		repoTitle.textContent = name;
-		// repoDate.textContent = formatDistance(new Date(), new Date(pushedDate));
+	async function displayRepoData(data) {
+		const gitRepoComponents = document.querySelectorAll(".repo-container");
+		const gitRepos = Array.from(gitRepoComponents);
+		data.map(({id, name, url, desc, languageList, stars, pushedDate}, i) => {
+			const repoTitle = gitRepos[i].childNodes[0].childNodes[0].childNodes[0];
+			const repoDate = gitRepos[i].childNodes[0].childNodes[1];
+			const dateOptions = {
+				weekday: "short",
+				year: "numeric",
+				month: "short",
+				day: "numeric",
+			};
+			const repoDesc = gitRepos[i].childNodes[0].childNodes[2];
+			const languageText =
+				gitRepos[i].childNodes[1].childNodes[0].childNodes[0];
+			const starCount = gitRepos[i].childNodes[1].childNodes[1].childNodes[0];
 
-		repoDate.textContent = new Date(pushedDate).toLocaleDateString(
-			"en-US",
-			dateOptions,
-		);
-		repoDesc.textContent = desc;
+			gitRepos[i].setAttribute("href", url);
 
-		languageText.textContent = `${languageList}`;
-		starCount.textContent = `${stars}`;
-	});
-}
+			repoTitle.textContent = name;
+			// repoDate.textContent = formatDistance(new Date(), new Date(pushedDate));
+
+			repoDate.textContent = new Date(pushedDate).toLocaleDateString(
+				"en-US",
+				dateOptions,
+			);
+			repoDesc.textContent = desc;
+
+			languageText.textContent = `${languageList}`;
+			starCount.textContent = `${stars}`;
+		});
+	}
 </script>
 
 <style>
@@ -260,7 +261,7 @@ async function displayRepoData(data) {
 		flex-direction: column;
 	}
 	#current-projects-container {
-  margin-top:1.5em;
+		margin-top: 1.5em;
 		display: flex;
 		flex-direction: column;
 		gap: 0.6em;

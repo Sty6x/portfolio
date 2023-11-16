@@ -3,19 +3,54 @@
 ---
 
 <nav id="navigation-bar">
-	<a class="active-link" href="/">Home</a>
-	<a class="inactive-link" href="/about">About me</a>
-	<a class="inactive-link" href="/projects">Projects</a>
-	<a class="inactive-link" href="/contact">Contact me</a>
+	<a class="link active-link" href="/">Home</a>
+	<a class="link inactive-link" href="/about">About me</a>
+	<a class="link inactive-link" href="/projects">Projects</a>
+	<a class="link inactive-link" href="/contact">Contact</a>
 </nav>
+
+<script>
+	const links = document.querySelectorAll("a.link");
+	const linkArray = Array.from(links);
+	function setActiveLink() {
+		const currentPath = window.location.pathname;
+		linkArray.forEach((link) => {
+			if (link.pathname === currentPath) {
+				link.classList.replace("inactive-link", "active-link");
+			} else {
+				link.classList.replace("active-link", "inactive-link");
+			}
+		});
+	}
+
+	window.addEventListener("DOMContentLoaded", setActiveLink);
+</script>
 
 <style>
 	#navigation-bar {
-		position: sticky;
+		position: fixed;
 		display: flex;
 		flex-direction: column;
 		gap: 2em;
 		text-align: center;
-		left: 100%;
+		left: 90%;
+	}
+	.link {
+		position: relative;
+	}
+	.inactive-link {
+		color: #ffffff60;
+	}
+	.active-link::before {
+		content: "";
+		position: absolute;
+		right: 100%;
+		display: inline-block;
+		top: 50%;
+		transform: translateY(-50%);
+		background-color: var(--accent1);
+		width: 5px;
+		height: 5px;
+		border-radius: 50%;
 	}
 </style>
