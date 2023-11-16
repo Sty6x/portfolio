@@ -11,7 +11,58 @@
 
 <script>
 	const links = document.querySelectorAll("a.link");
+	const navBar = document.getElementById("navigation-bar");
 	const linkArray = Array.from(links);
+	const getTextContents = linkArray.map((link) => {
+		return link.textContent;
+	});
+
+	function handleNavbarResize(e) {
+		const screen = e.currentTarget.innerWidth;
+		if (innerWidth <= 850) {
+			console.log("dot dot dot");
+			linkArray.forEach((link, i) => {
+				link.classList.replace("show", "hidden");
+				link.textContent = "";
+				const dot = document.createElement("span");
+				dot.setAttribute("class", "dot-link");
+				dot.setAttribute(
+					"style",
+					`
+	            	display: block;
+	            	background-color: var(--accent1);
+	            	width: 8px;
+	            	height: 8px;
+	            	border-radius: 50%;
+	            	transition: all 200ms ease-in-out;
+	            	// box-shadow: 0px 1px 10px 1px #a3dfd560;
+					`,
+				);
+				if (link.classList.contains("active-link")) {
+					dot.setAttribute(
+						"style",
+						`
+	            	display: block;
+	            	background-color: var(--accent1);
+	            	width: 12px;
+	            	height: 12px;
+	            	border-radius: 50%;
+	            	transition: all 200ms ease-in-out;
+	            	box-shadow: 0px 1px 10px 1px #a3dfd560;
+					`,
+					);
+					link.appendChild(dot);
+				}
+				link.appendChild(dot);
+			});
+		} else {
+			linkArray.forEach((link, i) => {
+				link.classList.replace("hidden", "show");
+				link.textContent = getTextContents[i];
+			});
+		}
+	}
+
 	function setActiveLink() {
 		const currentPath = window.location.pathname;
 		linkArray.forEach((link) => {
@@ -23,7 +74,11 @@
 		});
 	}
 
-	window.addEventListener("DOMContentLoaded", setActiveLink);
+	window.addEventListener("DOMContentLoaded", (e) => {
+		setActiveLink();
+		handleNavbarResize(e);
+	});
+	window.addEventListener("resize", handleNavbarResize);
 </script>
 
 <style>
@@ -37,6 +92,9 @@
 	}
 	.link {
 		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 	}
 	.inactive-link {
 		color: #ffffff60;
@@ -83,10 +141,25 @@
 			height: 8px;
 		}
 	}
-
-	.hidden {
+	.active-link.hidden::before {
 		display: none;
 	}
-	@media (max-width: 1030px) {
+	.inactive-link.hidden::after {
+		display: none;
+	}
+	.active-link.show::before {
+		display: inline-block;
+	}
+	@media (max-width: 850px) {
+		#navigation-bar {
+			margin-left: 2em;
+			gap: 1.5em;
+		}
+	}
+
+	@media (max-width: 600px) {
+		#navigation-bar {
+			margin-left: 1em;
+		}
 	}
 </style>
