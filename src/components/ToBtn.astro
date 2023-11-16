@@ -27,4 +27,15 @@ const {link, text} = Astro.props;
 			box-shadow: 12px 6px 0px 0px var(--accent1-shadow);
 		}
 	}
+	@media (max-width: 1030px) {
+		.to-btn-container {
+			& > a {
+				padding: 0.8em 1em;
+				font-size: 0.9rem;
+				& > .arrow {
+					font-size: 0.5 em;
+				}
+			}
+		}
+	}
 </style>

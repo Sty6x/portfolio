@@ -42,11 +42,6 @@ import ToBtn from "../components/ToBtn.astro";
 		flex-direction: column;
 		text-align: center;
 		gap: 1em;
-		& > :first-child {
-			font-size: 20px;
-			letter-spacing: 10px;
-			font-weight: 500;
-		}
 	}
 	#intro-container {
 		display: flex;
@@ -70,6 +65,64 @@ import ToBtn from "../components/ToBtn.astro";
 		}
 	}
 
-	#btn-container {
+	@media (max-width: 1030px) {
+		#greet-text {
+			& > span {
+				font-size: 48px;
+			}
+		}
+		#intro-container {
+			& > p {
+				font-size: 16px;
+				font-weight: 200;
+				line-height: 25px;
+			}
+		}
+		#hero {
+			& > h2 {
+				font-size: 18px;
+				letter-spacing: 10px;
+				font-weight: 500;
+			}
+		}
+	}
+	@media (max-width: 600px) {
+		#greet-text {
+			& > span {
+				font-size: 48px;
+			}
+		}
+		#intro-container {
+			& > p {
+				font-size: 14px;
+				font-weight: 200;
+				line-height: 20px;
+			}
+		}
+		#hero {
+			& > h2 {
+				font-size: 12px;
+			}
+		}
+	}
+	@media (max-width: 450px) {
+		#greet-text {
+			& > span {
+				font-size: 32px;
+			}
+		}
+		#intro-container {
+			& > p {
+				font-size: 14px;
+				font-weight: 200;
+				line-height: 20px;
+			}
+		}
+		#hero {
+			& > h2 {
+				font-size: 10px;
+				line-height: 20px;
+			}
+		}
 	}
 </style>
