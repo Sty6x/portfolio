@@ -1,0 +1,23 @@
+---
+const {title, paraText} = Astro.props;
+---
+
+<div class="subheader">
+	<h2>{title}</h2>
+	<p>{paraText}</p>
+</div>
+
+<style>
+	.subheader {
+		line-height: 2em;
+		& > h2 {
+			font-weight: 600;
+			font-size: 36px;
+		}
+
+		& > p {
+			font-size: 15px;
+			color: var(--light-shade);
+		}
+	}
+</style>

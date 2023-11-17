@@ -1,80 +1,37 @@
 ---
-import MainLayout from "../layouts/MainLayout.astro";
 import ToBtn from "../components/ToBtn.astro";
 import GitRepo from "../components/GitRepo.astro";
 import {Octokit} from "octokit";
-import FeaturedCard from "../components/FeaturedCard.astro";
+import FeaturedCard from "../components/FeaturedItem.astro";
 import Layout from "../layouts/Layout.astro";
+import SubHeaders from "../components/SubHeaders.astro";
 const octokit = new Octokit({auth: import.meta.env.GIT_KEY});
 
 const key = import.meta.env.GIT_KEY;
 ---
 
 <Layout title="Projects">
-	<section id="title-container">
-		<div id="back-btn-container">
-			<ToBtn link="/" />
-			<p class="btn-text">Back to home.</p>
-		</div>
-		<h1 id="page-title">
-			<span> Build.</span>
-			<span> Learn.</span>
-			<span> Repeat.</span>
-		</h1>
-	</section>
-	<section id="left">
-		<div id="left-header">
-			<p class="text-content header-text">
-				Here are some of the projects that I've built throughout my journey of
-				studying
-				<span>
-					{"Software Development."}
-				</span>
-				 after a year and a half of continuous studying and building things that
-				I am passionate about makes me enjoy this field even more.
+	<div id="project-container">
+		<section id="title-container">
+			<h1 class="highlight-text">Create.</h1>
+			<p>
+				<span> Inspiring</span> and <span>Passionate</span> projects that i've
+				built throughout my coding journey as a <span>developer</span>.
 			</p>
-		</div>
-		<div id="featured-projects" class="projects-list">
-			<h1 class="title">Featured Projects</h1>
-			<FeaturedCard />
-		</div>
-	</section>
-	<section id="right">
-		<div id="right-header" class="projects-list">
-			<div id="left-header">
-				<p class="text-content header-text">
-					These are my current activities on github, this is where I showcase
-					all of my upcoming projects, <span>Building and planning</span>
-					 whenever I have the time.
-					<br />
-					 These are updated whenever there are any events that occured on any
-					of my repositories.
-				</p>
-			</div>
-		</div>
-		<div>
-			<h1 class="title">Projects im currently working on</h1>
-			<div id="current-projects-container">
-				<GitRepo />
-				<GitRepo />
-				<GitRepo />
-				<GitRepo />
-			</div>
-		</div>
-		<footer id="end">
-			<div id="footer-text">
-				<div>
-					<a id="github-link" href="https://github.com/Sty6x"
-						>Visit my Github repositories.</a
-					>
-				</div>
-			</div>
-			<div id="to-email-page">
-				<p class="btn-text">How to reach me.</p>
-				<ToBtn link="/contact" />
-			</div>
-		</footer>
-	</section>
+		</section>
+		<section id="featured-container" class="center-separator section-container">
+			<SubHeaders
+				title={"Featured Projects"}
+				paraText={"Some of my favorite projects that I have worked on"}
+			/>
+		</section>
+		<section id="recent-container section-container">
+			<SubHeaders
+				title={"Recent activities"}
+				paraText={"Tracking all of the recent activities on my github"}
+			/>
+		</section>
+	</div>
 </Layout>
 
 <script define:vars={{key}}>
@@ -169,240 +126,30 @@ const key = import.meta.env.GIT_KEY;
 </script>
 
 <style>
-	#title-container {
-		display: block;
-	}
-	#page-title {
-		font-size: 4rem;
-		text-align: start;
-		font-weight: 600;
-		margin-top: 1em;
-		& > :first-child {
-			color: var(--accent3);
-		}
-
-		& > :nth-child(2) {
-			color: var(--accent2);
-		}
-		& > :last-child {
-			color: var(--accent1);
-		}
-	}
-	section {
-		height: 100%;
+	#project-container {
+		display: flex;
+		flex-direction: column;
 		flex: 1;
-	}
-	#right,
-	#left {
-		display: flex;
-		flex-direction: column;
-		gap: 4em;
-	}
-	#left {
-		/* margin-top: 4em; */
-	}
-
-	#back-btn-container {
-		display: flex;
-		align-items: center;
-		margin-left: auto;
-		#to-btn {
-			transform: rotate(180deg);
-		}
-	}
-
-	#left-header,
-	#end {
-		display: flex;
-		flex-direction: column;
 		gap: 2em;
-		& > p span {
-			color: var(--accent3);
-			font-weight: 700;
+	}
+	#title-container {
+		& > h1 {
+			font-size: 64px;
+			font-weight: 600;
+		}
+		& > p {
+			text-transform: uppercase;
+			color: var(--light-shade);
+			max-width: 40em;
+			font-size: 20px;
+			line-height: 24px;
 		}
 	}
-	.text-content {
-		position: relative;
-		font-weight: 400;
-		font-size: clamp(1rem, 1vw + 0.2rem, 3rem);
-		color: var(--light-shade);
-		max-width: 80%;
-		line-height: 30px;
-	}
-	#header-text,
-	#footer-text {
+	.section-container {
 		flex: 1;
 	}
-	.title {
-		font-size: clamp(1rem, 1vw + 1rem, 2rem);
-		font-weight: 500;
-		z-index: 10;
-		position: relative;
-		line-height: 40px;
-		&::after {
-			z-index: 1;
-			content: "";
-			position: absolute;
-			display: block;
-			width: 100%;
-			height: 2px;
-			background-color: var(--lighter-shade);
-		}
-	}
 
-	#featured-projects {
-		display: flex;
-		flex: 1;
-		flex-direction: column;
-		min-height: 400px;
-	}
-	#right-header {
-		display: flex;
-		flex-direction: column;
-	}
-	#current-projects-container {
-		margin-top: 1.5em;
-		display: flex;
-		flex-direction: column;
-		gap: 0.6em;
-		min-height: max-content;
-		overflow-y: auto;
-		& > .title {
-			margin-bottom: 0.6em;
-		}
-	}
-
-	footer {
-		flex: 1;
-		display: flex;
-		flex-direction: column;
-	}
-	#footer-text {
-		/* margin-bottom: auto; */
-		gap: 1em;
-		display: flex;
-		flex-direction: column;
-		& > :first-child {
-			text-align: start;
-		}
-		& > :last-child {
-			flex: 1;
-		}
-	}
-	#end {
-		display: flex;
-		flex-direction: column;
-		gap: 1.5em;
-	}
-	#to-email-page {
-		display: flex;
-		align-items: center;
-		justify-content: end;
-		/* gap: 1em; */
-		margin-top: 1em;
-	}
-	.footer-highlight:first-of-type {
-		color: var(--accent2);
-	}
-
-	.footer-highlight:last-of-type {
-		color: var(--accent3);
-	}
-
-	@keyframes github-link {
-		from {
-			opacity: 0;
-			transform: translateY(50px);
-		}
-		to {
-			opacity: 1;
-			transform: translateY(0px);
-		}
-	}
-
-	#github-link {
-		position: absolute;
-		opacity: 0;
-		animation: reveal-y forwards normal 400ms 200ms ease-in-out;
-		font-weight: 500;
-		font-size: 1rem;
-	}
-
-	@keyframes github-line {
-		from {
-			opacity: 0;
-			left: 100%;
-			height: 5px;
-			width: 20%;
-		}
-		to {
-			height: 5px;
-			width: 20%;
-			left: 0;
-			opacity: 1;
-		}
-	}
-
-	#github-link::after {
-		height: 5px;
-		width: 20%;
-		top: 140%;
-		left: 0;
-		content: "";
-		position: absolute;
-		display: block;
-		background-color: var(--accent1);
-		transition: width 200ms ease-in-out;
-		/* animation: github-line 600ms 450ms ease-in-out forwards normal; */
-	}
-	#github-link:hover {
-		&::after {
-			width: 100%;
-			transition: width 200ms ease-in-out;
-		}
-	}
-	.header-text {
-		margin-left: 17px;
-	}
-	.footer-text {
-		display: block;
-		margin-left: 17px;
-	}
-	.header-text::after {
-		left: -2%;
-		animation: text-cover 700ms 150ms ease-in-out forwards normal;
-		left: -20px;
-		transform: rotate(180deg);
-	}
-
-	.footer-text::after {
-		left: -2%;
-		left: -20px;
-		animation: text-cover 700ms 450ms ease-in-out forwards normal;
-		transform: rotate(180deg);
-	}
-	.footer-text::after,
-	.header-text::after {
-		content: "";
-		display: block;
-		position: absolute;
-		top: 0;
-		width: 105%;
-		height: 102%;
-		background-color: var(--bg);
-		z-index: 10;
-	}
-
-	.projects-list {
-		gap: 1.5em;
-	}
-
-	@media (min-width: 320px) and (max-width: 600px) {
-		#current-projects-container {
-			display: flex;
-			flex-direction: column;
-			height: 500px;
-			gap: 0.6em;
-		}
+	.highlight-text {
+		color: var(--accent1);
 	}
 </style>
