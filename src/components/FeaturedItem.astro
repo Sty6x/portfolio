@@ -57,11 +57,14 @@ const {title, paraText, linkTo, metaArr, imgPath} = Astro.props;
 		-ms-filter: blur(3px);
 		filter: blur(3px);
 		transition: all 250ms ease-in-out;
+		overflow: hidden;
 	}
 	.container:nth-of-type(1)::before {
 		background-image: url("../assets//images/vimnotes-1.png");
+		box-shadow: 12px 5px 10px 10px var(--accent4);
 	}
 	.container:nth-of-type(2)::before {
+		box-shadow: 12px 5px 10px 10px var(--accent2);
 		left: 110%;
 		top: -60%;
 		/* scale: 1.4; */
@@ -69,6 +72,7 @@ const {title, paraText, linkTo, metaArr, imgPath} = Astro.props;
 		background-image: url("../assets//images/wf-term.png");
 	}
 	.container:nth-of-type(3)::before {
+		box-shadow: 12px 5px 10px 10px var(--accent3);
 		left: 80%;
 		top: 20%;
 		scale: 1.4;
