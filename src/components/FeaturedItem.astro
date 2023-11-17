@@ -30,12 +30,47 @@ const {title, paraText, linkTo, metaArr, imgPath} = Astro.props;
 	.container {
 		padding: 1.4em 3em;
 		background-color: var(--darker-shade);
+		display: flex;
+		justify-content: space-between;
 	}
 	.left-contents {
 		max-width: 60%;
+		min-width: 20em;
 		display: flex;
 		flex-direction: column;
 		gap: 1.6em;
+	}
+	.right-contents {
+		width: 300px;
+		border-radius: 2px;
+		/* border: 1px solid var(--accent1); */
+		overflow: hidden;
+		cursor: pointer;
+		position: relative;
+		border-radius: 3px;
+		/* box-shadow: 0px 1px 20px -5px #a3dfd560; */
+		transition: all 200ms ease-in-out;
+		& > img {
+			object-position: 20% 20%;
+			height: 100%;
+			width: 100%;
+			object-fit: cover;
+			opacity: 0.8;
+			filter: blur(3px);
+			transition: all 200ms ease-in-out;
+		}
+
+		& > img:hover {
+			cursor: pointer;
+			filter: blur(0.02px);
+			opacity: 0.9;
+			scale: 1.05;
+			transition: all 200ms ease-in-out;
+		}
+	}
+	.right-contents:hover {
+		transition: all 200ms ease-in-out;
+		box-shadow: 0px 1px 20px 1px #a3dfd560;
 	}
 	.meta-data-container {
 		display: flex;
@@ -61,6 +96,7 @@ const {title, paraText, linkTo, metaArr, imgPath} = Astro.props;
 		}
 
 		& > p {
+			max-width: 40em;
 			font-size: 16px;
 			line-height: 1.2rem;
 		}
