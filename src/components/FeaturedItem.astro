@@ -1,11 +1,68 @@
 ---
-import vimnotesImg from "../assets/images/vimnotes-1.png";
-import wfCLI from "../assets/images/wf-term.png";
-import timeTracker from "../assets/images/timetracker-2.jpg";
+import {Image} from "astro:assets";
+
+const {title, paraText, linkTo, metaArr, imgPath} = Astro.props;
 ---
 
-<div id="featured-item-container"></div>
+<div id="featured-item-container" class="container">
+	<div class="left-contents">
+		<span class="meta-data-container">
+			{
+				metaArr.map((text) => {
+					return <span>{text}</span>;
+				})
+			}
+		</span>
+		<span class="imp-data">
+			<h3>{title}</h3>
+			<p>{paraText}</p>
+		</span>
+		<a href={linkTo}>Go to {title} <span>{">"}</span></a>
+	</div>
+	<div class="right-contents">
+		<Image src={imgPath} alt={`Image of ${title}`} />
+	</div>
+</div>
 
 <script></script>
 
-<style></style>
+<style>
+	.container {
+		padding: 1.4em 3em;
+		background-color: var(--darker-shade);
+	}
+	.left-contents {
+		max-width: 60%;
+		display: flex;
+		flex-direction: column;
+		gap: 1.6em;
+	}
+	.meta-data-container {
+		display: flex;
+		gap: 0.4em;
+		& > span {
+			font-size: 0.8rem;
+			font-weight: 500;
+			min-width: fit-content;
+			background-color: var(--bg);
+			padding: 0.6em 1em;
+			align-items: center;
+			justify-content: center;
+			border-radius: 3px;
+		}
+	}
+	.imp-data {
+		width: 100%;
+		& > h3 {
+			font-size: 32px;
+			font-weight: 700;
+			color: var(--accent2);
+			margin-bottom: 0.2em;
+		}
+
+		& > p {
+			font-size: 16px;
+			line-height: 1.2rem;
+		}
+	}
+</style>

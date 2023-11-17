@@ -1,13 +1,42 @@
 ---
+import vimnotesImg from "../assets/images/vimnotes-1.png";
+import wfCLI from "../assets/images/wf-term.png";
+import timeTracker from "../assets/images/timetracker-2.jpg";
 import ToBtn from "../components/ToBtn.astro";
 import GitRepo from "../components/GitRepo.astro";
 import {Octokit} from "octokit";
 import FeaturedCard from "../components/FeaturedItem.astro";
 import Layout from "../layouts/Layout.astro";
 import SubHeaders from "../components/SubHeaders.astro";
+import FeaturedItem from "../components/FeaturedItem.astro";
 const octokit = new Octokit({auth: import.meta.env.GIT_KEY});
-
 const key = import.meta.env.GIT_KEY;
+const placeholders = [
+	{
+		title: "Vimnotes",
+		imgPath: vimnotesImg,
+		paraText:
+			"A markdown note taking web app using a keyboard oriented approach for taking notes using vim key bindings",
+		linkTo: "/projects",
+		meta: ["Web app", "Vim", "Markdown", "React", "Firebase"],
+	},
+	{
+		title: "Warframe Event Status CLI",
+		imgPath: wfCLI,
+		paraText:
+			"A markdown note taking web app using a keyboard oriented approach for taking notes using vim key bindings",
+		linkTo: "/projects",
+		meta: ["Terminal", "Warframe", "Nodejs", "CLI", "TypeScript"],
+	},
+	{
+		title: "Time Tracker",
+		imgPath: timeTracker,
+		paraText:
+			"A markdown note taking web app using a keyboard oriented approach for taking notes using vim key bindings",
+		linkTo: "/projects",
+		meta: ["Chrome Extension", "Productivity", "Tracker"],
+	},
+];
 ---
 
 <Layout title="Projects">
@@ -24,6 +53,21 @@ const key = import.meta.env.GIT_KEY;
 				title={"Featured Projects"}
 				paraText={"Some of my favorite projects that I have worked on"}
 			/>
+			<div class="featured-items-container">
+				{
+					placeholders.map((data) => {
+						return (
+							<FeaturedItem
+								imgPath={data.imgPath}
+								metaArr={data.meta}
+								title={data.title}
+								paraText={data.paraText}
+								linkTo={data.linkTo}
+							/>
+						);
+					})
+				}
+			</div>
 		</section>
 		<section id="recent-container section-container">
 			<SubHeaders
@@ -145,6 +189,13 @@ const key = import.meta.env.GIT_KEY;
 			line-height: 24px;
 		}
 	}
+
+	.featured-items-container {
+		display: flex;
+		flex-direction: column;
+		gap: 0.8em;
+	}
+
 	.section-container {
 		flex: 1;
 	}
