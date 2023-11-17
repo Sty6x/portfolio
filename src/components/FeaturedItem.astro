@@ -2,20 +2,20 @@
 import vimnotesImg from "../assets/images/vimnotes-1.png";
 import wfCLI from "../assets/images/wf-term.png";
 import timeTracker from "../assets/images/timetracker-2.jpg";
-const {title, paraText, linkTo, metaArr, imgPath} = Astro.props;
+const {title, paraText, linkTo, metaArr, componentStyles} = Astro.props;
 ---
 
 <div id="featured-item-container" class="container">
 	<div class="left-contents">
-		<span class="meta-data-container">
-			{
-				metaArr.map((text) => {
-					return <span>{text}</span>;
-				})
-			}
-		</span>
 		<span class="imp-data">
-			<h3>{title}</h3>
+			<span class="meta-data-container">
+				{
+					metaArr.map((text) => {
+						return <span>{text}</span>;
+					})
+				}
+			</span>
+			<h3 style={componentStyles}>{title}</h3>
 			<p>{paraText}</p>
 		</span>
 		<a href={linkTo}>Go to {title} <span>{">"}</span></a>
@@ -100,6 +100,7 @@ const {title, paraText, linkTo, metaArr, imgPath} = Astro.props;
 	.meta-data-container {
 		display: flex;
 		gap: 0.4em;
+		margin-bottom: 0.6em;
 		& > span {
 			font-size: 0.8rem;
 			font-weight: 500;
@@ -108,7 +109,7 @@ const {title, paraText, linkTo, metaArr, imgPath} = Astro.props;
 			padding: 0.6em 1em;
 			align-items: center;
 			justify-content: center;
-			border-radius: 3px;
+			/* border-radius: 3px; */
 		}
 	}
 	.imp-data {
@@ -116,7 +117,7 @@ const {title, paraText, linkTo, metaArr, imgPath} = Astro.props;
 		& > h3 {
 			font-size: 32px;
 			font-weight: 700;
-			color: var(--accent2);
+			/* color: var(--accent2); */
 			margin-bottom: 0.2em;
 		}
 

@@ -14,7 +14,7 @@ const key = import.meta.env.GIT_KEY;
 const placeholders = [
 	{
 		title: "Vimnotes",
-		imgPath: vimnotesImg,
+		style: {color: "#a5a2de"},
 		paraText:
 			"A markdown note taking web app using a keyboard oriented approach for taking notes using vim key bindings",
 		linkTo: "/projects",
@@ -22,7 +22,7 @@ const placeholders = [
 	},
 	{
 		title: "Warframe Event Status CLI",
-		imgPath: wfCLI,
+		style: {color: "#deb3a2"},
 		paraText:
 			"A cli tool to fetch and display current in-game status of warframe events inside of the terminal",
 		linkTo: "/projects",
@@ -30,7 +30,7 @@ const placeholders = [
 	},
 	{
 		title: "Time Tracker",
-		imgPath: timeTracker,
+		style: {color: "#a0cfeb"},
 		paraText:
 			"A chrome extension that tracks how long you've visited a site and how many times you've visited a site.",
 		linkTo: "/projects",
@@ -48,6 +48,34 @@ const placeholders = [
 				built throughout my coding journey as a <span>developer</span>.
 			</p>
 		</section>
+		<section id="featured-container" class="center-separator section-container">
+			<SubHeaders
+				title={"Featured Projects"}
+				paraText={"Some of my favorite projects that I have worked on"}
+			/>
+			<div class="featured-items-container">
+				{
+					placeholders.map((data) => {
+						return (
+							<FeaturedItem
+								componentStyles={data.style}
+								metaArr={data.meta}
+								title={data.title}
+								paraText={data.paraText}
+								linkTo={data.linkTo}
+							/>
+						);
+					})
+				}
+			</div>
+		</section>
+		<section id="recent-container section-container">
+			<SubHeaders
+				title={"Recent activities"}
+				paraText={"Tracking all of the recent activities on my github"}
+			/>
+		</section>
+
 		<section id="featured-container" class="center-separator section-container">
 			<SubHeaders
 				title={"Featured Projects"}
@@ -193,7 +221,7 @@ const placeholders = [
 	.featured-items-container {
 		display: flex;
 		flex-direction: column;
-		gap: 0.8em;
+		gap: 1em;
 	}
 
 	.section-container {
