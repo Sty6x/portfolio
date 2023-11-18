@@ -187,6 +187,7 @@ const placeholders = [
 		& > h1 {
 			font-size: 64px;
 			font-weight: 600;
+			margin-bottom: 0.2em;
 		}
 		& > p {
 			text-transform: uppercase;
@@ -194,6 +195,20 @@ const placeholders = [
 			max-width: 38em;
 			font-size: 20px;
 			line-height: 24px;
+			& > span {
+				font-weight: 600;
+			}
+			& > span:nth-of-type(2) {
+				color: var(--accent1);
+			}
+
+			& > span:nth-of-type(1) {
+				color: var(--accent2);
+			}
+
+			& > span:nth-of-type(3) {
+				color: var(--accent3);
+			}
 		}
 	}
 	.center-separator {
