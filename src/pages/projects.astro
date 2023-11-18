@@ -1,8 +1,4 @@
 ---
-import vimnotesImg from "../assets/images/vimnotes-1.png";
-import wfCLI from "../assets/images/wf-term.png";
-import timeTracker from "../assets/images/timetracker-2.jpg";
-import ToBtn from "../components/ToBtn.astro";
 import GitRepo from "../components/GitRepo.astro";
 import {Octokit} from "octokit";
 import FeaturedCard from "../components/FeaturedItem.astro";
@@ -74,6 +70,14 @@ const placeholders = [
 				title={"Recent activities"}
 				paraText={"Tracking all of the recent activities on my github"}
 			/>
+			<div class="recent-git-container">
+				<GitRepo />
+				<GitRepo />
+				<GitRepo />
+				<GitRepo />
+				<GitRepo />
+				<GitRepo />
+			</div>
 		</section>
 	</div>
 </Layout>
@@ -85,7 +89,7 @@ const placeholders = [
 	async function fetchRepositories() {
 		try {
 			const repos = await fetch(
-				"https://api.github.com/user/repos?sort=pushed&per_page=4&type=public&direction=desc",
+				"https://api.github.com/user/repos?sort=pushed&per_page=6&type=public&direction=desc",
 				{
 					method: "GET",
 					headers: {
@@ -208,6 +212,12 @@ const placeholders = [
 
 	.highlight-text {
 		color: var(--accent1);
+	}
+	.recent-git-container {
+		display: grid;
+		grid-template-rows: repeat(2, auto);
+		grid-template-columns: repeat(3, auto);
+		gap: 1em;
 	}
 	@media (max-width: 600px) {
 		#title-container {

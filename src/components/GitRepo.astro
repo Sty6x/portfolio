@@ -9,7 +9,7 @@ const {title, desc, lang, link, stars, pushedDate} = Astro.props;
 			<p>Public</p>
 		</div>
 		<p>{pushedDate}</p>
-		<p>{desc}</p>
+		<p class="desc">{desc}</p>
 	</div>
 	<div class="stars-languages">
 		<span>
@@ -55,7 +55,7 @@ const {title, desc, lang, link, stars, pushedDate} = Astro.props;
 		gap: 0.5em;
 
 		& > :nth-child(2) {
-			font-size: 0.8rem;
+			font-size: 0.7rem;
 			color: var(--light-shade);
 		}
 		& #repo-title > h2:hover {
@@ -79,10 +79,16 @@ const {title, desc, lang, link, stars, pushedDate} = Astro.props;
 			}
 		}
 		& > :last-child {
-			max-width: 700px;
+			max-width: 300px;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			display: -webkit-box;
+			-webkit-line-clamp: 3; /* number of lines to show */
+			line-clamp: 3;
+			-webkit-box-orient: vertical;
 			color: var(--light-shade);
-			line-height: 18px;
-			font-size: 0.9rem;
+			line-height: 16px;
+			font-size: 0.8rem;
 		}
 	}
 	.stars-languages {
