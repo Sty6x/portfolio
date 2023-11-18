@@ -187,6 +187,36 @@ const placeholders = [
 		flex-direction: column;
 		flex: 1;
 		gap: 2em;
+		position: relative;
+	}
+
+	#project-container::before {
+		content: "Project";
+		position: absolute;
+		display: inline-block;
+		color: var(--text);
+		/* opacity: 0.1; */
+		font-weight: 600;
+		text-transform: uppercase;
+		rotate: 90deg;
+		font-size: 120px;
+		left: -360px;
+		z-index: -1;
+		top: 16%;
+	}
+	#project-container::after {
+		content: "Work";
+		position: absolute;
+		display: inline-block;
+		color: var(--text);
+		opacity: 0.1;
+		font-weight: 600;
+		text-transform: uppercase;
+		rotate: 90deg;
+		font-size: 120px;
+		right: -290px;
+		top: 80%;
+		z-index: -1;
 	}
 
 	#title-container {
@@ -256,6 +286,15 @@ const placeholders = [
 			grid-template-rows: repeat(3, auto);
 			grid-template-columns: repeat(2, auto);
 			gap: 1em;
+		}
+	}
+	@media (max-width: 1024px) {
+		#project-container::before {
+			display: none;
+		}
+
+		#project-container::after {
+			display: none;
 		}
 	}
 
