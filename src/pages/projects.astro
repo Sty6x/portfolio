@@ -6,6 +6,7 @@ import Footer from "../components/Footer.astro";
 import Layout from "../layouts/Layout.astro";
 import SubHeaders from "../components/SubHeaders.astro";
 import FeaturedItem from "../components/FeaturedItem.astro";
+import ToBtn from "../components/ToBtn.astro";
 const octokit = new Octokit({auth: import.meta.env.GIT_KEY});
 const key = import.meta.env.GIT_KEY;
 const placeholders = [
@@ -42,7 +43,8 @@ const placeholders = [
 			<h1 class="highlight-text">Create.</h1>
 			<p>
 				<span> Inspiring</span> and <span>Passionate</span> projects that i've
-				built throughout my coding journey as a <span>developer</span>.
+				built throughout my coding journey as a <span>Front-end developer</span
+				>.
 			</p>
 		</section>
 		<section id="featured-container" class="center-separator section-container">
@@ -80,6 +82,7 @@ const placeholders = [
 				<GitRepo />
 			</div>
 		</section>
+		<ToBtn text={"Visit my Github profile"} />
 		<Footer />
 	</div>
 </Layout>
@@ -176,6 +179,9 @@ const placeholders = [
 </script>
 
 <style>
+	.btn {
+		width: max-content;
+	}
 	#project-container {
 		display: flex;
 		flex-direction: column;

@@ -8,6 +8,7 @@ const {link, text} = Astro.props;
 
 <style>
 	.to-btn-container {
+		width: max-content;
 		background-color: var(--accent1);
 		position: relative;
 		& > a {
@@ -31,7 +32,7 @@ const {link, text} = Astro.props;
 			transition: all 200ms ease-in-out;
 		}
 		& > a:hover span {
-			transform: translateX(10px);
+			transform: translateX(5px);
 			transition: all 200ms ease-in-out;
 		}
 	}
