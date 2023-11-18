@@ -19,7 +19,7 @@
 
 	function handleNavbarResize(e) {
 		const screen = e.currentTarget.innerWidth;
-		if (innerWidth <= 850) {
+		if (innerWidth <= 870) {
 			console.log("dot dot dot");
 			linkArray.forEach((link, i) => {
 				link.classList.replace("show", "hidden");
@@ -166,9 +166,9 @@
 	.active-link.show::before {
 		display: inline-block;
 	}
-	@media (max-width: 850px) {
+	@media (max-width: 870px) {
 		#navigation-bar {
-			margin-left: 2em;
+			margin-left: 2.5em;
 			gap: 1.5em;
 		}
 	}

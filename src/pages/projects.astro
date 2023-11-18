@@ -75,34 +75,6 @@ const placeholders = [
 				paraText={"Tracking all of the recent activities on my github"}
 			/>
 		</section>
-
-		<section id="featured-container" class="center-separator section-container">
-			<SubHeaders
-				title={"Featured Projects"}
-				paraText={"Some of my favorite projects that I have worked on"}
-			/>
-			<div class="featured-items-container">
-				{
-					placeholders.map((data) => {
-						return (
-							<FeaturedItem
-								imgPath={data.imgPath}
-								metaArr={data.meta}
-								title={data.title}
-								paraText={data.paraText}
-								linkTo={data.linkTo}
-							/>
-						);
-					})
-				}
-			</div>
-		</section>
-		<section id="recent-container section-container">
-			<SubHeaders
-				title={"Recent activities"}
-				paraText={"Tracking all of the recent activities on my github"}
-			/>
-		</section>
 	</div>
 </Layout>
 
@@ -204,6 +176,7 @@ const placeholders = [
 		flex: 1;
 		gap: 2em;
 	}
+
 	#title-container {
 		& > h1 {
 			font-size: 64px;
@@ -212,10 +185,15 @@ const placeholders = [
 		& > p {
 			text-transform: uppercase;
 			color: var(--light-shade);
-			max-width: 40em;
+			max-width: 38em;
 			font-size: 20px;
 			line-height: 24px;
 		}
+	}
+	.center-separator {
+		padding: 2em 0em;
+		border-top: 1px solid var(--text);
+		border-bottom: 1px solid var(--text);
 	}
 
 	.featured-items-container {
@@ -230,5 +208,13 @@ const placeholders = [
 
 	.highlight-text {
 		color: var(--accent1);
+	}
+	@media (max-width: 600px) {
+		#title-container {
+			& > p {
+				font-size: 16px;
+				line-height: 20px;
+			}
+		}
 	}
 </style>

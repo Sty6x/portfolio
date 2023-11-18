@@ -16,7 +16,10 @@ const {title} = Astro.props;
 		<title>{title}</title>
 	</head>
 	<body>
-		<main><slot /><NavBar /></main>
+		<main>
+			<slot />
+			<NavBar />
+		</main>
 	</body>
 </html>
 <style is:global>
@@ -77,6 +80,7 @@ const {title} = Astro.props;
 			url("/fonts/poppins-bold-webfont.woff2") format("woff2"),
 			url("/fonts/poppins-bold-webfont.woff") format("woff");
 	}
+
 	body {
 		--grad-width: 2px;
 		font-family:
@@ -106,8 +110,39 @@ const {title} = Astro.props;
 		justify-content: center;
 		align-items: center;
 	}
-	@media (max-width: 1000px) {
+	::-webkit-scrollbar {
+		width: 5px;
+		height: 2px;
+	}
+
+	/* Track */
+	::-webkit-scrollbar-track {
+		background: #f1f1f110;
+	}
+
+	/* Handle */
+	::-webkit-scrollbar-thumb {
+		border-radius: 5px;
+		background: var(--light-shade);
+	}
+
+	/* Handle on hover */
+	@media (max-width: 1550px) {
 		main {
+			max-width: 60em;
+			/* padding: 3em 7em !important; */
+		}
+	}
+
+	@media (max-width: 1270px) {
+		main {
+			max-width: 50em;
+			/* padding: 3em 7em !important; */
+		}
+	}
+	@media (max-width: 450px) {
+		main {
+			padding: 3em 1em;
 			/* padding: 3em 7em !important; */
 		}
 	}

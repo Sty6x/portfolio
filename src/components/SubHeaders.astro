@@ -10,6 +10,7 @@ const {title, paraText} = Astro.props;
 <style>
 	.subheader {
 		line-height: 2em;
+		margin-bottom: 1em;
 		& > h2 {
 			font-weight: 600;
 			font-size: 36px;
@@ -18,6 +19,18 @@ const {title, paraText} = Astro.props;
 		& > p {
 			font-size: 15px;
 			color: var(--light-shade);
+		}
+	}
+
+	@media (max-width: 600px) {
+		.subheader {
+			line-height: 1.8em;
+			& > h2 {
+				font-size: 32px;
+			}
+			& > p {
+				font-size: 12px;
+			}
 		}
 	}
 </style>

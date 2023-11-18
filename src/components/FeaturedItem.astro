@@ -90,7 +90,7 @@ const {title, paraText, linkTo, metaArr, componentStyles} = Astro.props;
 		}
 	}
 	.left-contents {
-		max-width: 60%;
+		max-width: 50%;
 		min-width: 20em;
 		display: flex;
 		flex-direction: column;
@@ -130,5 +130,77 @@ const {title, paraText, linkTo, metaArr, componentStyles} = Astro.props;
 	a {
 		color: var(--accent1);
 		text-decoration: underline;
+	}
+	@media (max-width: 600px) {
+		.container {
+			padding: 1em 2em;
+		}
+		.left-contents {
+			gap: 2em;
+		}
+
+		.meta-data-container {
+			overflow-x: auto;
+			max-width: max-content;
+			gap: 0.2em;
+			& > span {
+				font-size: 0.7rem;
+				font-weight: 500;
+				min-width: fit-content;
+				background-color: var(--bg);
+				padding: 0.6em 0.8em;
+				align-items: center;
+				justify-content: center;
+			}
+		}
+		.imp-data {
+			width: 100%;
+			& > h3 {
+				font-size: 22px;
+				font-weight: 700;
+				margin-bottom: 0.2em;
+			}
+
+			& > p {
+				max-width: 30em;
+				font-size: 12px;
+				line-height: 1.2rem;
+			}
+		}
+		a {
+			color: var(--accent1);
+			text-decoration: underline;
+		}
+	}
+	@media (max-width: 450px) {
+		.container {
+			padding: 1em 1.6em;
+		}
+		.meta-data-container {
+			overflow-x: auto;
+			max-width: max-content;
+			gap: 0.2em;
+			& > span {
+				font-size: 0.5rem;
+				padding: 0.6em 0.6em;
+			}
+		}
+		.imp-data {
+			& > h3 {
+				font-size: 22px;
+				font-weight: 700;
+				margin-bottom: 0.2em;
+			}
+
+			& > p {
+				max-width: 20em;
+				font-size: 12px;
+				line-height: 1.2rem;
+			}
+		}
+		a {
+			color: var(--accent1);
+			text-decoration: underline;
+		}
 	}
 </style>
