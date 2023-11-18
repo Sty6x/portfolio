@@ -88,8 +88,31 @@
 		flex-direction: column;
 		gap: 2em;
 		text-align: center;
-		left: 90%;
+		left: calc(90% - 10px);
 		top: 50%;
+		transform: translateY(-50%);
+	}
+
+	#navigation-bar::before {
+		content: "";
+		position: absolute;
+		display: inline-block;
+		height: 80%;
+		width: 1px;
+		left: 50%;
+		top: -100%;
+		background-color: var(--text);
+	}
+
+	#navigation-bar::after {
+		content: "";
+		position: absolute;
+		display: inline-block;
+		height: 80%;
+		width: 1px;
+		left: 50%;
+		bottom: -100%;
+		background-color: var(--text);
 	}
 	.link {
 		position: relative;
