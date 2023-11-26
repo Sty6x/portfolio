@@ -1,5 +1,99 @@
 ---
-
+import Layout from "../layouts/Layout.astro";
+import Footer from "../components/Footer.astro";
 ---
 
-<style></style>
+<Layout>
+	<div id="about-me-container">
+		<section id="about-me">
+			<div id="title-date">
+				<h2>About <span class="highlight">Franz Diaz.</span></h2>
+				<p>Front-end Developer</p>
+				<p>Updated: 25 Nov 2023</p>
+			</div>
+
+			<div id="header-para">
+				<h1><span>Learn.</span> <span> Build.</span> <span> Repeat.</span></h1>
+				<p>
+					I am Front-end developer, I have been studying web development for the
+					past one and a half years now with the help of free pen Source
+					Curriculum for self taught developers like myself.
+				</p>
+				<p>
+					I have been programming from time to time back in 2019 using c++
+					making a simple turn-based terminal game then after that I haven’t
+					touched anything or learned anything other than that, fast forward a
+					couple of years I’ve stumbled upon The Odin Project where I started my
+					journey of web development and since then I’ve been having fun
+					learning about a lot of things related to the web.
+				</p>
+			</div>
+			<div id="techstack">
+				<h3>Technologies I work with:</h3>
+			</div>
+		</section>
+
+		<Footer />
+	</div>
+</Layout>
+<style>
+	#about-me-container {
+		display: flex;
+		flex-direction: column;
+		flex: 1;
+		gap: 1em;
+		height: 100%;
+	}
+	#about-me {
+		margin-bottom: auto;
+		display: flex;
+		flex-direction: column;
+		gap: 1em;
+	}
+
+	#title-date {
+		& > :first-child {
+			font-size: var(--sub-header-font);
+			font-weight: var(--sub-header-weight);
+		}
+		& > p {
+			color: var(--light-shade);
+		}
+
+		:nth-child(2) {
+			font-weight: 500;
+			font-size: 24px;
+		}
+
+		:nth-child(3) {
+			font-weight: 400;
+			font-size: 15px;
+		}
+	}
+	#header-para {
+		display: flex;
+		flex-direction: column;
+		gap: 1.2em;
+		& > :first-child {
+			font-size: 6rem;
+			font-weight: 600;
+			& > :nth-child(1) {
+				color: var(--accent2);
+			}
+
+			& > :nth-child(2) {
+				color: var(--accent3);
+			}
+
+			& > :nth-child(3) {
+				color: var(--accent1);
+			}
+		}
+		& > p {
+			max-width: 85%;
+			font-weight: 400;
+			font-size: 22px;
+			line-height: 30px;
+		}
+	}
+</style>
