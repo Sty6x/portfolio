@@ -57,6 +57,34 @@ import Footer from "../components/Footer.astro";
 	.highlight {
 		color: var(--accent1);
 	}
+	#about-me-container::before {
+		content: "About";
+		position: absolute;
+		display: inline-block;
+		color: var(--text);
+		font-weight: 600;
+		text-transform: uppercase;
+		rotate: 90deg;
+		font-size: 120px;
+		left: -250px;
+		z-index: -1;
+		top: 18%;
+	}
+	#about-me-container::after {
+		content: "Tech";
+		position: absolute;
+		display: inline-block;
+		color: var(--text);
+		opacity: 0.1;
+		font-weight: 600;
+		text-transform: uppercase;
+		rotate: 90deg;
+		font-size: 120px;
+		right: -200px;
+		top: 70%;
+		z-index: -1;
+	}
+
 	#about-me-container {
 		display: flex;
 		flex-direction: column;
@@ -171,6 +199,11 @@ import Footer from "../components/Footer.astro";
 		}
 	}
 
+	@media (max-width: 860px) {
+		#about-me-container::before {
+			opacity: 0;
+		}
+	}
 	@media (max-width: 720px) {
 		#header-para {
 			& > :first-child {
