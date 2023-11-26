@@ -183,6 +183,23 @@ import Footer from "../components/Footer.astro";
 				line-height: 22px;
 			}
 		}
+		#techstack {
+			& > h3 {
+				font-size: 1.4rem;
+			}
+			.list-title {
+				font-size: 1.2rem;
+				font-weight: 500;
+				margin-bottom: 0.3em;
+			}
+			.tech-lists {
+				display: flex;
+				gap: 1em;
+				& > ul {
+					font-size: 1rem;
+				}
+			}
+		}
 	}
 	@media (max-width: 450px) {
 		#header-para {
