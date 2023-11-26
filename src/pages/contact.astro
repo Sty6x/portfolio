@@ -9,10 +9,7 @@ import Layout from "../layouts/Layout.astro";
 		<section id="left">
 			<div class="text-content-container">
 				<div id="back-btn-container">
-					<div id="back-btn">
-						<ToBtn link="/projects" />
-						<p>Back to projects.</p>
-					</div>
+					<ToBtn link="/projects" text={"Back to Projects"} />
 				</div>
 				<div class="text-content">
 					<h1>I'm Free.</h1>
@@ -186,26 +183,6 @@ import Layout from "../layouts/Layout.astro";
 			flex-direction: column;
 		}
 	}
-	@keyframes pop-up-show {
-		from {
-			top: -20%;
-		}
-		to {
-			opacity: 1;
-			top: 10%;
-		}
-	}
-
-	@keyframes pop-up-hide {
-		from {
-			opacity: 1;
-			top: 10%;
-		}
-		to {
-			opacity: 0;
-			top: -20%;
-		}
-	}
 
 	#pop-up-notification {
 		z-index: 10;
@@ -271,42 +248,35 @@ import Layout from "../layouts/Layout.astro";
 		position: relative;
 		margin-top: 1em;
 		& > h1 {
-			margin-left: 0.5em;
+			/* margin-left: 0.5em; */
 			font-weight: 600;
 			font-size: 2.4rem;
 		}
 		& > p {
-			margin-left: 1em;
+			/* margin-left: 1em; */
 			margin-top: 0.6em;
 			color: grey;
 			font-weight: 400;
 			font-size: 1.2rem;
 		}
 	}
-	#back-btn {
+	#back-btn-container {
 		display: flex;
 		align-items: center;
 		gap: 1em;
 		#to-btn {
-			transform: rotate(180deg);
+			& > .to-btn {
+				display: flex !important;
+				flex-direction: row-reverse !important;
+				& > .arrow {
+					transform: rotate(180deg);
+					transform-origin: 50% 40%;
+				}
+			}
 		}
 	}
-	.text-content::after {
-		content: "";
-		display: block;
-		position: absolute;
-		top: 0;
-		width: 105%;
-		height: 100%;
-		background-color: var(--bg);
-		z-index: 10;
-		animation: text-cover 700ms 450ms ease-in-out forwards normal;
-		transform: rotate(180deg);
-	}
 	#mail-box {
-		opacity: 0;
 		position: relative;
-		animation: reveal-y forwards normal 400ms 200ms ease-in-out;
 		width: min-content;
 		display: flex;
 		justify-content: center;
@@ -317,8 +287,6 @@ import Layout from "../layouts/Layout.astro";
 		gap: 1em;
 		display: flex;
 		align-items: center;
-
-		/* width: 100%; */
 		margin-top: 1em;
 		padding: 1em 2em;
 		background-color: var(--lighter-shade);
