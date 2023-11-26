@@ -30,13 +30,33 @@ import Footer from "../components/Footer.astro";
 			</div>
 			<div id="techstack">
 				<h3>Technologies I work with:</h3>
+				<div class="tech-lists">
+					<ul>
+						<p class="list-title">Skills</p>
+						<li>Javascript</li>
+						<li>TypeScript</li>
+						<li>ReactJs</li>
+						<li>NodeJs</li>
+						<li>Firebase</li>
+						<li>ExpressJs</li>
+						<li>TailwindCSS</li>
+					</ul>
+					<ul>
+						<p class="list-title">Designing && Planning</p>
+						<li>Excalidraw</li>
+						<li>Figma</li>
+						<li>Vimnotes</li>
+					</ul>
+				</div>
 			</div>
 		</section>
-
 		<Footer />
 	</div>
 </Layout>
 <style>
+	.highlight {
+		color: var(--accent1);
+	}
 	#about-me-container {
 		display: flex;
 		flex-direction: column;
@@ -94,6 +114,46 @@ import Footer from "../components/Footer.astro";
 			font-weight: 400;
 			font-size: 22px;
 			line-height: 30px;
+		}
+	}
+
+	#techstack {
+		& > h3 {
+			margin-bottom: 0.6em;
+			font-size: 2rem;
+			font-weight: 500;
+			color: var(--accent1);
+		}
+		.list-title {
+			font-size: 1.2rem;
+			font-weight: 500;
+		}
+		.tech-lists {
+			display: flex;
+			gap: 1em;
+		}
+	}
+
+	ul {
+		display: flex;
+		flex-direction: column;
+		gap: 0.4em;
+		font-size: 1rem;
+
+		& > li {
+			font-weight: 400;
+			color: var(--light-shade);
+			position: relative;
+			display: flex;
+			align-items:;
+		}
+		& > li:before {
+			content: ">";
+			font-weight: 500;
+			font-size: 1.3rem;
+			color: var(--accent1);
+			position: static;
+			margin-right: 0.2em;
 		}
 	}
 </style>
