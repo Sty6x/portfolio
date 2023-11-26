@@ -6,9 +6,9 @@
 	<div class="upper section">
 		<div>
 			<a>Email</a>
-			<a>Github</a>
-			<a>LinkedIn</a>
-			<a>Reach me</a>
+			<a href="https://github.com/Sty6x">Github</a>
+			<a href="https://www.linkedin.com/in/franz-diaz-a11529294/">LinkedIn</a>
+			<a href="/contact">Reach me</a>
 		</div>
 	</div>
 	<div class="lower section">
@@ -31,6 +31,15 @@
 	.upper {
 		padding: 0em 0em 1em 0em;
 		border-bottom: 1px solid var(--medium-shade);
+		& > div a:hover {
+			text-decoration: underline;
+		}
+		& > div a:visited {
+			color: var(--light-shade);
+		}
+		& > div a:link {
+			color: var(--light-shade);
+		}
 	}
 
 	.lower {
