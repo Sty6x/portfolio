@@ -191,6 +191,7 @@ const placeholders = [
 	}
 
 	#project-container::before {
+		opacity: 0;
 		content: "Projects";
 		position: absolute;
 		display: inline-block;
@@ -201,9 +202,10 @@ const placeholders = [
 		font-size: 120px;
 		left: -390px;
 		z-index: -1;
-		top: 16%;
+		animation: text-back-anim-before 350ms ease-in-out forwards normal;
 	}
 	#project-container::after {
+		opacity: 0;
 		content: "Work";
 		position: absolute;
 		display: inline-block;
@@ -214,8 +216,8 @@ const placeholders = [
 		rotate: 90deg;
 		font-size: 120px;
 		right: -290px;
-		top: 80%;
 		z-index: -1;
+		animation: text-back-anim-after 350ms ease-in-out forwards normal;
 	}
 
 	#title-container {

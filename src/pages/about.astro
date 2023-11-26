@@ -57,7 +57,27 @@ import Footer from "../components/Footer.astro";
 	.highlight {
 		color: var(--accent1);
 	}
+	@keyframes text-back-anim-after {
+		from {
+			top: 100%;
+		}
+		to {
+			top: 70%;
+			opacity: 0.1;
+		}
+	}
+
+	@keyframes text-back-anim-before {
+		from {
+			top: -2%;
+		}
+		to {
+			top: 21%;
+			opacity: 1;
+		}
+	}
 	#about-me-container::before {
+		opacity: 0;
 		content: "About";
 		position: absolute;
 		display: inline-block;
@@ -68,9 +88,10 @@ import Footer from "../components/Footer.astro";
 		font-size: 120px;
 		left: -250px;
 		z-index: -1;
-		top: 21%;
+		animation: text-back-anim-before 350ms ease-in-out forwards normal;
 	}
 	#about-me-container::after {
+		opacity: 0;
 		content: "Tech";
 		position: absolute;
 		display: inline-block;
@@ -81,8 +102,8 @@ import Footer from "../components/Footer.astro";
 		rotate: 90deg;
 		font-size: 120px;
 		right: -200px;
-		top: 70%;
 		z-index: -1;
+		animation: text-back-anim-after 350ms ease-in-out forwards normal;
 	}
 
 	#about-me-container {
@@ -201,7 +222,7 @@ import Footer from "../components/Footer.astro";
 
 	@media (max-width: 860px) {
 		#about-me-container::before {
-			opacity: 0;
+			opacity: 0 !important;
 		}
 	}
 	@media (max-width: 720px) {

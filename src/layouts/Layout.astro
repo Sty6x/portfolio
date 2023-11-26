@@ -103,6 +103,25 @@ const {title} = Astro.props;
 		background-color: var(--bg);
 	}
 
+	@keyframes text-back-anim-after {
+		from {
+			top: 100%;
+		}
+		to {
+			top: 80%;
+			opacity: 0.1;
+		}
+	}
+
+	@keyframes text-back-anim-before {
+		from {
+			top: -2%;
+		}
+		to {
+			top: 16%;
+			opacity: 1;
+		}
+	}
 	main {
 		padding: 3em;
 		max-width: 80em;
