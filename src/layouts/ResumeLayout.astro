@@ -38,29 +38,8 @@ const {title} = Astro.props;
 	}
 	main {
 		flex: 1;
-		color: var(--text);
-		margin: 8em 6em;
-		max-width: 1024px;
 		display: flex;
 		justify-content: center;
-		gap: 4em;
-	}
-	@media (max-width: 1024px) {
-		flex-direction: column !important;
-		main {
-			margin: 2em;
-		}
-	}
-
-	@media (min-width: 320px) and (max-width: 500px) {
-		html {
-			display: flex;
-		}
-		body {
-			flex: 1;
-		}
-		main {
-			margin: 2em 1.2em;
-		}
+		min-height: 100vh;
 	}
 </style>
