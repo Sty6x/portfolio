@@ -59,10 +59,10 @@ import Footer from "../components/Footer.astro";
 	}
 	@keyframes text-back-anim-after {
 		from {
-			top: 100%;
+			top: 75%;
 		}
 		to {
-			top: 70%;
+			top: 65%;
 			opacity: 0.1;
 		}
 	}
@@ -88,7 +88,7 @@ import Footer from "../components/Footer.astro";
 		font-size: 120px;
 		left: -250px;
 		z-index: -1;
-		animation: text-back-anim-before 350ms ease-in-out forwards normal;
+		animation: text-back-anim-before 400ms ease-in-out forwards normal;
 	}
 	#about-me-container::after {
 		opacity: 0;
@@ -103,10 +103,11 @@ import Footer from "../components/Footer.astro";
 		font-size: 120px;
 		right: -200px;
 		z-index: -1;
-		animation: text-back-anim-after 350ms ease-in-out forwards normal;
+		animation: text-back-anim-after 400ms ease-in-out forwards normal;
 	}
 
 	#about-me-container {
+		overflow: hidden;
 		display: flex;
 		flex-direction: column;
 		flex: 1;
