@@ -44,7 +44,7 @@ import Layout from "../layouts/Layout.astro";
 			</div>
 		</section>
 		<section id="right">
-			<span id="pop-up-notification" class="inactive">
+			<span id="pop-up-notification" class="">
 				<p id="pop-up-text"></p>
 				<span id="pop-up-icon" class="on-success"></span>
 			</span>
@@ -125,9 +125,12 @@ import Layout from "../layouts/Layout.astro";
 	async function sendMessage(inputs) {
 		console.log(inputs);
 		try {
-			const emailsRef = collection(db, "emails");
-			await addDoc(emailsRef, {...inputs});
-			clearInputText();
+			// const emailsRef = collection(db, "emails");
+			// await addDoc(emailsRef, {...inputs});
+			setTimeout(() => {
+				console.log("success");
+			}, 2000);
+			// clearInputText();
 			return "Message sent successfully!";
 		} catch (err) {
 			console.log(err);
@@ -155,12 +158,13 @@ import Layout from "../layouts/Layout.astro";
 	}
 	function showPopUp() {
 		const popUp = document.getElementById("pop-up-notification");
-		if (popUp.classList.contains("inactive")) {
-			popUp.classList.replace("inactive", "active");
+		if (!popUp.classList.contains("active")) {
+			popUp.classList.add("active");
 		}
 		setTimeout(() => {
 			popUp.classList.replace("active", "inactive");
 		}, 2000);
+		popUp.classList.remove("inactive");
 	}
 	function clearInputText() {
 		const inputs = document.querySelectorAll("input");
@@ -188,9 +192,30 @@ import Layout from "../layouts/Layout.astro";
 			flex-direction: column;
 		}
 	}
+	@keyframes pop-up-show {
+		from {
+			top: -20%;
+		}
+		to {
+			opacity: 1;
+			top: 10%;
+		}
+	}
+
+	@keyframes pop-up-hide {
+		from {
+			opacity: 1;
+			top: 10%;
+		}
+		to {
+			opacity: 0;
+			top: -20%;
+		}
+	}
 
 	#pop-up-notification {
-		z-index: 10;
+		top: -20%;
+		z-index: 100;
 		opacity: 0;
 		position: absolute;
 		padding: 1em 2em;
@@ -219,11 +244,11 @@ import Layout from "../layouts/Layout.astro";
 	}
 
 	.active {
-		animation: pop-up-show 200ms forwards normal ease-in-out;
+		animation: pop-up-show 350ms forwards normal ease-in-out;
 	}
 
 	.inactive {
-		animation: pop-up-hide 200ms forwards normal ease-in-out;
+		animation: pop-up-hide 350ms forwards normal ease-in-out;
 	}
 
 	section {
@@ -235,7 +260,6 @@ import Layout from "../layouts/Layout.astro";
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		height: 100%;
 	}
 	#right {
 		position: relative;
@@ -248,7 +272,6 @@ import Layout from "../layouts/Layout.astro";
 		justify-content: center;
 		flex-direction: column;
 		flex: 1;
-		height: 100%;
 	}
 	.text-content {
 		position: relative;
