@@ -1,97 +1,80 @@
 ---
 import ToBtn from "../components/ToBtn.astro";
 import ContactLayout from "../layouts/ResumeLayout.astro";
+import Footer from "../components/Footer.astro";
 import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Contacts">
 	<div id="contents">
-		<section id="left">
-			<div class="text-content-container">
-				<div id="back-btn-container">
-					<ToBtn link="/projects" text={"Back to Projects"} />
-				</div>
-				<div class="text-content">
-					<h1>I'm Free.</h1>
-					<h1>Let's chat, work together</h1>
-					<h1>and build things.</h1>
-					<p>Get in touch.</p>
-				</div>
-				<div id="mail-box">
-					<a
-						target="_blank"
-						rel="noopener noreferrer"
-						href="/resume"
-						class="box-container">
-						<span id="icon-container">
-							<span id="pdf-icon"></span>
-						</span>
-						<span class="box">
-							<p>Get my resume</p>
-							<p>Resume</p>
-						</span>
-					</a>
-					<a class="box-container">
-						<span id="icon-container">
-							<span id="mail-icon"></span>
-						</span>
-						<span class="box">
-							<p>Mail me at</p>
-							<p>franzdiaz460@gmail.com</p>
-						</span>
-					</a>
-				</div>
-			</div>
-		</section>
 		<section id="right">
 			<span id="pop-up-notification" class="">
 				<p id="pop-up-text"></p>
 				<span id="pop-up-icon" class="on-success"></span>
 			</span>
 			<form>
-				<h2>Send me a message.</h2>
-				<div id="name" class="inputs">
-					<input
-						required
-						class="input"
-						type="text"
-						id="name"
-						name="name"
-						placeholder="Fullname*"
-					/>
+				<div class="text-content">
+					<h1>Get in touch.</h1>
+					<p>Let's chat and work together.</p>
+					<div id="mail-box">
+						<a
+							target="_blank"
+							rel="noopener noreferrer"
+							href="/resume"
+							class="box-container">
+							<span id="icon-container">
+								<span id="pdf-icon"></span>
+							</span>
+							<span class="box">
+								<p>Get my resume</p>
+								<p>Resume</p>
+							</span>
+						</a>
+						<a href="mailto:franzdiaz460@gmail.com" class="box-container">
+							<span id="icon-container">
+								<span id="mail-icon"></span>
+							</span>
+							<span class="box">
+								<p>Mail me at</p>
+								<p>franzdiaz460@gmail.com</p>
+							</span>
+						</a>
+					</div>
 				</div>
-				<div id="email" class="inputs">
-					<input
-						required
-						class="input"
-						type="email"
-						id="email"
-						name="email"
-						placeholder="Email address*"
-					/>
-				</div>
+				<span class="name-email-inputs">
+					<div id="name" class="inputs">
+						<label for="name">Name</label>
+						<input required class="input" type="text" id="name" name="name" />
+					</div>
+					<div id="email" class="inputs">
+						<label for="email">Email</label>
+						<input
+							required
+							class="input"
+							type="email"
+							id="email"
+							name="email"
+						/>
+					</div>
+				</span>
 				<div id="subject" class="inputs">
-					<input
-						class="input"
-						type="text"
-						id="subject"
-						name="subject"
-						placeholder="Subject"
-					/>
+					<label for="subject">Topic</label>
+					<input class="input" type="text" id="subject" name="subject" />
 				</div>
 				<div id="message" class="inputs">
-					<label for="message">Tell me what you think</label>
-					<textarea
-						class="input"
-						id="message"
-						name="message"
-						placeholder="Your message"></textarea>
+					<label for="message">Your message</label>
+					<textarea class="input" id="message" name="message"></textarea>
 				</div>
+
 				<div id="submit-btn">
-					<button class="input" type="submit">Send message</button>
+					<button class="input" type="submit"
+						>Send message <span>{">"}</span></button
+					>
 				</div>
 			</form>
 		</section>
+
+		<Footer />
 	</div>
 </Layout>
 <script>
@@ -181,16 +164,13 @@ import Layout from "../layouts/Layout.astro";
 	#contents {
 		flex: 1;
 		color: var(--text);
-		/* max-width: 1024px; */
 		height: 100%;
 		display: flex;
 		justify-content: center;
+		flex-direction: column;
 		gap: 4em;
 	}
 	@media (max-width: 1024px) {
-		#contents {
-			flex-direction: column;
-		}
 	}
 	@keyframes pop-up-show {
 		from {
@@ -255,75 +235,51 @@ import Layout from "../layouts/Layout.astro";
 		flex: 1;
 		height: 100%;
 	}
-	#left {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-	}
 	#right {
 		position: relative;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 	}
-	.text-content-container {
-		display: flex;
-		justify-content: center;
-		flex-direction: column;
-		flex: 1;
-	}
+
 	.text-content {
 		position: relative;
-		margin-top: 1.4em;
-		& > h1 {
+		margin-bottom: 2em;
+		& > :first-child {
+			margin-bottom: 0.2em;
 			font-weight: 600;
-			font-size: 2.8rem;
+			font-size: 4rem;
+			color: var(--accent1);
 		}
 		& > p {
-			/* margin-left: 1em; */
-			color: grey;
-			font-weight: 400;
-			font-size: 1.2rem;
-		}
-	}
-	#back-btn-container {
-		display: flex;
-		align-items: center;
-		gap: 1em;
-		#to-btn {
-			& > .to-btn {
-				display: flex !important;
-				flex-direction: row-reverse !important;
-				& > .arrow {
-					transform: rotate(180deg);
-					transform-origin: 50% 40%;
-				}
-			}
+			font-size: 1.4rem;
+			font-weight: 500;
 		}
 	}
 	#mail-box {
 		position: relative;
-		width: min-content;
 		display: flex;
-		justify-content: center;
-		align-items: start;
-		flex-direction: column;
+		gap: 1em;
+		align-items: center;
 	}
 	.box-container {
 		gap: 1em;
 		display: flex;
 		align-items: center;
 		margin-top: 1em;
-		padding: 1em 1.4em;
+		padding: 0.4em 0.8em;
 		background-color: var(--lighter-shade);
 		border-radius: 2px;
 	}
-	.box {
-		font-weight: 600;
+	.box > :first-child {
+		/* color: grey; */
+		font-size: 0.9rem;
+		font-weight: 500;
 	}
 	.box > :last-child {
+		font-weight: 600;
 		color: var(--accent1);
+		font-size: 1rem;
 	}
 	#icon-container {
 		width: max-content;
@@ -332,29 +288,25 @@ import Layout from "../layouts/Layout.astro";
 		border-radius: 5px;
 	}
 	#mail-icon {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		width: 30px;
-		height: 30px;
 		background-image: url("../assets/icons/mail.svg");
 	}
 	#pdf-icon {
+		background-image: url("../assets/icons/pdf.svg");
+	}
+	#pdf-icon,
+	#mail-icon {
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		width: 30px;
-		height: 30px;
-		background-image: url("../assets/icons/pdf.svg");
+		width: 25px;
+
+		height: 25px;
 	}
 	#right > form {
 		transition: all 200ms ease-in-out;
-		padding: 3em;
-		border: 2px solid var(--lighter-shade);
+		padding: 0.8em;
 		max-height: 100%;
 		width: calc(60% + 6em);
-		min-width: 500px;
-		border-radius: 1px;
 		& > h2 {
 			font-weight: 600;
 			font-size: 2rem;
@@ -368,11 +320,22 @@ import Layout from "../layouts/Layout.astro";
 		opacity: 0.5;
 	}
 
+	.name-email-inputs {
+		display: flex;
+		gap: 1em;
+		& > #email {
+			flex-grow: 1;
+		}
+	}
+	label {
+		color: var(--text);
+		margin-bottom: 0.5em;
+		font-weight: 500;
+	}
 	.inputs {
 		& > * {
 			appearance: none;
 			width: 100%;
-			border-radius: 3px;
 			display: block;
 		}
 		&:not(:last-child) {
@@ -380,46 +343,59 @@ import Layout from "../layouts/Layout.astro";
 		}
 		& > textarea {
 			margin-top: 0.5em;
-			min-height: 150px;
-			max-height: 150px;
+			height: 150px;
 			resize: none;
+			line-height: 1.2rem;
 		}
 	}
 
 	input,
 	textarea {
+		box-sizing: border-box;
 		font-size: 1rem;
 		padding: 0.6em 1em;
 		transition: outline 200ms ease-in-out;
 		outline: 1px solid transparent;
+		border-bottom: 1px solid var(--light-shade);
+		background-color: transparent;
 	}
-	input,
-	textarea {
-		background-color: var(--lighter-shade);
-	}
+
 	input:focus,
 	textarea:focus {
 		outline: 1px solid var(--accent1);
-		border: none;
 		transition: outline 200ms ease-in-out;
 	}
-	input::placeholder,
-	textarea::placeholder {
-		color: var(--light-shade);
-	}
 	#submit-btn {
+		width: max-content;
+		background-color: var(--accent1);
+		position: relative;
 		& > button {
-			font-family: "poppins";
 			background-color: var(--accent1);
+			font-family: "poppins";
+			padding: 1em 1.5em;
 			color: var(--bg);
 			font-weight: 600;
-			border-radius: 2px;
-			padding: 0.8em 1em;
-			transition: background-color ease-in-out 200ms;
+			display: flex;
+			gap: 0.6em;
+			box-shadow: 5px 5px 0px 0px var(--accent1-shadow);
+			transition: all 200ms ease-in-out;
+			align-items: center;
+			& > span {
+				font-size: 1.5em;
+			}
 		}
-	}
+		& > button:hover {
+			transition: all 200ms ease-in-out;
+			box-shadow: 12px 6px 0px 0px var(--accent1-shadow);
+		}
 
-	#submit-btn {
+		& > button span {
+			transition: all 200ms ease-in-out;
+		}
+		& > button:hover span {
+			transform: translateX(5px);
+			transition: all 200ms ease-in-out;
+		}
 		& > button:disabled {
 			transition: background-color ease-in-out 200ms;
 			background-color: #a3dfd580;
@@ -441,12 +417,6 @@ import Layout from "../layouts/Layout.astro";
 			gap: 2em;
 			width: 100%;
 		}
-		#left {
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			justify-content: center;
-		}
 		.text-content {
 			& > h1 {
 				font-size: clamp(0.8rem, 1vw + 2rem, 3.5rem);
@@ -455,13 +425,9 @@ import Layout from "../layouts/Layout.astro";
 				font-size: 1.2rem;
 			}
 		}
-		.text-content-container,
-		.text-content {
-			width: 100%;
-		}
+
 		#right > form {
 			width: 100%;
-			min-width: 400px;
 			border-radius: 5px;
 			& > h2 {
 				font-weight: 600;
@@ -472,29 +438,29 @@ import Layout from "../layouts/Layout.astro";
 	}
 
 	@media (max-width: 500px) {
-		.text-content-container,
-		.text-content {
-			width: 100%;
-		}
 		.text-content {
 			& > h1 {
 				font-size: clamp(0.8rem, 1vw + 1.5rem, 3.5rem);
-				line-height: 2rem;
 			}
 			& > p {
 				font-size: 1.2rem;
 			}
 		}
 	}
+	@media (max-width: 600px) {
+		#mail-box {
+			margin: 1em 0em;
+			gap: 0.6em;
+			align-items: start;
+			flex-direction: column;
+			& > .box-container {
+				margin-top: 0em;
+			}
+		}
+	}
 	@media (min-width: 1921px) {
 		.text-content {
 			margin-top: 2em;
-		}
-		#back-btn {
-			gap: 2em;
-			:last-child {
-				font-size: clamp(1rem, 1vw + 1.2rem, 1.5rem) !important;
-			}
 		}
 	}
 </style>
