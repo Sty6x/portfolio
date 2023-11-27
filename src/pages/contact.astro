@@ -108,12 +108,9 @@ import Layout from "../layouts/Layout.astro";
 	async function sendMessage(inputs) {
 		console.log(inputs);
 		try {
-			// const emailsRef = collection(db, "emails");
-			// await addDoc(emailsRef, {...inputs});
-			setTimeout(() => {
-				console.log("success");
-			}, 2000);
-			// clearInputText();
+			const emailsRef = collection(db, "emails");
+			await addDoc(emailsRef, {...inputs});
+			clearInputText();
 			return "Message sent successfully!";
 		} catch (err) {
 			console.log(err);
