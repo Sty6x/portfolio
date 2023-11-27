@@ -132,6 +132,11 @@ const {title, paraText, linkTo, metaArr, componentStyles} = Astro.props;
 		color: var(--accent1);
 		text-decoration: underline;
 	}
+
+	a:link,
+	a:visited {
+		color: var(--accent1);
+	}
 	@media (max-width: 600px) {
 		.container {
 			padding: 1em 2em;
