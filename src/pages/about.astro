@@ -3,7 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import Footer from "../components/Footer.astro";
 ---
 
-<Layout>
+<Layout title="About">
 	<div id="about-me-container">
 		<section id="about-me">
 			<div id="title-date">
@@ -57,8 +57,9 @@ import Footer from "../components/Footer.astro";
 	.highlight {
 		color: var(--accent1);
 	}
-	@keyframes text-back-anim-after {
+	@keyframes about-text-back-anim-after {
 		from {
+			opacity: 0;
 			top: 75%;
 		}
 		to {
@@ -67,8 +68,9 @@ import Footer from "../components/Footer.astro";
 		}
 	}
 
-	@keyframes text-back-anim-before {
+	@keyframes about-text-back-anim-before {
 		from {
+			opacity: 0;
 			top: -2%;
 		}
 		to {
@@ -76,7 +78,7 @@ import Footer from "../components/Footer.astro";
 			opacity: 1;
 		}
 	}
-	#about-me-container::before {
+	div#about-me-container::before {
 		opacity: 0;
 		content: "About";
 		position: absolute;
@@ -88,9 +90,10 @@ import Footer from "../components/Footer.astro";
 		font-size: 120px;
 		left: -250px;
 		z-index: -1;
-		animation: text-back-anim-before 400ms ease-in-out forwards normal;
+		animation: about-text-back-anim-before 400ms 100ms ease-in-out forwards
+			normal;
 	}
-	#about-me-container::after {
+	div#about-me-container::after {
 		opacity: 0;
 		content: "Tech";
 		position: absolute;
@@ -103,10 +106,10 @@ import Footer from "../components/Footer.astro";
 		font-size: 120px;
 		right: -200px;
 		z-index: -1;
-		animation: text-back-anim-after 400ms ease-in-out forwards normal;
+		animation: about-text-back-anim-after 400ms ease-in-out forwards normal;
 	}
 
-	#about-me-container {
+	div#about-me-container {
 		overflow: hidden;
 		display: flex;
 		flex-direction: column;
@@ -170,13 +173,13 @@ import Footer from "../components/Footer.astro";
 
 	#techstack {
 		& > h3 {
-			margin-bottom: 0.3em;
+			margin-bottom: 0.8em;
 			font-size: 2rem;
 			font-weight: 600;
 			color: var(--accent1);
 		}
 		.list-title {
-			font-size: 1.5rem;
+			font-size: 1.2rem;
 			font-weight: 500;
 			margin-bottom: 0.3em;
 		}
