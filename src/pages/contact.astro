@@ -252,15 +252,13 @@ import Layout from "../layouts/Layout.astro";
 	}
 	.text-content {
 		position: relative;
-		margin-top: 1em;
+		margin-top: 1.4em;
 		& > h1 {
-			/* margin-left: 0.5em; */
 			font-weight: 600;
-			font-size: 2.4rem;
+			font-size: 2.8rem;
 		}
 		& > p {
 			/* margin-left: 1em; */
-			margin-top: 0.6em;
 			color: grey;
 			font-weight: 400;
 			font-size: 1.2rem;
@@ -405,6 +403,16 @@ import Layout from "../layouts/Layout.astro";
 		}
 	}
 
+	@media (max-width: 1280px) {
+		.text-content {
+			& > h1 {
+				font-size: 2.5rem;
+			}
+			& > p {
+				font-size: 1.2rem;
+			}
+		}
+	}
 	@media (max-width: 1024px) {
 		#left {
 			display: flex;
