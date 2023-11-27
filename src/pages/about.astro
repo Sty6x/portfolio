@@ -222,8 +222,9 @@ import Footer from "../components/Footer.astro";
 	}
 
 	@media (max-width: 860px) {
-		#about-me-container::before {
-			opacity: 0 !important;
+		#about-me-container::before,
+		#about-me-container::after {
+			display: none !important;
 		}
 	}
 	@media (max-width: 720px) {
