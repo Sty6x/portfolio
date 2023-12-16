@@ -1,13 +1,10 @@
 ---
 import GitRepo from "../components/GitRepo.astro";
-import {Octokit} from "octokit";
-import FeaturedCard from "../components/FeaturedItem.astro";
 import Footer from "../components/Footer.astro";
 import Layout from "../layouts/Layout.astro";
 import SubHeaders from "../components/SubHeaders.astro";
 import FeaturedItem from "../components/FeaturedItem.astro";
 import ToBtn from "../components/ToBtn.astro";
-const octokit = new Octokit({auth: import.meta.env.GIT_KEY});
 const key = import.meta.env.GIT_KEY;
 const placeholders = [
 	{
@@ -15,7 +12,7 @@ const placeholders = [
 		style: {color: "#a5a2de"},
 		paraText:
 			"A markdown note taking web app using a keyboard oriented approach for taking notes using vim key bindings",
-		linkTo: "/projects",
+		linkTo: "https://vimnotes.vercel.app/",
 		meta: ["Web app", "Vim", "Markdown", "React", "Firebase"],
 	},
 	{
@@ -23,16 +20,16 @@ const placeholders = [
 		style: {color: "#deb3a2"},
 		paraText:
 			"A cli tool to fetch and display current in-game status of warframe events inside of the terminal",
-		linkTo: "/projects",
-		meta: ["Terminal", "Warframe", "Nodejs", "CLI", "TypeScript"],
+		linkTo: "https://www.npmjs.com/package/warframe-event-status-cli",
+		meta: ["Game", "Terminal", "Warframe", "Nodejs", "CLI", "TypeScript"],
 	},
 	{
-		title: "Time Tracker",
+		title: "Personal Library",
 		style: {color: "#a0cfeb"},
 		paraText:
-			"A chrome extension that tracks how long and how much you've visited a website. *needs fixing*",
+			"A Personal Library for keeping track of books with the ability to write notes for each page *WIP*",
 		linkTo: "/projects",
-		meta: ["Chrome Extension", "Productivity", "Tracker"],
+		meta: ["Library", "Productivity", "Reading", "Notes"],
 	},
 ];
 ---
@@ -147,6 +144,7 @@ const placeholders = [
 	async function displayRepoData(data) {
 		const gitRepoComponents = document.querySelectorAll(".repo-container");
 		const gitRepos = Array.from(gitRepoComponents);
+		console.log(data);
 		data.map(({id, name, url, desc, languageList, stars, pushedDate}, i) => {
 			const repoTitle = gitRepos[i].childNodes[0].childNodes[0].childNodes[0];
 			const repoDate = gitRepos[i].childNodes[0].childNodes[1];
